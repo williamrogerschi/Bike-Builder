@@ -1,38 +1,12 @@
 # Bike-Builder
 
-<br/>
-<p align="center">
-  <a href="https://github.com/WilliamRogersChi/Billy's Bike Builder">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
-
-  <h3 align="center">ReadME Generator</h3>
-
-  <p align="center">
-    An Awesome ReadME Generator To Jumpstart Your Projects!
-    <br/>
-    <br/>
-    <a href="https://github.com/WilliamRogersChi/Billy's Bike Builder"><strong>Explore the docs »</strong></a>
-    <br/>
-    <br/>
-    <a href="https://github.com/WilliamRogersChi/Billy's Bike Builder">View Demo</a>
-    .
-    <a href="https://github.com/WilliamRogersChi/Billy's Bike Builder/issues">Report Bug</a>
-    .
-    <a href="https://github.com/WilliamRogersChi/Billy's Bike Builder/issues">Request Feature</a>
-  </p>
-</p>
-
-![Downloads](https://img.shields.io/github/downloads/WilliamRogersChi/Billy's Bike Builder/total) ![Contributors](https://img.shields.io/github/contributors/WilliamRogersChi/Billy's Bike Builder?color=dark-green) ![Issues](https://img.shields.io/github/issues/WilliamRogersChi/Billy's Bike Builder) ![License](https://img.shields.io/github/license/WilliamRogersChi/Billy's Bike Builder) 
-
 ## Table Of Contents
 
 * [About the Project](#about-the-project)
 * [Built With](#built-with)
-* [Usage](#usage)
-* [Roadmap](#roadmap)
 * [Authors](#authors)
 * [Acknowledgements](#acknowledgements)
+
 
 ## About The Project
 
@@ -50,14 +24,17 @@ Of course, no one template will serve all projects since your needs may be diffe
 
 A list of commonly used resources that I find helpful are listed in the acknowledgements.
 
+
 ## Built With
 
 React
 Bootstrap
 
+
 ## Authors
 
 * **Billy Rogers** - *General Assembly SEI Student* - [Billy Rogers](https://github.com/williamrogerschi/)
+
 
 ## Acknowledgements
 
