@@ -21,8 +21,7 @@ This project aims to provide an intuitive and interactive platform for users to 
 
 
 
-****Features****
-
+<h2>Features</h2>
 
 Component Selection: Users can browse through a variety of available components categorized by type and select their preferred ones.
 
@@ -39,13 +38,13 @@ Save and Share: Users can save their configurations for future reference or to c
 
 <ul>
 <li>HTML5</li>
-CSS3
-Javascript
-Node.js
-Mongoose
-Express
-React.js
-Bootstrap
+<li>CSS3</li>
+<li>Javascript</li>
+<li>Node.js</li>
+<li>Mongoose</li>
+<li>Express</li>
+<li>React.js</li>
+<li>Bootstrap</li>
 </ul>
 
 
