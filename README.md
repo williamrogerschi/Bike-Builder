@@ -22,13 +22,13 @@ This project aims to provide an intuitive and interactive platform for users to 
 
 <h3>Features</h3>
 
-Component Selection: Users can browse through a variety of available components categorized by type and select their preferred ones.
+**Component Selection**: Users can browse through a variety of available components categorized by type and select their preferred ones.
 
-Customization Options: Each component category offers various customization options, enabling users to fine-tune their selections based on preferences, budget, and specifications.
+**Customization Options**: Each component category offers various customization options, enabling users to fine-tune their selections based on preferences, budget, and specifications.
 
-Visualization (stretch): The application provides a visual representation or render of the bicycle as users make their component selections, offering a real-time preview of the customized bike.
+**Visualization** (stretch): The application provides a visual representation or render of the bicycle as users make their component selections, offering a real-time preview of the customized bike.
 
-Save and Share: Users can save their configurations for future reference or to compare multiple builds at the same time depending on budget.
+**Save and Share**: Users can save their configurations for future reference or to compare multiple builds at the same time depending on budget.
 
 
 
