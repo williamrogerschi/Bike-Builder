@@ -13,12 +13,16 @@
 Welcome to Billy's Bicycle Builder! This project contains a web application that enables users to select various bicycle components and build their own customized bicycle.
 
 
+
 ****Overview****
+
 
 This project aims to provide an intuitive and interactive platform for users to create their personalized bicycles by choosing different components such as frames, wheels, groupsets, and more. The application offers a user-friendly interface to explore, select, and visualize the combination of components that make up their ideal bicycle - with expert feedback being provided in a user friendly format to ensure you can build the bike of your dreams!
 
 
-**Features**
+
+****Features****
+
 
 Component Selection: Users can browse through a variety of available components categorized by type and select their preferred ones.
 
