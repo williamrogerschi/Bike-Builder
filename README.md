@@ -1,4 +1,4 @@
-# Bike-Builder
+# Billy's Bike-Builder
 
 ## Table Of Contents
 
@@ -10,32 +10,40 @@
 
 ## About The Project
 
-![Screen Shot](images/screenshot.png)
+Welcome to Billy's Bicycle Builder! This project contains a web application that enables users to select various bicycle components and build their own customized bicycle.
 
-There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need.
+Overview
+This project aims to provide an intuitive and interactive platform for users to create their personalized bicycles by choosing different components such as frames, wheels, groupsets, and more. The application offers a user-friendly interface to explore, select, and visualize the combination of components that make up their ideal bicycle - with expert feedback being provided in a user friendly format to ensure you can build the bike of your dreams!
 
-Here's why:
 
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should element DRY principles to the rest of your life :smile:
+Features
+Component Selection: Users can browse through a variety of available components categorized by type and select their preferred ones.
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue.
+Customization Options: Each component category offers various customization options, enabling users to fine-tune their selections based on preferences, budget, and specifications.
 
-A list of commonly used resources that I find helpful are listed in the acknowledgements.
+Visualization: The application provides a visual representation or render of the bicycle as users make their component selections, offering a real-time preview of the customized bike.
+
+Save and Share: Users can save their configurations for future reference or to compare multiple builds at the same time depending on budget.
 
 
 ## Built With
 
-React
+HTML5
+CSS3
+Javascript
+Node.js
+Mongoose
+Express
+React.js
 Bootstrap
 
 
 ## Authors
 
-* **Billy Rogers** - *General Assembly SEI Student* - [Billy Rogers](https://github.com/williamrogerschi/)
+* **Billy Rogers** - *General Assembly SEI Student* - [GitHub](https://github.com/williamrogerschi/)
 
 
 ## Acknowledgements
 
 * All of the GA SEI Intsrtuctor team
+* My lovely partner, Samantha for always supporting me through my coding journey!
