@@ -49,9 +49,9 @@ This project aims to provide an intuitive and interactive platform for users to 
 
 ##Sources Used
 
-**Lucid Chart**: https://lucid.app/lucidchart/9f8d622d-97aa-49be-86d1-05b115c5fbf9/edit?beaconFlowId=76C3E529F9EEECE2&invitationId=inv_b6ccbadf-4990-447b-afec-debcac40609a&page=0_0#
+[Lucid Chart]: (https://lucid.app/lucidchart/9f8d622d-97aa-49be-86d1-05b115c5fbf9/edit?beaconFlowId=76C3E529F9EEECE2&invitationId=inv_b6ccbadf-4990-447b-afec-debcac40609a&page=0_0#)
 
-**Figma**: https://www.figma.com/file/d2Hu60jkIwUXsQGgaihZij/Untitled?type=design&node-id=2-2&mode=design&t=uClCgjL0vWsdyxq6-0
+[Figma]: (https://www.figma.com/file/d2Hu60jkIwUXsQGgaihZij/Untitled?type=design&node-id=2-2&mode=design&t=uClCgjL0vWsdyxq6-0)
 
 
 ## Authors
