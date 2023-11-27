@@ -37,7 +37,8 @@ Save and Share: Users can save their configurations for future reference or to c
 
 ## Built With
 
-HTML5
+<ul>
+<li>HTML5</li>
 CSS3
 Javascript
 Node.js
@@ -45,6 +46,7 @@ Mongoose
 Express
 React.js
 Bootstrap
+</ul>
 
 
 ## Authors
