@@ -53,6 +53,7 @@ This project aims to provide an intuitive and interactive platform for users to 
 
 [Figma](https://www.figma.com/file/d2Hu60jkIwUXsQGgaihZij/Untitled?type=design&node-id=2-2&mode=design&t=uClCgjL0vWsdyxq6-0)
 
+[Trello](https://trello.com/b/9lA02omy/bike-builder)
 
 
 ## Authors
