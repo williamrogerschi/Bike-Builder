@@ -7,7 +7,7 @@ const cors = require('cors')
 
 //show route controllers
 // const bikeTypeController = require('./controllers/bikeTypeController')
-// const buildController = require('./controllers/buildController')
+const buildController = require('./controllers/buildController')
 // const frameController = require('./controllers/frameController')
 // const groupController = require('./controllers/groupController')
 // const handlebarController = require('./controllers/handlebarController')
@@ -36,11 +36,8 @@ app.get('/', (req, res) => res.send('This is the root yo!'))
 //user routes
 // app.get('/users', userController.getAllUsers)
 
-//bikeType routes
-// app.get('/types', bikeTypeController.getAllTypes)
-
 //build routes
-// app.get('/build', buildController.getAllBuilds)
+app.get('/builds', buildController.getAllBuilds)
 
 //frame routes
 // app.get('/frames', frameController.getAllFrames)

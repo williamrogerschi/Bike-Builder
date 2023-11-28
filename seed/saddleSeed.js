@@ -14,7 +14,7 @@ const main = async () => {
       color: 'Black',
       image: 'https://cdn11.bigcommerce.com/s-ubg9970srq/images/stencil/1280x1280/products/208/2209/041A924RCA011_SLR_BOOST_3D_KIT_CARBONIO_SUPERFLOW_L_L3_THREE_QUARTER__66617.1681310787.jpg?c=1',
       level: [pro._id],
-      price: '$479.90',
+      price: '$480',
     },
   ]
 
