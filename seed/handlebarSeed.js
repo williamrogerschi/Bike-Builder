@@ -4,8 +4,12 @@ const { Levels, Material, Handlebar } = require('../models/Index.js')
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 const main = async () => {
+  const aluminum = await Material.findOne( { name: 'Aluminum' })
   const carbon = await Material.findOne({ name: 'Carbon' })
+  const steel = await Material.findOne({ name: 'Steel' })
   const pro = await Levels.findOne({ name: 'Pro' })
+  const intermediate = await Levels.findOne({ name: 'Intermediate'})
+  const entry = await Levels.findOne({ name: 'Entry' })
 
   const bikeHandlebars = [
     {

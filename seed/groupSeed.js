@@ -8,7 +8,7 @@ const main = async () => {
   const carbon = await Material.findOne({ name: 'Carbon' })
   const steel = await Material.findOne({ name: 'Steel' })
   const pro = await Levels.findOne({ name: 'Pro' })
-  const intermediate = await Levels.findOne({ name: 'Intermediate '})
+  const intermediate = await Levels.findOne({ name: 'Intermediate'})
   const entry = await Levels.findOne({ name: 'Entry' })
 
   const bikeGroups = [

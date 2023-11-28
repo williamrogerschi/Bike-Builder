@@ -11,7 +11,7 @@ const main = async () => {
       return
     }
 
-    const frameset = await Frame.findOne({ name: 'SuperSix EVO Hi-MOD Frameset' })
+    const frameset = await Frame.findOne({ name: 'SuperSix EVO LAB71 Frameset' })
     const groupset = await Group.findOne({ name: 'SRAM RED eTap AXS Groupset' })
     const wheelset = await Wheels.findOne({ name: 'SES 6.7' })
     const tires = await Tires.findOne({ name: 'SES Road Tire' })
@@ -21,7 +21,7 @@ const main = async () => {
     const seatpost = await Seatpost.findOne({ name: 'Enve Seatpost 300MM' })
     const pro = await Levels.findOne({ name: 'Pro' });
 
-    const framePrice = parseFloat(frameset?.price) || 4500
+    const framePrice = parseFloat(frameset?.price) || 6000
     const groupsetPrice = parseFloat(groupset?.price) || 2690
     const wheelsetPrice = parseFloat(wheelset?.price) || 2850
     const tiresPrice = parseFloat(tires?.price) || 75
@@ -33,7 +33,7 @@ const main = async () => {
     const totalPrice = framePrice + groupsetPrice + wheelsetPrice + tiresPrice + saddlePrice + handlebarPrice + stemPrice + seatpostPrice
 
     const userBuild = {
-      user: currentUser._id,
+      user: currentUser._ids,
       frame: frameset._id,
       groupset: groupset._id,
       wheelset: wheelset._id,

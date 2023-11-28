@@ -5,6 +5,8 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 const main = async () => {
   const pro = await Levels.findOne({ name: 'Pro' })
+  const intermediate = await Levels.findOne({ name: 'Intermediate'})
+  const entry = await Levels.findOne({ name: 'Entry' })
 
   const bikeTires = [
     {

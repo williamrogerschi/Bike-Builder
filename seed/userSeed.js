@@ -3,7 +3,7 @@ const { User } = require('../models/Index.js')
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
-const createWumpyUser = async () => {
+const createUser = async () => {
   try {
     const userWumpy = {
       user_name: 'Wumpy',
@@ -23,4 +23,18 @@ const createWumpyUser = async () => {
   }
 }
 
-createWumpyUser()
+createUser()
+
+// node levelSeed.js
+// node materialSeed.js
+// node wheelSeed.js
+// node tireSeed.js
+// node stemSeed.js
+// node seatpostSeed.js
+// node saddleSeed.js
+// node handlebarSeed.js
+// node frameSeed.js
+// node groupSeed.js
+// node userSeed.js
+// node buildSeed.js
+
