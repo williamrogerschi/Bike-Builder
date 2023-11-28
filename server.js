@@ -36,6 +36,9 @@ app.get('/', (req, res) => res.send('This is the root yo!'))
 //build routes
 app.get('/builds', buildController.getAllBuilds)
 app.get('/builds/:id', buildController.getOneBuild)
+app.post('/builds', buildController.createNewBuild)
+app.put('/builds/:id', buildController.updateBuild)
+app.delete('/builds/:id', buildController.deleteBuild)
 
 //frame routes
 app.get('/frames', frameController.getAllFrames)
