@@ -6,7 +6,6 @@ const tireSchema = new Schema (
         brand: {type: String},
         description: {type: String},
         color: {type: String},
-        width: {type: String},
         image: {type: String},
         level: {type: Schema.Types.ObjectId, ref: 'Levels'},
         price: {type: String, required: true},

@@ -2,6 +2,7 @@ const { Schema } = require('mongoose')
 
 const buildSchema = new Schema (
     {
+        user: {type: Schema.Types.ObjectId, ref: 'User'},
         frame: {type: Schema.Types.ObjectId, ref: 'Frame'},
         groupset: {type: Schema.Types.ObjectId, ref: 'Group'},
         wheelset: {type: Schema.Types.ObjectId, ref: 'Wheels'},
@@ -11,8 +12,12 @@ const buildSchema = new Schema (
         stem: {type: Schema.Types.ObjectId, ref: 'Stem'},
         seatpost: {type: Schema.Types.ObjectId, ref: 'Seatpost'},
         total_price: {type: String, required: true},
+        isFinal: {type: Boolean, default: false},
     },
     {timestamps: true},
 )
 
 module.exports = buildSchema
+
+//user built into my build schema
+//looking for builds linked to username

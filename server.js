@@ -17,7 +17,7 @@ const tireController = require('./controllers/tireController')
 const wheelcontroller = require('./controllers/wheelController')
 const levelController = require('./controllers/levelController')
 const seatpostController = require('./controllers/seatpostController')
-// const userController = require('./controllers/userController')
+const userController = require('./controllers/userController')
 
 
 const PORT = process.env.PORT || 3001
@@ -54,6 +54,8 @@ app.get('/stems', stemController.getAllStems)
 app.get('/tires', tireController.getAllTires)
 // wheel routes
 app.get('/wheels', wheelcontroller.getAllWheels)
+//user routes
+app.get('/users', userController.getAllUsers)
 
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`) )
