@@ -32,30 +32,54 @@ app.use(cors())
 
 //show routes
 app.get('/', (req, res) => res.send('This is the root yo!'))
+
 //build routes
 app.get('/builds', buildController.getAllBuilds)
+app.get('/builds/:id', buildController.getOneBuild)
+
 //frame routes
 app.get('/frames', frameController.getAllFrames)
+app.get('/frames/:id', frameController.getOneFrame)
+
 //group routes
 app.get('/groups', groupController.getAllGroups)
+app.get('/groups/:id', groupController.getOneGroup)
+
 //handlebar routes
 app.get('/handlebars', handlebarController.getAllHandlebars)
+app.get('/handlebars/:id', handlebarController.getOneHandlebar)
+
 //level routes
 app.get('/levels', levelController.getAllLevels)
+app.get('/levels/:id', levelController.getOneLevel)
+
 //material routes
 app.get('/materials', materialController.getAllMaterials)
+app.get('/materials/:id', materialController.getOneMaterial)
+
 //saddle routes
 app.get('/saddles', saddleController.getAllSaddles)
+app.get('/saddles/:id', saddleController.getOneSaddle)
+
 //seatpost routes
 app.get('/seatposts', seatpostController.getAllSeatposts)
+app.get('/seatposts/:id', seatpostController.getOneSeatpost)
+
 //stem routes
 app.get('/stems', stemController.getAllStems)
+app.get('/stems/:id', stemController.getOneStem)
+
 //tire routes
 app.get('/tires', tireController.getAllTires)
+app.get('/tires/:id', tireController.getOneTire)
+
 // wheel routes
 app.get('/wheels', wheelcontroller.getAllWheels)
+app.get('/wheels/:id', wheelcontroller.getOneWheel)
+
 //user routes
 app.get('/users', userController.getAllUsers)
+app.get('/users/:id', userController.getOneUser)
 
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`) )

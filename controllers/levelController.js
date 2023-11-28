@@ -9,6 +9,20 @@ const getAllLevels = async (req, res) => {
     }
 }
 
+const getOneLevel = async (req, res) => {
+    try {
+        id = req.params.id
+        const level = await Levels.findById(id)
+        if(level) {
+            return res.json(level)
+        }
+        return res.status(404).send('Level with this id doesnt exist')
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
+}
+
 module.exports = {
     getAllLevels,
+    getOneLevel,
 }

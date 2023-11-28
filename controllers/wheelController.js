@@ -9,6 +9,20 @@ const getAllWheels = async (req, res) => {
     }
 }
 
+const getOneWheel = async (req, res) => {
+    try {
+        id = req.params.id
+        const wheel = await Wheels.findById(id)
+        if(wheel) {
+            return res.json(wheel)
+        }
+        return res.status(404).send('Wheel with this id doesnt exist')
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
+}
+
 module.exports = {
     getAllWheels,
+    getOneWheel,
 }
