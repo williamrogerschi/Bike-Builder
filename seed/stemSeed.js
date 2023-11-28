@@ -3,14 +3,16 @@ const { Stem, Levels, Material } = require('../models/Index.js')
 
 db.on('error', console.error.bind(console, "MongoDB connection error:"))
 
-const main = async () => {
-    const aluminum = await Material.findOne( { name: 'Aluminum' })
+const stemSeed = async () => {
+  try {
+    const aluminum = await Material.findOne({ name: 'Aluminum' })
     const carbon = await Material.findOne({ name: 'Carbon' })
     const steel = await Material.findOne({ name: 'Steel' })
     const pro = await Levels.findOne({ name: 'Pro' })
-    const intermediate = await Levels.findOne({ name: 'Intermediate'})
+    const intermediate = await Levels.findOne({ name: 'Intermediate' })
     const entry = await Levels.findOne({ name: 'Entry' })
 
+    
     const bikeStems = [
         {
             name: 'Enve Road',
@@ -60,29 +62,24 @@ const main = async () => {
     ]
 
     const createAndSaveStem = async (stem) => {
-        try {
-            const newStems = new Stem(stem)
-            console.log(newStems)
-            await newStems.save()
-        } catch(error) {
-            console.error('Error saving stems:', error)
-        }
+      try {
+        const newStems = new Stem(stem)
+        console.log(newStems)
+        await newStems.save()
+      } catch (error) {
+        console.error('Error saving stems:', error)
+      }
     }
 
-    const stemSeed = async () => {
-        try {
-            for (const stem of bikeStems) {
-                await createAndSaveStem(stem)
-            }
-            console.log('Stem seeding completed')
-        } catch (error) {
-            console.error('Error seeding stems:', error)
-        } finally {
-            db.close()
-        }
+    for (const stem of bikeStems) {
+      await createAndSaveStem(stem)
     }
 
-    await stemSeed()
+    console.log('Stem seeding completed')
+  } catch (error) {
+    console.error('Error seeding stems:', error)
+  }
 }
 
-main()
+module.exports = { stemSeed }
+

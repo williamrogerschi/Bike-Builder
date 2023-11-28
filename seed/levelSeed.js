@@ -3,39 +3,33 @@ const { Levels } = require('../models/Index.js')
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
-const main = async () => {
-  const bikeLevels = [
-    {
-      name: 'Entry'
-    },
-    {
-      name: 'Intermediate'
-    },
-    {
-      name: 'Pro'
-    }
-  ]
 
-  const createAndSaveLevel = async (name) => {
-    const newLevel = new Levels({ name })
-    console.log(newLevel)
-    await newLevel.save()
-  }
+const levelSeed = async () => {
+  try {
+    const bikeLevels = [
+      { name: 'Entry' },
+      { name: 'Intermediate' },
+      { name: 'Pro' }
+    ]
 
-  const levelSeed = async () => {
-    try {
-      for (const level of bikeLevels) {
-        await createAndSaveLevel(level.name)
+    const createAndSaveLevels = async (level) => {
+      try {
+        const newLevels = new Levels(level)
+        console.log(newLevels)
+        await newLevels.save()
+      } catch (error) {
+        console.error('Error saving levels:', error)
       }
-      console.log('Levels seeding completed')
-    } catch (error) {
-      console.error('Error seeding levels:', error)
-    } finally {
-      db.close()
     }
-  }
 
-  await levelSeed()
+    for (const level of bikeLevels) {
+      await createAndSaveLevels(level)
+    }
+
+    console.log('Levels seeding completed')
+  } catch (error) {
+    console.error('Error seeding levels:', error)
+  }
 }
 
-main()
+module.exports = { levelSeed }

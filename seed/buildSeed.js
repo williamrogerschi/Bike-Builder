@@ -3,7 +3,7 @@ const { User, Build, Frame, Group, Handlebar, Saddle, Seatpost, Stem, Tires, Whe
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
-const main = async () => {
+const buildSeed = async () => {
   try {
     const currentUser = await User.findOne({ user_name: 'Wumpy' })
     if (!currentUser) {
@@ -19,7 +19,7 @@ const main = async () => {
     const handlebar = await Handlebar.findOne({ name: 'SES AR Road Handlebar' })
     const stem = await Stem.findOne({ name: 'Enve Road' })
     const seatpost = await Seatpost.findOne({ name: 'Enve Seatpost 300MM' })
-    const pro = await Levels.findOne({ name: 'Pro' });
+    const pro = await Levels.findOne({ name: 'Pro' })
 
     const framePrice = parseFloat(frameset?.price) || 6000
     const groupsetPrice = parseFloat(groupset?.price) || 2690
@@ -33,18 +33,18 @@ const main = async () => {
     const totalPrice = framePrice + groupsetPrice + wheelsetPrice + tiresPrice + saddlePrice + handlebarPrice + stemPrice + seatpostPrice
 
     const userBuild = {
-      user: currentUser._ids,
-      frame: frameset._id,
-      groupset: groupset._id,
-      wheelset: wheelset._id,
-      tires: tires._id,
-      saddle: saddle._id,
-      handlebar: handlebar._id,
-      stem: stem._id,
-      seatpost: seatpost._id,
-      level: pro._id,
+      user: currentUser._id,
+      frame: frameset?._id,
+      groupset: groupset?._id,
+      wheelset: wheelset?._id,
+      tires: tires?._id,
+      saddle: saddle?._id,
+      handlebar: handlebar?._id,
+      stem: stem?._id,
+      seatpost: seatpost?._id,
+      level: pro?._id,
       total_price: totalPrice.toString(),
-      isFinal: true // Assuming this build is finalized - should be final once user submits build and false when it's a current_build
+      isFinal: true
     }
 
     const newBuild = new Build(userBuild)
@@ -57,9 +57,7 @@ const main = async () => {
     console.log('Build seeding completed')
   } catch (error) {
     console.error('Error seeding builds:', error)
-  } finally {
-    db.close()
   }
 }
 
-main()
+module.exports = { buildSeed }
