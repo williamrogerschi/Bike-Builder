@@ -22,7 +22,49 @@ const getOneFrame = async (req, res) => {
     }
 }
 
+const createNewFrame = async (req, res) => {
+    try {
+        const frame = await new Frame (req.body)
+        await frame.save()
+        return res.status(201).json({
+            frame
+        })
+    } catch (error) {
+        return res.status(500).json({error: error.message})
+    }
+}
+
+
+const  updateFrame = async (req, res) => {
+    try {
+        const id = req.params.id
+        const frame = await Frame.findByIdAndUpdate(id, req.body, {new: true})
+        if (frame) {
+            return res.status(200).json(frame)
+        }
+        throw new Error('Frame not found')
+    } catch (error) {
+        return res.status(500).json({error: error.message})
+    }
+}
+
+const deleteFrame = async (req, res) => {
+    try {
+        const id = req.params.id
+        const frame =  await Frame.findByIdAndDelete(id)
+        if (frame) {
+            return res.status(200).json(frame)
+        }
+        throw new Error('Frame not found')
+    } catch (error) {
+        return res.status(500).json({error: error.message})
+    }
+}
+
 module.exports = {
     getAllFrames,
     getOneFrame,
+    createNewFrame,
+    updateFrame,
+    deleteFrame,
 }

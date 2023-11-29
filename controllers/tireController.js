@@ -22,7 +22,49 @@ const getOneTire = async (req, res) => {
     }
 }
 
+const createNewTire = async (req, res) => {
+    try {
+        const tire = await new Tires (req.body)
+        await tire.save()
+        return res.status(201).json({
+            tire
+        })
+    } catch (error) {
+        return res.status(500).json({error: error.message})
+    }
+}
+
+const  updateTire = async (req, res) => {
+    try {
+        const id = req.params.id
+        const tire = await Tires.findByIdAndUpdate(id, req.body, {new: true})
+        if (tire) {
+            return res.status(200).json(tire)
+        }
+        throw new Error('Tire not found')
+    } catch (error) {
+        return res.status(500).json({error: error.message})
+    }
+}
+
+const deleteTire = async (req, res) => {
+    try {
+        const id = req.params.id
+        const tire =  await Tires.findByIdAndDelete(id)
+        if (tire) {
+            return res.status(200).json(tire)
+        }
+        throw new Error('Tire not found')
+    } catch (error) {
+        return res.status(500).json({error: error.message})
+    }
+}
+
+
 module.exports = {
     getAllTires,
     getOneTire,
+    createNewTire,
+    updateTire,
+    deleteTire,
 }

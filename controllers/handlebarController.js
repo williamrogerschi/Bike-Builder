@@ -22,7 +22,48 @@ const getOneHandlebar = async (req, res) => {
     }
 }
 
+const createNewHandlebar = async (req, res) => {
+    try {
+        const handlebar = await new Handlebar (req.body)
+        await handlebar.save()
+        return res.status(201).json({
+            handlebar
+        })
+    } catch (error) {
+        return res.status(500).json({error: error.message})
+    }
+}
+
+const  updateHandlebar = async (req, res) => {
+    try {
+        const id = req.params.id
+        const handlebar = await Handlebar.findByIdAndUpdate(id, req.body, {new: true})
+        if (handlebar) {
+            return res.status(200).json(handlebar)
+        }
+        throw new Error('Handlebar not found')
+    } catch (error) {
+        return res.status(500).json({error: error.message})
+    }
+}
+
+const deleteHandlebar = async (req, res) => {
+    try {
+        const id = req.params.id
+        const handlebar =  await Handlebar.findByIdAndDelete(id)
+        if (handlebar) {
+            return res.status(200).json(handlebar)
+        }
+        throw new Error('Handlebar not found')
+    } catch (error) {
+        return res.status(500).json({error: error.message})
+    }
+}
+
 module.exports = {
     getAllHandlebars,
     getOneHandlebar,
+    createNewHandlebar,
+    updateHandlebar,
+    deleteHandlebar,
 }

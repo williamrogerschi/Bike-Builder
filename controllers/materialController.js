@@ -22,7 +22,48 @@ const getOneMaterial = async (req, res) => {
     }
 }
 
+const createNewMaterial = async (req, res) => {
+    try {
+        const material = await new Material (req.body)
+        await material.save()
+        return res.status(201).json({
+            material
+        })
+    } catch (error) {
+        return res.status(500).json({error: error.message})
+    }
+}
+
+const  updateMaterial = async (req, res) => {
+    try {
+        const id = req.params.id
+        const material = await Material.findByIdAndUpdate(id, req.body, {new: true})
+        if (material) {
+            return res.status(200).json(material)
+        }
+        throw new Error('Material not found')
+    } catch (error) {
+        return res.status(500).json({error: error.message})
+    }
+}
+
+const deleteMaterial = async (req, res) => {
+    try {
+        const id = req.params.id
+        const material =  await Material.findByIdAndDelete(id)
+        if (material) {
+            return res.status(200).json(material)
+        }
+        throw new Error('Material not found')
+    } catch (error) {
+        return res.status(500).json({error: error.message})
+    }
+}
+
 module.exports = {
     getAllMaterials,
     getOneMaterial,
+    createNewMaterial,
+    updateMaterial,
+    deleteMaterial,
 }

@@ -18,6 +18,3 @@ const buildSchema = new Schema (
 )
 
 module.exports = buildSchema
-
-//user built into my build schema
-//looking for builds linked to username

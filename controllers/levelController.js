@@ -22,7 +22,48 @@ const getOneLevel = async (req, res) => {
     }
 }
 
+const createNewLevel = async (req, res) => {
+    try {
+        const level = await new Levels (req.body)
+        await level.save()
+        return res.status(201).json({
+            level
+        })
+    } catch (error) {
+        return res.status(500).json({error: error.message})
+    }
+}
+
+const  updateLevel = async (req, res) => {
+    try {
+        const id = req.params.id
+        const level = await Levels.findByIdAndUpdate(id, req.body, {new: true})
+        if (level) {
+            return res.status(200).json(level)
+        }
+        throw new Error('Level not found')
+    } catch (error) {
+        return res.status(500).json({error: error.message})
+    }
+}
+
+const deleteLevel = async (req, res) => {
+    try {
+        const id = req.params.id
+        const level =  await Levels.findByIdAndDelete(id)
+        if (level) {
+            return res.status(200).json(level)
+        }
+        throw new Error('Level not found')
+    } catch (error) {
+        return res.status(500).json({error: error.message})
+    }
+}
+
 module.exports = {
     getAllLevels,
     getOneLevel,
+    createNewLevel,
+    updateLevel,
+    deleteLevel,
 }
