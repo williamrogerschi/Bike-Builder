@@ -3,28 +3,29 @@ import './header.css'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
-import NavDropdown from 'react-bootstrap/NavDropdown'
 
 const Header = () => {
+  const navbarStyle = {
+    backgroundColor: 'rgb(233,229,221)',
+  }
 
   return (
-    <div>
-
-      <Navbar expand="lg" className="bg-body-tertiary">
+    <div className='nav-container'>
+      <Navbar expand="lg" style={navbarStyle}>
         <Container>
-          <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+          <Navbar.Brand href="/">Wumpy's Bike Builder</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-               {/* 'ms-auto' brings list to end of page */}
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#build">Build</Nav.Link>
-              <Nav.Link href="#login">Login</Nav.Link>
+              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/Build">Build</Nav.Link>
+            </Nav>
+            <Nav className='ms-auto'>
+                <Nav.Link href="/Login">Login</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
-
     </div>
   )
 }

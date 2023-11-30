@@ -1,0 +1,20 @@
+/* 
+font-family: 'Exo 2', sans-serif;
+font-family: 'Gruppo', sans-serif;
+font-family: 'Manrope', sans-serif;
+font-family: 'Poppins', sans-serif; */
+
+.nav-container {
+    font-family: 'Gruppo', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+}
+a.nav-link {
+    padding: 0px;
+    margin: 0px 16px 0 16px;
+}
+a.nav-link:hover {
+    /* text-decoration: line-through; */
+    text-decoration-color: black;
+    color: black;
+}
