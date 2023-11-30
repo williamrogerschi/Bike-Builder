@@ -1,15 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Table from 'react-bootstrap/Table';
 import "./home.css";
+import axios from 'axios'
+import { BASE_URL } from '../../global'
 
 const Home = () => {
-  // const entry = {
-  //   backgroundColor: '#d0f0b1b7'
-  // }
+  const [list, setList] = useState([])
+
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`${BASE_URL}lists`);
+        setList(response.data);
+        console.log('Lists:', response.data);
+      } catch (error) {
+        console.error('Error fetching lists:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
 
   return (
-
+  <>
     <div className="logical-table">
+      <div>
       <Table responsive="sm">
         <thead className="thead" >
           <tr>
@@ -25,17 +43,19 @@ const Home = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
+        {list.map((list, index) => (
+          <tr key={index}>
             <td className="entry"><img style={{height: '20px' , width: '20px'}} src='./flash.png' /></td>
-            <td className="entry"> Table cell</td>
-            <td className="entry">Table cell</td>
-            <td className="entry">Table cell</td>
-            <td className="entry">Table cell</td>
+            <td className="entry">{list.frame.name ? list.frame : 'no frame found'}</td>
+            <td className="entry">{list.groupset.name ? list.groupset : 'no group found'}</td>
+            <td className="entry">Wheel cell</td>
+            <td className="entry">Tire cell</td>
             <td className="entry">Table cell</td>
             <td className="entry">Table cell</td>
             <td className="entry">Table cell</td>
             <td className="entry">Table cell</td>
           </tr>
+            ))}
           <tr>
             <td className="entry"><img style={{height: '20px' , width: '20px'}} src='./flash.png' /></td>
             <td className="entry">Table cell</td>
@@ -160,7 +180,9 @@ const Home = () => {
           </tr>
         </tbody>
       </Table>
+      </div>
     </div>
+  </>
   )
 }
 

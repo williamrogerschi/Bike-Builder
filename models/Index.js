@@ -11,6 +11,7 @@ const tireSchema = require('./Tires.js')
 const userSchema = require('./User.js')
 const wheelSchema = require('./Wheels.js')
 const levelSchema = require('./Levels.js')
+const listSchema = require('./List.js')
 
 
 const Build = mongoose.model('Build', buildSchema)
@@ -25,6 +26,7 @@ const Tires = mongoose.model('Tires', tireSchema)
 const User = mongoose.model('User', userSchema)
 const Wheels = mongoose.model('Wheels', wheelSchema)
 const Levels = mongoose.model('Levels', levelSchema)
+const List = mongoose.model('List', listSchema)
 
 
 
@@ -41,4 +43,5 @@ module.exports = {
     User,
     Wheels,
     Levels,
+    List,
 }

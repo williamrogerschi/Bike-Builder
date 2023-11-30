@@ -18,6 +18,8 @@ const wheelController = require('./controllers/wheelController')
 const levelController = require('./controllers/levelController')
 const seatpostController = require('./controllers/seatpostController')
 const userController = require('./controllers/userController')
+const listController = require('./controllers/listController')
+const { Build } = require('./models/Index')
 
 
 const PORT = process.env.PORT || 3001
@@ -39,6 +41,29 @@ app.get('/builds/:id', buildController.getOneBuild)
 app.post('/builds', buildController.createNewBuild)
 app.put('/builds/:id', buildController.updateBuild)
 app.delete('/builds/:id', buildController.deleteBuild)
+app.get('/builds', async (req, res) => {
+    try {
+        const builds = await Build.find().populate('frame groupset')
+        res.json(builds)
+    } catch (error) {
+        res.status(500).json({ error: 'fetching builds' })
+    }
+})
+
+//list routes
+app.get('/lists', listController.getAllLists)
+app.get('/lists/:id', listController.getOneList)
+app.post('/lists', listController.createNewList)
+app.put('/lists/:id', listController.updateList)
+app.delete('/lists/:id', listController.deleteList)
+app.get('/lists', async (req, res) => {
+    try {
+        const lists = await List.find().populate('frame groupset')
+        res.json(lists)
+    } catch (error) {
+        res.status(500).json({ error: 'fetching lists' })
+    }
+})
 
 //frame routes
 app.get('/frames', frameController.getAllFrames)

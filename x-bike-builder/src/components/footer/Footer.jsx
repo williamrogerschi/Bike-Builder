@@ -1,10 +1,42 @@
 import React from 'react'
+import { CardFooter } from "reactstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
 import './footer.css'
 
 const Footer = () => {
+  const footerStyle = {
+  }
     
   return (
-    <div>Footer</div>
+    <div className="footer" style={footerStyle}>
+      <CardFooter className="footer-card">
+        <div className="inner-footer">
+        <div className="billy" style={{padding: '20px', margin: '20px'}}>
+          <a href="https://www.linkedin.com/in/billy-rogers-chi/" target="_blank"className="linkedin-link">
+            <FontAwesomeIcon
+              icon={faLinkedin}
+              size="xl"
+              style={{ color: "black", padding: '0px 20px 0 20px' }}
+            />
+          </a>
+          <a href="https://github.com/williamrogerschi" target="_blank" className="github-link">
+            <FontAwesomeIcon
+              icon={faGithub}
+              size="xl"
+              style={{ color: "black", padding: '0px 20px 0px 20px' }}
+            />
+          </a>
+          <a className="footer-list" href="#">Contact</a>
+        </div>
+        </div>
+        <div className="inner-footer2">
+          <div className="footer-section">
+          </div>
+          </div>
+      </CardFooter>
+    </div>
+
   )
 }
 

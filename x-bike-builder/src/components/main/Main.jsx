@@ -5,6 +5,8 @@ import Header from '../header/Header'
 import Home from '../home/Home'
 import Build from '../build/Build'
 import Footer from '../footer/Footer'
+import axios from 'axios'
+import { BASE_URL } from '../../global'
 
 const Main = () => {
   return (
