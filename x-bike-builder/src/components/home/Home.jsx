@@ -17,7 +17,6 @@ const Home = () => {
         console.error('Error fetching lists:', error)
       }
     }
-
     fetchData()
   }, [])
 
@@ -44,38 +43,16 @@ const Home = () => {
         {list.map((listItem, index) => (
           <tr key={index}>
             <td className="entry"><img style={{height: '20px' , width: '20px'}} src='./flash.png' /></td>
-            <td className="entry">{listItem.frame[0]?.name || 'N/A'}</td>
-                <td className="entry">{listItem.groupset[0]?.name || 'N/A'}</td>
-                <td className="entry">{listItem.wheelset[0]?.name || 'N/A'}</td>
-            <td className="entry">Tire cell</td>
-            <td className="entry">Table cell</td>
-            <td className="entry">Table cell</td>
-            <td className="entry">Table cell</td>
-            <td className="entry">Table cell</td>
+            <td className="entry">{listItem.frame[4]?.name || 'N/A'}</td>
+            <td className="entry">{listItem.groupset[4]?.name || 'N/A'}</td>
+            <td className="entry">{listItem.wheelset[4]?.name || 'N/A'}</td>
+            <td className="entry">{listItem.tires[3]?.name || 'N/A'}</td>
+            <td className="entry">{listItem.handlebar[4]?.name || 'N/A'}</td>
+            <td className="entry">{listItem.stem[4]?.name || 'N/A'}</td>
+            <td className="entry">{listItem.seatpost[4]?.name || 'N/A'}</td>
+            <td className="entry">{listItem.saddle[3]?.name || 'N/A'}</td>
           </tr>
             ))}
-          <tr>
-            <td className="entry"><img style={{height: '20px' , width: '20px'}} src='./flash.png' /></td>
-            <td className="entry">Table cell</td>
-            <td className="entry">Table cell</td>
-            <td className="entry">Table cell</td>
-            <td className="entry">Table cell</td>
-            <td className="entry">Table cell</td>
-            <td className="entry">Table cell</td>
-            <td className="entry">Table cell</td>
-            <td className="entry">Table cell</td>
-          </tr>
-          <tr>
-            <td className="entry"><img style={{height: '20px' , width: '20px'}} src='./flash.png' /></td>
-            <td className="entry">Table cell</td>
-            <td className="entry">Table cell</td>
-            <td className="entry">Table cell</td>
-            <td className="entry">Table cell</td>
-            <td className="entry">Table cell</td>
-            <td className="entry">Table cell</td>
-            <td className="entry">Table cell</td>
-            <td className="entry">Table cell</td>
-          </tr>
         </tbody>
       </Table>
       <Table responsive="sm">
@@ -93,39 +70,32 @@ const Home = () => {
           </tr>
         </thead>
         <tbody className="inter">
-          <tr>
+        {list.map((listItem, index) => (
+          <tr key={index}>
             <td className="inter"><img style={{height: '20px' , width: '20px'}} src='./flash.png' /><img style={{height: '20px' , width: '20px'}} src='./flash.png' /></td>
-            <td className="inter">Table cell</td>
-            <td className="inter">Table cell</td>
-            <td className="inter">Table cell</td>
-            <td className="inter">Table cell</td>
-            <td className="inter">Table cell</td>
-            <td className="inter">Table cell</td>
-            <td className="inter">Table cell</td>
-            <td className="inter">Table cell</td>
+            <td className="inter">{listItem.frame[3]?.name || 'N/A'}</td>
+            <td className="inter">{listItem.groupset[3]?.name || 'N/A'}</td>
+            <td className="inter">{listItem.wheelset[3]?.name || 'N/A'}</td>
+            <td className="inter">{listItem.tires[3]?.name || 'N/A'}</td>
+            <td className="inter">{listItem.handlebar[3]?.name || 'N/A'}</td>
+            <td className="inter">{listItem.stem[3]?.name || 'N/A'}</td>
+            <td className="inter">{listItem.seatpost[3]?.name || 'N/A'}</td>
+            <td className="inter">{listItem.saddle[2]?.name || 'N/A'}</td>
           </tr>
-          <tr>
+            ))}
+          {list.map((listItem, index) => (
+          <tr key={index}>
             <td className="inter"><img style={{height: '20px' , width: '20px'}} src='./flash.png' /><img style={{height: '20px' , width: '20px'}} src='./flash.png' /></td>
-            <td className="inter">Table cell</td>
-            <td className="inter">Table cell</td>
-            <td className="inter">Table cell</td>
-            <td className="inter">Table cell</td>
-            <td className="inter">Table cell</td>
-            <td className="inter">Table cell</td>
-            <td className="inter">Table cell</td>
-            <td className="inter">Table cell</td>
+            <td className="inter">{listItem.frame[2]?.name || 'N/A'}</td>
+            <td className="inter">{listItem.groupset[2]?.name || 'N/A'}</td>
+            <td className="inter">{listItem.wheelset[2]?.name || 'N/A'}</td>
+            <td className="inter">{listItem.tires[2]?.name || 'N/A'}</td>
+            <td className="inter">{listItem.handlebar[2]?.name || 'N/A'}</td>
+            <td className="inter">{listItem.stem[2]?.name || 'N/A'}</td>
+            <td className="inter">{listItem.seatpost[2]?.name || 'N/A'}</td>
+            <td className="inter">{listItem.saddle[2]?.name || 'N/A'}</td>
           </tr>
-          <tr>
-            <td className="inter"><img style={{height: '20px' , width: '20px'}} src='./flash.png' /><img style={{height: '20px' , width: '20px'}} src='./flash.png' /></td>
-            <td className="inter">Table cell</td>
-            <td className="inter">Table cell</td>
-            <td className="inter">Table cell</td>
-            <td className="inter">Table cell</td>
-            <td className="inter">Table cell</td>
-            <td className="inter">Table cell</td>
-            <td className="inter">Table cell</td>
-            <td className="inter">Table cell</td>
-          </tr>
+            ))}
         </tbody>
       </Table>
       <Table responsive="sm">
@@ -143,39 +113,32 @@ const Home = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
+        {list.map((listItem, index) => (
+          <tr key={index}>
             <td className="pro"><img style={{height: '20px' , width: '20px'}} src='./flash.png' /><img style={{height: '20px' , width: '20px'}} src='./flash.png' /><img style={{height: '20px' , width: '20px'}} src='./flash.png' /></td>
-            <td className="pro">Table cell</td>
-            <td className="pro">Table cell</td>
-            <td className="pro">Table cell</td>
-            <td className="pro">Table cell</td>
-            <td className="pro">Table cell</td>
-            <td className="pro">Table cell</td>
-            <td className="pro">Table cell</td>
-            <td className="pro">Table cell</td>
+            <td className="pro">{listItem.frame[1]?.name || 'N/A'}</td>
+            <td className="pro">{listItem.groupset[1]?.name || 'N/A'}</td>
+            <td className="pro">{listItem.wheelset[1]?.name || 'N/A'}</td>
+            <td className="pro">{listItem.tires[1]?.name || 'N/A'}</td>
+            <td className="pro">{listItem.handlebar[1]?.name || 'N/A'}</td>
+            <td className="pro">{listItem.stem[1]?.name || 'N/A'}</td>
+            <td className="pro">{listItem.seatpost[1]?.name || 'N/A'}</td>
+            <td className="pro">{listItem.saddle[1]?.name || 'N/A'}</td>
           </tr>
-          <tr>
+            ))}
+          {list.map((listItem, index) => (
+          <tr key={index}>
             <td className="pro"><img style={{height: '20px' , width: '20px'}} src='./flash.png' /><img style={{height: '20px' , width: '20px'}} src='./flash.png' /><img style={{height: '20px' , width: '20px'}} src='./flash.png' /></td>
-            <td className="pro">Table cell</td>
-            <td className="pro">Table cell</td>
-            <td className="pro">Table cell</td>
-            <td className="pro">Table cell</td>
-            <td className="pro">Table cell</td>
-            <td className="pro">Table cell</td>
-            <td className="pro">Table cell</td>
-            <td className="pro">Table cell</td>
+            <td className="pro">{listItem.frame[0]?.name || 'N/A'}</td>
+            <td className="pro">{listItem.groupset[0]?.name || 'N/A'}</td>
+            <td className="pro">{listItem.wheelset[0]?.name || 'N/A'}</td>
+            <td className="pro">{listItem.tires[0]?.name || 'N/A'}</td>
+            <td className="pro">{listItem.handlebar[0]?.name || 'N/A'}</td>
+            <td className="pro">{listItem.stem[0]?.name || 'N/A'}</td>
+            <td className="pro">{listItem.seatpost[0]?.name || 'N/A'}</td>
+            <td className="pro">{listItem.saddle[0]?.name || 'N/A'}</td>
           </tr>
-          <tr>
-            <td className="pro"><img style={{height: '20px' , width: '20px'}} src='./flash.png' /><img style={{height: '20px' , width: '20px'}} src='./flash.png' /><img style={{height: '20px' , width: '20px'}} src='./flash.png' /></td>
-            <td className="pro">Table cell</td>
-            <td className="pro">Table cell</td>
-            <td className="pro">Table cell</td>
-            <td className="pro">Table cell</td>
-            <td className="pro">Table cell</td>
-            <td className="pro">Table cell</td>
-            <td className="pro">Table cell</td>
-            <td className="pro">Table cell</td>
-          </tr>
+            ))}
         </tbody>
       </Table>
       </div>
