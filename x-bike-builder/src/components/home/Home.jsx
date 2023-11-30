@@ -7,21 +7,19 @@ import { BASE_URL } from '../../global'
 const Home = () => {
   const [list, setList] = useState([])
 
-
-
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}lists`);
-        setList(response.data);
-        console.log('Lists:', response.data);
+        const response = await axios.get(`${BASE_URL}lists`)
+        setList(response.data)
+        console.log('Lists:', response.data)
       } catch (error) {
-        console.error('Error fetching lists:', error);
+        console.error('Error fetching lists:', error)
       }
-    };
+    }
 
-    fetchData();
-  }, []);
+    fetchData()
+  }, [])
 
 
   return (
@@ -43,12 +41,12 @@ const Home = () => {
           </tr>
         </thead>
         <tbody>
-        {list.map((list, index) => (
+        {list.map((listItem, index) => (
           <tr key={index}>
             <td className="entry"><img style={{height: '20px' , width: '20px'}} src='./flash.png' /></td>
-            <td className="entry">{list.frame.name ? list.frame : 'no frame found'}</td>
-            <td className="entry">{list.groupset.name ? list.groupset : 'no group found'}</td>
-            <td className="entry">Wheel cell</td>
+            <td className="entry">{listItem.frame[0]?.name || 'N/A'}</td>
+                <td className="entry">{listItem.groupset[0]?.name || 'N/A'}</td>
+                <td className="entry">{listItem.wheelset[0]?.name || 'N/A'}</td>
             <td className="entry">Tire cell</td>
             <td className="entry">Table cell</td>
             <td className="entry">Table cell</td>
