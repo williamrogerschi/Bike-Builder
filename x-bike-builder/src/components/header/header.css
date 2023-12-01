@@ -18,3 +18,7 @@ a.nav-link:hover {
     text-decoration-color: black;
     color: black;
 }
+
+a.navbar-brand {
+    color: rgb(81,80,76);
+}

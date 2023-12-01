@@ -8,14 +8,45 @@ font-family: 'Poppins', sans-serif; */
 .build-table {
   margin: 40px 20px 20px 20px;
   padding: 20px;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 100;
+  font-size: 12px;
 }
 
-.build-header {
-  font-family: 'Exo 2', sans-serif;
+thead.build-header {
+  font-family: 'Roboto Mono', sans-serif;
+  font-size: 14px;
 }
 
 td {
   background-color: rgb(233,229,221);
+  max-width: 50%;
+}
+
+button.build-btn {
+  border: 1px solid rgb(233,229,221);
+  background-color: rgb(233,229,221);
+}
+
+button.build-btn:hover {
+  border: 1px solid rgb(233,229,221);
+  background-color: rgb(233,229,221);
+  color: rgb(154, 42, 42);
+}
+
+select.build-dd.form-select {
+  background-color: rgb(233,229,221);
+  border: 1px solid  rgb(135,133,127);
+  max-width: auto;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 100;
+  font-size: 12px;
+}
+
+select.build-dd.form-select:hover {
+  background-color: rgb(233,229,221);
+  border: 1px solid rgb(135,133,127);
+  box-shadow: 1px 1px 2px grey;
 }
 
 

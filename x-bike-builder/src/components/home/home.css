@@ -4,6 +4,11 @@ font-family: 'Gruppo', sans-serif;
 font-family: 'Manrope', sans-serif;
 font-family: 'Poppins', sans-serif; */
 
+.logical-table {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 100;
+    font-size: 12px;
+}
 
 .header-container {
     padding: 0px 20px 80px 20px;
@@ -11,12 +16,12 @@ font-family: 'Poppins', sans-serif; */
 
 .table-responsive-sm {
     padding: 4px 20px 4px 20px;
-    /* box-shadow: 1px 1px 10px black; */
 }
 
 .table thead.thead {
-    font-family: 'Exo 2', sans-serif;
+    font-family: 'Roboto Mono', sans-serif;
     background-color: rgba(133, 78, 19, 0.29);
+    font-size: 14px;
 }
 
 .table th {
