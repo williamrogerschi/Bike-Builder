@@ -5,7 +5,7 @@
     transform: translate(30%, -99%);
     border: 1px solid rgb(198, 189, 189);
     border-radius: 4px;
-    background-color: #94a1a7;
+    background-color: #a6b5bc;
     padding: 20px;
     box-shadow: 0 0 10px rgba(136, 131, 131, 0.2);
     text-align: center;
@@ -57,7 +57,7 @@
   }
 
   .login-btn {
-    background-color: #94a1a7;
+    background-color: #a6b5bc;
     border: none;
     color: rgb(81,80,76);
   }

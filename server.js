@@ -141,6 +141,8 @@ app.get('/users/:id', userController.getOneUser)
 app.post('/users', userController.createNewUser)
 app.put('/users/:id', userController.updateUser)
 app.delete('/users/:id', userController.deleteUser)
+app.get('/users/:userId/builds/:buildId', userController.getUserBuild)
+// app.post('/users/:userId/builds/:buildId', userController.updateUserBuild)
 
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`) )

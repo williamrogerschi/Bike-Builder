@@ -1,26 +1,66 @@
-const db = require('../db/index')
-const { User } = require('../models/Index.js')
+const db = require('../db/index');
+const { User } = require('../models/Index.js');
+const { Build } = require('../models/Index.js'); // Import the Build model
 
-db.on('error', console.error.bind(console, 'MongoDB connection error:'))
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+const createEmptyBuild = async () => {
+  try {
+    const emptyBuild = await Build.create({
+      // Define default values for the Build
+      user: null,
+      frame: null,
+      groupset: null,
+      wheelset: null,
+      tires: null,
+      saddle: null,
+      handlebar: null,
+      stem: null,
+      seatpost: null,
+      total_price: '0',
+      isFinal: false,
+    });
+    return emptyBuild._id;
+  } catch (error) {
+    console.error('Error creating empty build:', error);
+    return null;
+  }
+};
 
 const userSeed = async () => {
   try {
-    const userWumpy = {
-      user_name: 'Wumpy',
-      current_build: null,
-      saved_builds: []
+    const users = [
+      {
+        user_name: 'EssL',
+        current_build: null,
+        saved_builds: null
+      },
+      {
+        user_name: 'Wumpy',
+        current_build: null,
+        saved_builds: null,
+      },
+    ];
+
+    const createdUsers = await User.insertMany(users);
+    console.log('Users created:', createdUsers);
+
+    for (const user of createdUsers) {
+      const emptyBuildId = await createEmptyBuild();
+
+      if (emptyBuildId) {
+        user.current_build = emptyBuildId;
+        await user.save();
+        console.log(`Empty build created and associated with user: ${user.user_name}`);
+      } else {
+        console.error('Failed to create an empty build.');
+      }
     }
 
-    const newUser = new User(userWumpy)
-    await newUser.save()
-    console.log('User "Wumpy" created:', newUser)
-
-    console.log('User seeding completed')
+    console.log('User seeding completed');
   } catch (error) {
-    console.error('Error seeding user:', error)
+    console.error('Error seeding users:', error);
   }
-}
+};
 
-module.exports = { userSeed }
-
-
+module.exports = { userSeed };

@@ -13,6 +13,7 @@ const { groupSeed } = require('./groupSeed')
 const { frameSeed } = require('./frameSeed')
 const { userSeed } = require('./userSeed')
 const { buildSeed } = require('./buildSeed')
+const { listSeed } = require('./listSeed')
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
@@ -30,6 +31,8 @@ const dropCollections = async () => {
         await Frame.deleteMany({})
         await User.deleteMany({})
         await Build.deleteMany({})
+        await List.deleteMany({})
+
         console.log('Collections dropped')
     } catch (error) {
         console.error('Error dropping collections:', error)
@@ -51,6 +54,8 @@ const allSeed = async () => {
       await frameSeed()
       await userSeed()
       await buildSeed()
+      await listSeed()
+      
       console.log('All seeding completed successfully')
     } catch (error) {
       console.error('Error in seeding process:', error)

@@ -5,7 +5,7 @@ import './build.css'
 import axios from 'axios'
 import { BASE_URL } from '../../global'
 
-const Build = () => {
+const Build = (props) => {
   const buildStyle = {
     backgroundColor: 'rgb(233,229,221)',
     borderBottom: '1px solid grey',
@@ -16,17 +16,19 @@ const Build = () => {
     border: '1px solid rgb(233,229,221)'
   }
 
-  const [frames, setFrames] = useState([])
-	const [groups, setGroups] = useState([])
-	const [wheels, setWheels] = useState([])
-  const [tires, setTires] = useState([])
-  const [handlebars, setHandlebars] = useState([])
-  const [stems, setStems] = useState([])
-  const [seatposts, setSeatposts] = useState([])
-  const [saddles, setSaddles] = useState([])
+  const [frames, setFrames] = useState([{ current_build: {} }])
+	const [groups, setGroups] = useState([{ current_build: {} }])
+	const [wheels, setWheels] = useState([{ current_build: {} }])
+  const [tires, setTires] = useState([{ current_build: {} }])
+  const [handlebars, setHandlebars] = useState([{ current_build: {} }])
+  const [stems, setStems] = useState([{ current_build: {} }])
+  const [seatposts, setSeatposts] = useState([{ current_build: {} }])
+  const [saddles, setSaddles] = useState([{ current_build: {} }])
+  // const [selectedComponent, setSelectedComponent] = useState( { current_build: {} })
 
 
   useEffect(() => {
+
 		const fetchData = async () => {
 			try {
 				const frames = await axios.get(`${BASE_URL}frames`)
@@ -53,9 +55,41 @@ const Build = () => {
 		fetchData()
 	}, [])
 
-	const handleComponentChange = (index, selectedComponent) => {
-		console.log(`Row ${index} selected component:`, selectedComponent)
-	}
+  // const addToCurrentBuild = async (component) => {
+  //   try {
+  //     const userId = '656a4bcd740a15232ebbd3d1';
+  //     const response = await axios.post(`${BASE_URL}users/${props.userData._id}/builds/${buildId}`, {
+  //       component: component,
+  //     });
+  //     if (response.status === 200) {
+  //       console.log(`Successfully added ${component} to current build.`);
+  //     } else {
+  //       console.error('Failed to add component to current build.');
+  //     }
+  //   } catch (error) {
+  //     console.error('Error:', error);
+  //   }
+  // }
+  
+  const fetchUserBuildData = async () => {
+    try {
+      const response = await axios.get(`${BASE_URL}users/${props.userData._id}/builds/${props.userData.current_build}`)
+      console.log('give us the fucking id ya fuck:', response)
+    } catch (error) {
+      console.error('error fetching user', error)
+    }
+  }
+  fetchUserBuildData()
+
+  const handleComponentChange = async (selectedComponent) => {
+    try {
+      await addToCurrentBuild(selectedComponent)
+    } catch (error) {
+      console.error(`Error handling component change for ${selectedComponent}:`, error)
+    }
+  }
+
+  console.log('user data props:', props.userData)
 
   return (
 
@@ -65,22 +99,18 @@ const Build = () => {
           <tr>
             <th style={buildStyle}>Component</th>
             <th style={buildStyle}>Selection</th>
-            {/* will have image and name pulled */}
             <th style={buildStyle}>Level</th>
-            {/* should show pro, entry, etc. */}
             <th style={buildStyle}>Price</th>
-            {/* show price dynamically */}
             <th style={buildStyle}>Remove Item</th>
-            {/* will be a button that will let me remove whatever is selected, so this should leave selection, level and price empty. */}
           </tr>
         </thead>
         <tbody >
           <tr>
             <td style={buildStyle}>
             <Form.Select className='build-dd'
-								onChange={(e) => handleComponentChange(0, e.target.value)}>
+								onChange={(e) => handleComponentChange(frames[e.target.selectedIndex])}>
 								{frames.map((frame, index) => (
-									<option key={index} value={frame.name}>
+									<option key={index} value={frame._id}>
 										{frame.name}
 									</option>
 								))}
@@ -94,9 +124,9 @@ const Build = () => {
           <tr>
             <td style={buildStyle}>
             <Form.Select className='build-dd'
-								onChange={(e) => handleComponentChange(1, e.target.value)}>
+								onChange={(e) => handleComponentChange(groups[e.target.selectedIndex])}>
 								{groups.map((group, index) => (
-									<option key={index} value={group.name}>
+									<option key={index} value={group._id}>
 										{group.name}
 									</option>
 								))}
@@ -110,9 +140,9 @@ const Build = () => {
           <tr>
             <td style={buildStyle}>
               <Form.Select className='build-dd'
-              onChange={(e) => handleComponentChange(2, e.target.value)}>
+              onChange={(e) => handleComponentChange(wheels[e.target.selectedIndex])}>
               {wheels.map((wheel, index) => (
-                <option key={index} value={wheel.name}>
+                <option key={index} value={wheel._id}>
                   {wheel.name}
                 </option>
               ))}
@@ -128,9 +158,9 @@ const Build = () => {
           <tr>
             <td style={buildStyle}>
             <Form.Select className='build-dd'
-								onChange={(e) => handleComponentChange(3, e.target.value)}>
+								onChange={(e) => handleComponentChange(tires[e.target.selectedIndex])}>
 								{tires.map((tire, index) => (
-									<option key={index} value={tire.name}>
+									<option key={index} value={tire._id}>
 										{tire.name}
 									</option>
 								))}
@@ -144,9 +174,9 @@ const Build = () => {
           <tr>
             <td style={buildStyle}>
             <Form.Select className='build-dd'
-								onChange={(e) => handleComponentChange(4, e.target.value)}>
+								onChange={(e) => handleComponentChange(handlebars[e.target.selectedComponent])}>
 								{handlebars.map((handlebar, index) => (
-									<option key={index} value={handlebar.name}>
+									<option key={index} value={handlebar._id}>
 										{handlebar.name}
 									</option>
 								))}
@@ -160,9 +190,9 @@ const Build = () => {
           <tr>
             <td style={buildStyle}>
             <Form.Select className='build-dd'
-								onChange={(e) => handleComponentChange(5, e.target.value)}>
+								onChange={(e) => handleComponentChange(stems[e.target.selectedIndex])}>
 								{stems.map((stem, index) => (
-									<option key={index} value={stem.name}>
+									<option key={index} value={stem._id}>
 										{stem.name}
 									</option>
 								))}
@@ -178,9 +208,9 @@ const Build = () => {
           <tr>
             <td style={buildStyle}>
             <Form.Select className='build-dd'
-								onChange={(e) => handleComponentChange(6, e.target.value)}>
+								onChange={(e) => handleComponentChange(seatposts[e.target.selectedIndex])}>
 								{seatposts.map((seatpost, index) => (
-									<option key={index} value={seatpost.name}>
+									<option key={index} value={seatpost._id}>
 										{seatpost.name}
 									</option>
 								))}
@@ -194,9 +224,9 @@ const Build = () => {
           <tr>
             <td style={buildStyle}>
             <Form.Select className='build-dd'
-								onChange={(e) => handleComponentChange(7, e.target.value)}>
+								onChange={(e) => handleComponentChange(saddles[e.target.selectedIndex])}>
 								{saddles.map((saddle, index) => (
-									<option key={index} value={saddle.name}>
+									<option key={index} value={saddle._id}>
 										{saddle.name}
 									</option>
 								))}
@@ -214,232 +244,3 @@ const Build = () => {
 }
 
 export default Build
-
-// import React, { useState, useEffect } from 'react'
-// import Table from 'react-bootstrap/Table'
-// import Form from 'react-bootstrap/Form'
-// import './build.css'
-// import axios from 'axios'
-// import { BASE_URL } from '../../global'
-
-// const Build = () => {
-
-//   const buildStyle = {
-//     backgroundColor: 'rgb(233,229,221)',
-//     borderBottom: '1px solid grey',
-//     width: '50vh',
-//   }
-//   const buttonStyle = {
-//     backgroundColor: 'rgb(233,229,221)',
-//     border: '1px solid rgb(233,229,221)'
-//   }
-
-//   const [frames, setFrames] = useState([])
-// 	const [groups, setGroups] = useState([])
-// 	const [wheels, setWheels] = useState([])
-//   const [tires, setTires] = useState([])
-//   const [handlebars, setHandlebars] = useState([])
-//   const [stems, setStems] = useState([])
-//   const [seatposts, setSeatposts] = useState([])
-//   const [saddles, setSaddles] = useState([])
-
-//   const [selectedComponents, setSelectedComponents] = useState(Array(8).fill({}))
-
-
-
-//   const handleComponentChange = async (index, selectedComponent) => {
-//     try {
-//       const response = await axios.get(`${BASE_URL}frames/${selectedComponent}`);
-//       const selectedFrame = response.data;
-  
-//       setSelectedComponents(prevState => {
-//         const updatedComponents = [...prevState];
-//         updatedComponents[index] = {
-//           image: selectedFrame.image,
-//           description: selectedFrame.description,
-//           level: selectedFrame.level,
-//           price: selectedFrame.price
-//         };
-//         return updatedComponents;
-//       });
-//     } catch (error) {
-//       console.error(`Error fetching data for ${selectedComponent}:`, error);
-//     }
-//   };
-
-//   // Helper function to determine the endpoint based on the index
-//   const getEndpointBasedOnIndex = (index) => {
-//     const endpoints = ['frames', 'groups', 'wheels', 'tires', 'handlebars', 'stems', 'seatposts', 'saddles']
-//     return endpoints[index]
-//   }
-
-
-//   useEffect(() => {
-// 		const fetchData = async () => {
-// 			try {
-// 				const frames = await axios.get(`${BASE_URL}frames`)
-//         setFrames(frames.data)
-// 				const groups = await axios.get(`${BASE_URL}groups`)
-// 				setGroups(groups.data)
-// 				const wheels = await axios.get(`${BASE_URL}wheels`)
-// 				setWheels(wheels.data)
-//         const tires = await axios.get(`${BASE_URL}tires`)
-//         setTires(tires.data)
-//         const handlebars = await axios.get(`${BASE_URL}handlebars`)
-//         setHandlebars(handlebars.data)
-//         const stems = await axios.get(`${BASE_URL}stems`)
-//         setStems(stems.data)
-//         const seatposts = await axios.get(`${BASE_URL}seatposts`)
-//         setSeatposts(seatposts.data)
-//         const saddles = await axios.get(`${BASE_URL}saddles`)
-//         setSaddles(saddles.data)
-// 			} catch (error) {
-// 				console.error('Error fetching data:', error)
-// 			}
-// 		}
-
-// 		fetchData()
-// 	}, [])
-
-//   return (
-
-//     <div className='build-table'>
-//       <Table responsive="md">
-//         <thead className='build-header' >
-//           <tr>
-//             <th style={buildStyle}>Component</th>
-//             <th style={buildStyle}>Selection</th>
-//             {/* will have image and name pulled */}
-//             <th style={buildStyle}>Level</th>
-//             {/* should show pro, entry, etc. */}
-//             <th style={buildStyle}>Price</th>
-//             {/* show price dynamically */}
-//             <th style={buildStyle}>Remove Item</th>
-//             {/* will be a button that will let me remove whatever is selected, so this should leave selection, level and price empty. */}
-//           </tr>
-//         </thead>
-//         <tbody>
-//         {frames.map((frame, index) => (
-//           <tr key={index}>
-//             <td style={buildStyle}>
-//               <Form.Select className='build-dd'
-//                 onChange={(e) => handleComponentChange(index, e.target.value)}>
-//                 {frames.map((frame, idx) => (
-//                   <option key={idx} value={frame.name}>
-//                     {frame.name}
-//                   </option>
-//                 ))}
-//               </Form.Select>
-//             </td>
-//             <td style={buildStyle}>
-//               {selectedComponents[index] && (
-//                 <>
-//                   <img src={selectedComponents[index].image} alt="Component" />
-//                   <p>{selectedComponents[index].description}</p>
-//                 </>
-//               )}
-//       </td>
-//       <td style={buildStyle}>{selectedComponents[index]?.level}</td>
-//       <td style={buildStyle}>{selectedComponents[index]?.price}</td>
-//       <td style={buildStyle}>
-//         <button
-//           type='button'
-//           style={buttonStyle}
-//           className='build-btn'
-//           onClick={() => removeSelectedItem(index)}
-//         >
-//           X
-//         </button>
-//       </td>
-//     </tr>
-//   ))}
-// </tbody>
-//         <tbody>
-//           <tr>
-//             <td style={buildStyle}>
-//             <Form.Select className='build-dd'
-// 								onChange={(e) => handleComponentChange(3, e.target.value)}>
-// 								{tires.map((tire, index) => (
-// 									<option key={index} value={tire.name}>
-// 										{tire.name}
-// 									</option>
-// 								))}
-// 							</Form.Select>
-//             </td>
-//             <td style={buildStyle}>Table cell</td>
-//             <td style={buildStyle}>Table cell</td>
-//             <td style={buildStyle}>Table cell</td>
-//             <td style={buildStyle}><button type='button' style={buttonStyle} className='build-btn'>X</button></td>
-//           </tr>
-//           <tr>
-//             <td style={buildStyle}>
-//             <Form.Select className='build-dd'
-// 								onChange={(e) => handleComponentChange(4, e.target.value)}>
-// 								{handlebars.map((handlebar, index) => (
-// 									<option key={index} value={handlebar.name}>
-// 										{handlebar.name}
-// 									</option>
-// 								))}
-// 							</Form.Select>
-//             </td>
-//             <td style={buildStyle}>Table cell</td>
-//             <td style={buildStyle}>Table cell</td>
-//             <td style={buildStyle}>Table cell</td>
-//             <td style={buildStyle}><button type='button' style={buttonStyle} className='build-btn'>X</button></td>
-//           </tr>
-//           <tr>
-//             <td style={buildStyle}>
-//             <Form.Select className='build-dd'
-// 								onChange={(e) => handleComponentChange(5, e.target.value)}>
-// 								{stems.map((stem, index) => (
-// 									<option key={index} value={stem.name}>
-// 										{stem.name}
-// 									</option>
-// 								))}
-// 							</Form.Select>
-//             </td>
-//             <td style={buildStyle}>Table cell</td>
-//             <td style={buildStyle}>Table cell</td>
-//             <td style={buildStyle}>Table cell</td>
-//             <td style={buildStyle}><button type='button' style={buttonStyle} className='build-btn'>X</button></td>
-//           </tr>
-//         </tbody>
-//         <tbody>
-//           <tr>
-//             <td style={buildStyle}>
-//             <Form.Select className='build-dd'
-// 								onChange={(e) => handleComponentChange(6, e.target.value)}>
-// 								{seatposts.map((seatpost, index) => (
-// 									<option key={index} value={seatpost.name}>
-// 										{seatpost.name}
-// 									</option>
-// 								))}
-// 							</Form.Select>
-//             </td>
-//             <td style={buildStyle}>Table cell</td>
-//             <td style={buildStyle}>Table cell</td>
-//             <td style={buildStyle}>Table cell</td>
-//             <td style={buildStyle}><button type='button' style={buttonStyle} className='build-btn'>X</button></td>
-//           </tr>
-//           <tr>
-//             <td style={buildStyle}>
-//             <Form.Select className='build-dd'
-// 								onChange={(e) => handleComponentChange(7, e.target.value)}>
-// 								{saddles.map((saddle, index) => (
-// 									<option key={index} value={saddle.name}>
-// 										{saddle.name}
-// 									</option>
-// 								))}
-// 							</Form.Select>
-//             </td>
-//             <td style={buildStyle}>Table cell</td>
-//             <td style={buildStyle}>Table cell</td>
-//             <td style={buildStyle}>Table cell</td>
-//             <td style={buildStyle}><button type='button' style={buttonStyle} className='build-btn'>X</button></td>
-//           </tr>
-//         </tbody>
-//       </Table>
-//     </div>
-//   )
-// }
-// export default Build

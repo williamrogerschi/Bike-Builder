@@ -37,8 +37,8 @@ const createNewBuild = async (req, res) => {
 
 const  updateBuild = async (req, res) => {
     try {
-        const id = req.params.id
-        const build = await Build.findByIdAndUpdate(id, req.body, {new: true})
+        const buildId = req.params.id
+        const build = await Build.findByIdAndUpdate(buildId, req.body, {new: true})
         if (build) {
             return res.status(200).json(build)
         }

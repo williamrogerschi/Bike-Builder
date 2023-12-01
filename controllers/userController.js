@@ -1,4 +1,5 @@
 const { User } = require('../models/Index')
+const { Build } = require('../models/Index')
 
 const getAllUsers = async (req, res) => {
     try {
@@ -60,6 +61,74 @@ const deleteUser = async (req, res) => {
     }
 }
 
+const getUserBuild = async (req, res) => {
+    try {
+      const userId = req.params.userId;
+      const buildId = req.params.buildId;
+      
+      // Fetch the user
+      const user = await User.findById(userId);
+      if (!user) {
+        throw new Error('User build not found');
+      }
+  
+      // Fetch the build using the buildId stored in the user's current_build field
+      const build = await Build.findById(buildId);
+      if (!build) {
+        throw new Error('Build Item not found');
+      }
+  
+      return res.status(200).json(build);
+    } catch (error) {
+      return res.status(500).json({ error: error.message });
+    }
+  };
+  
+
+const updateUserBuild = async (req, res) => {
+    const userId = req.params.id;
+    const { component } = req.body;
+  
+    try {
+      const user = await User.findById(userId);
+      if (!user) {
+        return res.status(404).json({ error: 'User not found' });
+      }
+      user.current_build = component;
+      await user.save();
+  
+      return res.status(200).json({ message: 'Component added to current build' });
+    } catch (error) {
+      console.error('Error updating current build:', error);
+      return res.status(500).json({ error: 'Failed to update current build' });
+    }
+  };
+  
+
+// Function to handle user login
+const handleUserLogin = async (userId) => {
+  try {
+    const user = await User.findById(userId);
+
+    if (!user.current_build) {
+      const emptyBuildId = await createEmptyBuild();
+
+      if (emptyBuildId) {
+        user.current_build = emptyBuildId;
+        await user.save();
+        console.log('Empty build created and associated with the user.');
+      } else {
+        console.error('Failed to create an empty build.');
+      }
+    }
+  } catch (error) {
+    console.error('Error handling user login:', error);
+  }
+};
+
+const userId = '656a4bcd740a15232ebbd3d1';
+handleUserLogin(userId);
+
 
 module.exports = {
     getAllUsers,
@@ -67,4 +136,8 @@ module.exports = {
     createNewUser,
     updateUser,
     deleteUser,
+    updateUserBuild,
+    getUserBuild,
+    // createEmptyBuild,
+    // handleUserLogin,
 }
