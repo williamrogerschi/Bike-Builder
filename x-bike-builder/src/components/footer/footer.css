@@ -8,6 +8,7 @@ font-family: 'Poppins', sans-serif; */
 li {
     list-style: none;
   }
+
   .footer {
     display:flex;
     flex-direction: column;
@@ -16,15 +17,23 @@ li {
     background-image: url(./mtn.jpeg);
     background-size: cover;
     background-position: 50% 50%;
-    border-top: 1px solid grey;
+    border-top: 1px solid rgb(62, 59, 59);
     margin-top: 90px;
   }
   .footer card-footer {
     padding: 0px;
+    display: flex;
+    align-items: center;
+    text-align: center;
   }
 
+  .billy {
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
   .footer div:nth-child(1) {
-    color: black;
+    color: rgb(62, 59, 59);
   }
 
   .inner-footer {
@@ -32,6 +41,8 @@ li {
     flex-direction: row;
     width: 100%;
     justify-content: space-around;
+    text-align: center;
+    align-items: center;
     padding: 10px;
   }
   .inner-footer2{
@@ -51,7 +62,7 @@ li {
   
   a{
     margin: 0 5px 0 5px;
-    color: black;
+    color: rgb(62, 59, 59);
   }
 
   li {
@@ -59,6 +70,6 @@ li {
   }
   
   .footer-list {
-    color: black;
+    color: rgb(62, 59, 59);
     text-decoration: none;
   }
