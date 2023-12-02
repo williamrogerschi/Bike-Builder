@@ -13,6 +13,7 @@ const Build = (props) => {
     width: '50vh',
   }
 
+  const [images, setImages] = useState([])
   const [levels, setLevels] = useState([])
   const [prices, setPrices] = useState([])
   const [descriptions, setDescriptions] = useState([])
@@ -115,6 +116,14 @@ const Build = (props) => {
             [type]: selectedComponent.price,
           };
         });
+
+        setImages((prevImage) => {
+          return {
+            ...prevImage,
+            [type]: selectedComponent.image,
+          }
+        })
+
       } else {
         console.error('Failed to add component to current build.');
       }
@@ -130,6 +139,7 @@ const Build = (props) => {
           <tr>
             <th style={buildStyle}>Component</th>
             <th style={buildStyle}>Selection</th>
+            <th style={buildStyle}>Image</th>
             <th style={buildStyle}>Description</th>
             <th style={buildStyle}>Level</th>
             <th style={buildStyle}>Price</th>
@@ -141,16 +151,27 @@ const Build = (props) => {
             <tr key={componentType}>
               <td style={buildStyle}>{componentType}</td>
               <td style={buildStyle}>
-                <Form.Select
-                  className='build-dd'
-                  onChange={(e) => addToCurrentBuild(components[componentType][e.target.selectedIndex], componentType)}>
-                  <option disabled defaultValue="">• Select Component •</option>
-                  {components[componentType].map((component, index) => (
-                    <option key={index} value={component._id}>
-                      {component.name}
-                    </option>
-                  ))}
-                </Form.Select>
+              <Form.Select
+  className='build-dd'
+  onChange={(e) => {
+    const selectedIndex = e.target.selectedIndex;
+    if (selectedIndex !== 0) { // Check if it's not the placeholder
+      addToCurrentBuild(components[componentType][selectedIndex - 1], componentType)
+    }
+  }}
+>
+  <option disabled defaultValue="">• Select Component •</option>
+  {components[componentType].map((component, index) => (
+    <option key={index} value={component._id}>
+      {component.name}
+    </option>
+  ))}
+</Form.Select>
+              </td>
+              <td style={buildStyle}>
+              {images[componentType] && (
+                  <img src={images[componentType]} alt="Component" style={{ maxWidth: '150px', maxHeight: '150px' }} />
+                )}
               </td>
               <td style={buildStyle}>{descriptions[componentType]}</td>
               <td style={buildStyle}> {getLevelName(levels[componentType])}</td >

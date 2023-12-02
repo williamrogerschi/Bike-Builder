@@ -15,12 +15,10 @@ font-family: 'Poppins', sans-serif; */
 
 thead.build-header {
   font-family: 'Roboto Mono', sans-serif;
-  font-size: 14px;
-}
+  font-size: 14px;}
 
 td {
   background-color: rgb(233,229,221);
-  max-width: 50%;
 }
 
 button.build-btn {

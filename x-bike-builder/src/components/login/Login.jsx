@@ -7,6 +7,8 @@ import { BASE_URL } from '../../global'
 const Login = (props) => {
   const [userData, setUserData] = useState(null)
   const [username, setUsername] = useState('')
+  const [currentBuild, setCurrentBuild] = useState('')
+  const [savedBuilds, setSavedBuilds] = useState('')
 
 
   useEffect(() => {
@@ -58,7 +60,8 @@ const Login = (props) => {
     if (existingUser == null) {
       const body = {
         user_name: username,
-        points: 0
+        current_build: currentBuild || null,
+        saved_builds: savedBuilds || null,
       }
       const response = await axios.post(`${BASE_URL}users/`, body)
       console.log('new user: ',response.data.user)

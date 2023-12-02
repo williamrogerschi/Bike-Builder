@@ -25,15 +25,22 @@ const getOneUser = async (req, res) => {
 
 const createNewUser = async (req, res) => {
     try {
-        const user = await new User (req.body)
-        await user.save()
-        return res.status(201).json({
-            user
-        })
+        const { user_name, current_build, saved_builds } = req.body;
+
+        const user = new User({
+            user_name,
+            current_build: current_build || null, // Set to null if not provided
+            saved_builds: saved_builds || null, // Set to null if not provided
+        });
+
+        await user.save();
+        return res.status(201).json({ user });
     } catch (error) {
-        return res.status(500).json({error: error.message})
+        return res.status(500).json({ error: error.message });
     }
-}
+};
+
+
 
 const  updateUser = async (req, res) => {
     try {
@@ -103,31 +110,6 @@ const getUserBuild = async (req, res) => {
     }
   };
   
-
-// Function to handle user login
-// const handleUserLogin = async (userId) => {
-//   try {
-//     const user = await User.findById(userId);
-
-//     if (!user.current_build) {
-//       const emptyBuildId = await createEmptyBuild();
-
-//       if (emptyBuildId) {
-//         user.current_build = emptyBuildId;
-//         await user.save();
-//         console.log('Empty build created and associated with the user.');
-//       } else {
-//         console.error('Failed to create an empty build.');
-//       }
-//     }
-//   } catch (error) {
-//     console.error('Error handling user login:', error);
-//   }
-// };
-
-// const userId = '656a4bcd740a15232ebbd3d1';
-// handleUserLogin(userId);
-
 
 module.exports = {
     getAllUsers,
