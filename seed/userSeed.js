@@ -7,7 +7,6 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 const createEmptyBuild = async () => {
   try {
     const emptyBuild = await Build.create({
-      // Define default values for the Build
       user: null,
       frame: null,
       groupset: null,
@@ -31,7 +30,7 @@ const userSeed = async () => {
   try {
     const users = [
       {
-        user_name: 'EssL',
+        user_name: 'Essel',
         current_build: null,
         saved_builds: null
       },

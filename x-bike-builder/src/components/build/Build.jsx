@@ -4,8 +4,11 @@ import Form from 'react-bootstrap/Form'
 import './build.css'
 import axios from 'axios'
 import { BASE_URL } from '../../global'
+import Modal from '../modal/Modal'
 
 const Build = (props) => {
+
+  const [modal, setModal] = useState(false);
   const buildStyle = {
     backgroundColor: 'rgb(233,229,221)',
     borderBottom: '1px solid grey',
@@ -16,6 +19,8 @@ const Build = (props) => {
     border: '1px solid rgb(233,229,221)'
   }
 
+
+  // const [buildItems, setBuildItems] = useState(null)
   const [frames, setFrames] = useState([{ current_build: {} }])
 	const [groups, setGroups] = useState([{ current_build: {} }])
 	const [wheels, setWheels] = useState([{ current_build: {} }])
@@ -24,7 +29,7 @@ const Build = (props) => {
   const [stems, setStems] = useState([{ current_build: {} }])
   const [seatposts, setSeatposts] = useState([{ current_build: {} }])
   const [saddles, setSaddles] = useState([{ current_build: {} }])
-  // const [selectedComponent, setSelectedComponent] = useState( { current_build: {} })
+  const [selectedComponent, setSelectedComponent] = useState( { current_build: {} })
 
 
   useEffect(() => {
@@ -55,41 +60,29 @@ const Build = (props) => {
 		fetchData()
 	}, [])
 
-  // const addToCurrentBuild = async (component) => {
-  //   try {
-  //     const userId = '656a4bcd740a15232ebbd3d1';
-  //     const response = await axios.post(`${BASE_URL}users/${props.userData._id}/builds/${buildId}`, {
-  //       component: component,
-  //     });
-  //     if (response.status === 200) {
-  //       console.log(`Successfully added ${component} to current build.`);
-  //     } else {
-  //       console.error('Failed to add component to current build.');
-  //     }
-  //   } catch (error) {
-  //     console.error('Error:', error);
-  //   }
-  // }
-  
-  const fetchUserBuildData = async () => {
-    try {
-      const response = await axios.get(`${BASE_URL}users/${props.userData._id}/builds/${props.userData.current_build}`)
-      console.log('give us the fucking id ya fuck:', response)
-    } catch (error) {
-      console.error('error fetching user', error)
-    }
-  }
-  fetchUserBuildData()
 
-  const handleComponentChange = async (selectedComponent) => {
+  const addToCurrentBuild = async (selectedComponent) => {
     try {
-      await addToCurrentBuild(selectedComponent)
+      // const userId = `${props.userData._id}`
+      const buildId = `${props.userData.current_build}`
+      console.log('buildID:', buildId)
+      const response = await axios.put(`${BASE_URL}builds/${buildId}`, {
+        // [type] selectedComponent._id,
+        frame: selectedComponent._id,
+      })
+      console.log('what is this component:', selectedComponent._id)
+      if (response.status === 200) {
+        console.log(`Successfully added ${selectedComponent._id} to current build.`);
+      } else {
+        console.error('Failed to add component to current build.');
+      }
     } catch (error) {
-      console.error(`Error handling component change for ${selectedComponent}:`, error)
+      console.error('Error:', error);
     }
   }
 
-  console.log('user data props:', props.userData)
+
+  // console.log('user data props:', props.userData)
 
   return (
 
@@ -108,7 +101,7 @@ const Build = (props) => {
           <tr>
             <td style={buildStyle}>
             <Form.Select className='build-dd'
-								onChange={(e) => handleComponentChange(frames[e.target.selectedIndex])}>
+								onChange={(e) => addToCurrentBuild(frames[e.target.selectedIndex])}>
 								{frames.map((frame, index) => (
 									<option key={index} value={frame._id}>
 										{frame.name}
@@ -124,7 +117,7 @@ const Build = (props) => {
           <tr>
             <td style={buildStyle}>
             <Form.Select className='build-dd'
-								onChange={(e) => handleComponentChange(groups[e.target.selectedIndex])}>
+								onChange={(e) => addToCurrentBuild(groups[e.target.selectedIndex])}>
 								{groups.map((group, index) => (
 									<option key={index} value={group._id}>
 										{group.name}
@@ -140,7 +133,7 @@ const Build = (props) => {
           <tr>
             <td style={buildStyle}>
               <Form.Select className='build-dd'
-              onChange={(e) => handleComponentChange(wheels[e.target.selectedIndex])}>
+              onChange={(e) => addToCurrentBuild(wheels[e.target.selectedIndex])}>
               {wheels.map((wheel, index) => (
                 <option key={index} value={wheel._id}>
                   {wheel.name}
@@ -158,7 +151,7 @@ const Build = (props) => {
           <tr>
             <td style={buildStyle}>
             <Form.Select className='build-dd'
-								onChange={(e) => handleComponentChange(tires[e.target.selectedIndex])}>
+								onChange={(e) => addToCurrentBuild(tires[e.target.selectedIndex])}>
 								{tires.map((tire, index) => (
 									<option key={index} value={tire._id}>
 										{tire.name}
@@ -174,7 +167,7 @@ const Build = (props) => {
           <tr>
             <td style={buildStyle}>
             <Form.Select className='build-dd'
-								onChange={(e) => handleComponentChange(handlebars[e.target.selectedComponent])}>
+								onChange={(e) => addToCurrentBuild(handlebars[e.target.selectedComponent])}>
 								{handlebars.map((handlebar, index) => (
 									<option key={index} value={handlebar._id}>
 										{handlebar.name}
@@ -190,7 +183,7 @@ const Build = (props) => {
           <tr>
             <td style={buildStyle}>
             <Form.Select className='build-dd'
-								onChange={(e) => handleComponentChange(stems[e.target.selectedIndex])}>
+								onChange={(e) => addToCurrentBuild(stems[e.target.selectedIndex])}>
 								{stems.map((stem, index) => (
 									<option key={index} value={stem._id}>
 										{stem.name}
@@ -208,7 +201,7 @@ const Build = (props) => {
           <tr>
             <td style={buildStyle}>
             <Form.Select className='build-dd'
-								onChange={(e) => handleComponentChange(seatposts[e.target.selectedIndex])}>
+								onChange={(e) => addToCurrentBuild(seatposts[e.target.selectedIndex])}>
 								{seatposts.map((seatpost, index) => (
 									<option key={index} value={seatpost._id}>
 										{seatpost.name}
@@ -224,7 +217,7 @@ const Build = (props) => {
           <tr>
             <td style={buildStyle}>
             <Form.Select className='build-dd'
-								onChange={(e) => handleComponentChange(saddles[e.target.selectedIndex])}>
+								onChange={(e) => addToCurrentBuild(saddles[e.target.selectedIndex])}>
 								{saddles.map((saddle, index) => (
 									<option key={index} value={saddle._id}>
 										{saddle.name}
@@ -239,6 +232,15 @@ const Build = (props) => {
           </tr>
         </tbody>
       </Table>
+        <button
+        onClick={() => setModal(true)}>
+        Open modal
+      </button>
+      <Modal
+        openModal={modal}
+        closeModal={() => setModal(false)}>
+        Modal content.
+      </Modal>
     </div>
   )
 }
