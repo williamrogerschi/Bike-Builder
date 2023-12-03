@@ -44,7 +44,8 @@ const buildSeed = async () => {
       seatpost: seatpost?._id,
       level: pro?._id,
       total_price: totalPrice.toString(),
-      isFinal: true
+      isCurrent: false,
+      name: 'GOAT Build',
     }
 
     const newBuild = new Build(userBuild)

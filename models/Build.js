@@ -12,7 +12,8 @@ const buildSchema = new Schema(
 		stem: { type: Schema.Types.ObjectId, ref: 'Stem' },
 		seatpost: { type: Schema.Types.ObjectId, ref: 'Seatpost' },
 		total_price: { type: String, required: true },
-		isFinal: { type: Boolean, default: false },
+		isCurrent: { type: Boolean, default: false },
+		name: {type: String, required: true},
 	},
 	{ timestamps: true }
 )
@@ -27,7 +28,7 @@ buildSchema.pre(/^find/, function (next) {
 		.populate('handlebar')
 		.populate('stem')
 		.populate('seatpost')
-		.populate('user') // Populate other referenced fields as needed
+		.populate('user')
 	next()
 })
 

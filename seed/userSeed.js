@@ -17,7 +17,8 @@ const createEmptyBuild = async () => {
       stem: null,
       seatpost: null,
       total_price: '0',
-      isFinal: false,
+      isCurrent: true,
+      name: 'new build',
     });
     return emptyBuild._id;
   } catch (error) {

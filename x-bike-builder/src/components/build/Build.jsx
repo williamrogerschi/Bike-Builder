@@ -4,13 +4,17 @@ import Form from 'react-bootstrap/Form';
 import './build.css';
 import axios from 'axios';
 import { BASE_URL } from '../../global';
+import Example from '../currentBuild/CurrentBuild'
+
 
 const Build = (props) => {
 
     const buildStyle = {
-    backgroundColor: 'rgb(233,229,221)',
-    borderBottom: '1px solid grey',
-    width: '50vh',
+    // backgroundColor: 'rgb(233,229,221)',
+    // borderBottom: '1px solid grey',
+    // borderRadius: '4px',
+    // border: '1px solid lightgrey',
+    width: '100vh',
   }
 
   const [names, setNames] = useState([])
@@ -150,8 +154,30 @@ const Build = (props) => {
     }
   };
 
+//   const deleteOrder = async () => {
+//     const orderId = cartItems.cart.current_order._id
+//     const cartId = cartItems.cart._id
+//     console.log(cartId)
+//     await axios.delete(`${BASE_URL}orders/${orderId}`)
+    
+//     const newOrder = await axios.post(`${BASE_URL}orders/`, {
+//           "menu_item": [],
+//               "custom_pizza": [],
+//               "total_price": "$0",
+//               "__v": 0
+//       })
+//       const newOrderId = newOrder.data.order._id
+//       console.log('newOrder:', newOrder)
+//       console.log('newOrderId:', newOrderId)
+//       await axios.put(`${BASE_URL}carts/${cartId}`, {
+//         current_order: newOrderId,
+//       })
+//       await fetchCartItems()
+// }
+
   
   return (
+    <>
     <div className='build-table'>
       <Table responsive='md'>
         <thead className='build-header' style={buildStyle}>
@@ -162,7 +188,6 @@ const Build = (props) => {
             <th style={buildStyle}>Image</th>
             <th style={buildStyle}>Description</th>
             <th style={buildStyle}>Price</th>
-            <th style={buildStyle}>Remove Item</th>
           </tr>
         </thead>
         <tbody>
@@ -178,7 +203,7 @@ const Build = (props) => {
       addToCurrentBuild(components[componentType][selectedIndex - 1], componentType)
     }
   }}>
-  <option defaultValue=""> • Select Component • </option>
+  <option style={{display: 'flex', justifyContent: 'center'}} defaultValue="">Select Component</option>
   {components[componentType].map((component, index) => (
     <option key={index} value={component._id}>
       {component.name}
@@ -194,13 +219,20 @@ const Build = (props) => {
               </td>
               <td style={buildStyle}>{descriptions[componentType]}</td>
               <td style={buildStyle}> {prices[componentType]}</td>
-              <td style={buildStyle}><button type='button' className='build-btn'>X</button>
-              </td>
             </tr>
           ))}
         </tbody>
       </Table>
     </div>
+    <div className='total-build'>
+      <ul className='total-build'>
+        <li>Name:</li>
+        <li>Total Cost:</li>
+        <li><button type='button' className='build-btn'>Delete Build</button></li>
+      </ul>
+    </div>
+    <Example />
+    </>
   );
 };
 
