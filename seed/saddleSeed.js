@@ -32,7 +32,7 @@ const bikeSaddles = [
   {
     name: 'Antares R3 Versus EVO',
     brand: `Fi'zi:k`,
-    descrption: 'A comfortable road bike saddle for riders who want a medium saddle profile and a pressure relief channel.',
+    description: 'A comfortable road bike saddle for riders who want a medium saddle profile and a pressure relief channel.',
     color: 'Black',
     image: 'https://d2wax9jsznmsse.cloudfront.net/media/catalog/product/cache/62da096d30b285fe6809aca988e7de16/a/n/antares-r3-versus-evo-black_regular_side.jpg',
     level: [intermediate._id],

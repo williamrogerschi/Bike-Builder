@@ -2,12 +2,13 @@ const { Frame } = require('../models/Index')
 
 const getAllFrames = async (req, res) => {
     try {
-        const frames = await Frame.find()
-        res.json(frames)
-    } catch (error) {
-        return res.status(500).send(error.message)
+        const frames = await Frame.find().populate('level'); // Populate the 'level' field to retrieve level details
+        res.json(frames);
+        console.log(frames)
+      } catch (error) {
+        res.status(500).json({ error: 'Error fetching frames' });
+      }
     }
-}
 
 const getOneFrame = async (req, res) => {
     try {

@@ -13,32 +13,12 @@ const Build = (props) => {
     width: '50vh',
   }
 
+  const [names, setNames] = useState([])
   const [images, setImages] = useState([])
-  const [levels, setLevels] = useState([])
   const [prices, setPrices] = useState([])
   const [descriptions, setDescriptions] = useState([])
-
-  const levelsArray = [
-    {
-      "_id": "656b41de0c60caa88bbd2e08",
-      "name": "Entry",
-    },
-    {
-      "_id": "656b41df0c60caa88bbd2e0a",
-      "name": "Intermediate",
-    },
-    {
-      "_id": "656b41df0c60caa88bbd2e0c",
-      "name": "Pro",
-    }
-  ]
-
-  const getLevelName = (levelId) => {
-    const foundLevel = levelsArray.find((level) => level._id === levelId);
-    return foundLevel ? foundLevel.name : '';
-  };
+  const [currentBuild, setCurrentBuild] = useState([])
   
-
   const [components, setComponents] = useState({
     frame: [],
     groupset: [],
@@ -81,6 +61,71 @@ const Build = (props) => {
     fetchData();
   }, []);
 
+  const fetchCurrentBuild = async () => {
+    try {
+      if (props.userData && props.userData.current_build) {
+        const currentBuildData = await axios.get(`${BASE_URL}builds/${props.userData.current_build}`);
+        console.log('Updated user data:', currentBuildData.data);
+        setCurrentBuild(currentBuildData.data);
+
+        const { frame, groupset, wheelset, tires, handlebar, stem, seatpost, saddle } = currentBuildData.data
+
+        setNames({
+          frame: frame?.name || '',
+          groupset: groupset?.name || '',
+          wheelset: wheelset?.name || '',
+          tires: tires?.name || '',
+          handlebar: handlebar?.name || '',
+          stem: stem?.name || '',
+          seatpost: seatpost?.name || '',
+          saddle: saddle?.name || '',
+        })
+
+        setDescriptions({
+          frame: frame?.description || '',
+          groupset: groupset?.description || '',
+          wheelset: wheelset?.description || '',
+          tires: tires?.description || '',
+          handlebar: handlebar?.description || '',
+          stem: stem?.description || '',
+          seatpost: seatpost?.description || '',
+          saddle: saddle?.description || '',
+        });
+
+        setPrices({
+          frame: frame?.price || '',
+          groupset: groupset?.price || '',
+          wheelset: wheelset?.price || '',
+          tires: tires?.price || '',
+          handlebar: handlebar?.price || '',
+          stem: stem?.price || '',
+          seatpost: seatpost?.price || '',
+          saddle: saddle?.price || '',
+        });
+
+        setImages({
+          frame: frame?.image || '',
+          groupset: groupset?.image || '',
+          wheelset: wheelset?.image || '',
+          tires: tires?.image || '',
+          handlebar: handlebar?.image || '',
+          stem: stem?.image || '',
+          seatpost: seatpost?.image || '',
+          saddle: saddle?.image || '',
+        });
+      } else {
+        console.log('User data is null.');
+      }
+    } catch (error) {
+      console.error('Error fetching current_build data:', error);
+      throw error;
+    }
+  };
+
+  useEffect(() => {
+    fetchCurrentBuild();
+  }, [props.userData]);
+
   const addToCurrentBuild = async (selectedComponent, type) => {
     try {
       if (!selectedComponent || !selectedComponent._id) {
@@ -95,42 +140,16 @@ const Build = (props) => {
   
       if (response.status === 200) {
         console.log(`Successfully added ${selectedComponent._id} to current build.`);
-  
-        setDescriptions((prevDescription) => {
-          return {
-            ...prevDescription,
-            [type]: selectedComponent.description,
-          };
-        });
-  
-        setLevels((prevLevel) => {
-          return {
-            ...prevLevel,
-            [type]: selectedComponent.level,
-          };
-        });
-  
-        setPrices((prevPrice) => {
-          return {
-            ...prevPrice,
-            [type]: selectedComponent.price,
-          };
-        });
-
-        setImages((prevImage) => {
-          return {
-            ...prevImage,
-            [type]: selectedComponent.image,
-          }
-        })
 
       } else {
         console.error('Failed to add component to current build.');
       }
+      await fetchCurrentBuild()
     } catch (error) {
       console.error('Error:', error);
     }
   };
+
   
   return (
     <div className='build-table'>
@@ -139,9 +158,9 @@ const Build = (props) => {
           <tr>
             <th style={buildStyle}>Component</th>
             <th style={buildStyle}>Selection</th>
+            <th style={buildStyle}>Name</th>
             <th style={buildStyle}>Image</th>
             <th style={buildStyle}>Description</th>
-            <th style={buildStyle}>Level</th>
             <th style={buildStyle}>Price</th>
             <th style={buildStyle}>Remove Item</th>
           </tr>
@@ -155,12 +174,11 @@ const Build = (props) => {
   className='build-dd'
   onChange={(e) => {
     const selectedIndex = e.target.selectedIndex;
-    if (selectedIndex !== 0) { // Check if it's not the placeholder
+    if (selectedIndex !== 0) {
       addToCurrentBuild(components[componentType][selectedIndex - 1], componentType)
     }
-  }}
->
-  <option disabled defaultValue="">• Select Component •</option>
+  }}>
+  <option defaultValue=""> • Select Component • </option>
   {components[componentType].map((component, index) => (
     <option key={index} value={component._id}>
       {component.name}
@@ -168,13 +186,13 @@ const Build = (props) => {
   ))}
 </Form.Select>
               </td>
+              <td style={buildStyle}>{names[componentType]}</td>
               <td style={buildStyle}>
               {images[componentType] && (
                   <img src={images[componentType]} alt="Component" style={{ maxWidth: '150px', maxHeight: '150px' }} />
                 )}
               </td>
               <td style={buildStyle}>{descriptions[componentType]}</td>
-              <td style={buildStyle}> {getLevelName(levels[componentType])}</td >
               <td style={buildStyle}> {prices[componentType]}</td>
               <td style={buildStyle}><button type='button' className='build-btn'>X</button>
               </td>
