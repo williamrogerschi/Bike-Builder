@@ -46,7 +46,7 @@ const stemSeed = async () => {
             brand: 'ZIPP',
             description: `Zipp's Service Course SL Stem, crafted from 7075 aluminum, features a shape that's strong and lightweight, resulting in a best-in-class 1.85 grams per newton meter of stiffness. That results in no-flex sprints and accelerations. To meet every rider's fit needs, the stem is available in ±6° and ±17° angles and seven lengths from 70 to 130mm as well as a 140 & 150mm lengths for the ±6° stem only. This stem is a favorite of Zipp ambassadors and pro athletes.`,
             material: [carbon._id],
-            image: '',
+            image: 'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/stems/stems/st-service-course-sl-b2/productassets_st-sc-sl-b2_fg/stscsl31861001125bdbkb2c3qs.png?w=1000',
             level: [intermediate._id],
             price: '$140',
         },

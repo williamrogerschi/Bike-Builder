@@ -109,6 +109,34 @@ const getUserBuild = async (req, res) => {
       return res.status(500).json({ error: error.message });
     }
   };
+
+  const createNewUserBuild = async (req, res) => {
+    try {
+        const userId = req.params.userId;
+        const newBuild = await Build.create({
+            user: userId, // Reference to the user ID
+            frame: null,
+            groupset: null,
+            wheelset: null,
+            tires: null,
+            saddle: null,
+            handlebar: null,
+            stem: null,
+            seatpost: null,
+            total_price: "0",
+            isCurrent: true,
+            name: "New Build", // Default name for a new build
+            createdAt: new Date(),
+            updatedAt: new Date(),
+            __v: 0
+        });
+        await User.findByIdAndUpdate(userId, { current_build: newBuild._id });
+        return res.status(200).json({ newBuildId: newBuild._id });
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
+    }
+};
+
   
 
 module.exports = {
@@ -119,4 +147,5 @@ module.exports = {
     deleteUser,
     updateUserBuild,
     getUserBuild,
+    createNewUserBuild,
 }

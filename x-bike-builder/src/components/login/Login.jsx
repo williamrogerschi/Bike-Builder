@@ -31,10 +31,8 @@ const Login = (props) => {
     
     for (let i = 0; i < userData.length; i++) {
       if (username == userData[i].user_name) {
-          console.log('user logged in: ', userData[i])
-         
+        localStorage.setItem('userData', JSON.stringify(userData[i]))
           props.setUserData(userData[i])
-          console.log('user State: ', props.userData)
           props.onClose()
           break;
       } else {
@@ -76,7 +74,7 @@ const Login = (props) => {
     console.log('Create Started..')
 
         const response = await addUser().then(() => {
-          console.log('posted')
+          console.log('posted', response)
         })
     }
 

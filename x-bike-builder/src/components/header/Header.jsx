@@ -4,23 +4,35 @@ import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import Login from '../login/Login'
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-const Header = (props, args) => {
-  const [modal, setModal] = useState(false);
-  const toggle = () => setModal(!modal);
-  const [showContainer, setShowContainer] = useState(false);
+
+const Header = (props) => {
+  
+  useEffect(() => {
+    // Retrieve user data from local storage
+    const storedUserData = localStorage.getItem('userData');
+    if (storedUserData) {
+      const parsedUserData = JSON.parse(storedUserData);
+      props.setUserData(parsedUserData);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    // Clear user data from local storage and state
+    localStorage.removeItem('userData');
+    props.setUserData(null);
+  };
+
+  const [modal, setModal] = useState(false)
+  const toggle = () => setModal(!modal)
+  const [showContainer, setShowContainer] = useState(false)
 
   const openContainer = () => {
     setShowContainer(true);
-  };
+  }
 
   const closeContainer = () => {
     setShowContainer(false);
-  };
-
-  const handleLogout = () => {
-    props.setUserData(null)
   }
 
   const navbarStyle = {

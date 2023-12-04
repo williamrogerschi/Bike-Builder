@@ -4,24 +4,36 @@ import Form from 'react-bootstrap/Form';
 import './build.css';
 import axios from 'axios';
 import { BASE_URL } from '../../global';
-import Example from '../currentBuild/CurrentBuild'
+import BuildModal from '../currentBuild/CurrentBuild'
 
 
 const Build = (props) => {
 
-    const buildStyle = {
+  const buildStyle = {
     // backgroundColor: 'rgb(233,229,221)',
     // borderBottom: '1px solid grey',
     // borderRadius: '4px',
     // border: '1px solid lightgrey',
     width: '100vh',
   }
+  const inputStyle ={
+    fontFamily: 'Manrope, sans-serif',
+    fontWeight: '300',
+  }
+  const buttonStyle ={
+    fontFamily: 'Manrope, sans-serif',
+    fontWeight: '300',
+  }
+
+
 
   const [names, setNames] = useState([])
   const [images, setImages] = useState([])
   const [prices, setPrices] = useState([])
   const [descriptions, setDescriptions] = useState([])
   const [currentBuild, setCurrentBuild] = useState([])
+  const [totalCost, setTotalCost] = useState('0')
+  const [isTotalCostUpdated, setIsTotalCostUpdated] = useState(false)
   
   const [components, setComponents] = useState({
     frame: [],
@@ -94,7 +106,7 @@ const Build = (props) => {
           stem: stem?.description || '',
           seatpost: seatpost?.description || '',
           saddle: saddle?.description || '',
-        });
+        })
 
         setPrices({
           frame: frame?.price || '',
@@ -105,7 +117,17 @@ const Build = (props) => {
           stem: stem?.price || '',
           seatpost: seatpost?.price || '',
           saddle: saddle?.price || '',
-        });
+        })
+        console.log('Prices:', {
+          frame: frame?.price,
+          groupset: groupset?.price,
+          wheelset: wheelset?.price,
+          tires: tires?.price,
+          handlebar: handlebar?.price,
+          stem: stem?.price,
+          seatpost: seatpost?.price,
+          saddle: saddle?.price,
+        } )
 
         setImages({
           frame: frame?.image || '',
@@ -116,15 +138,15 @@ const Build = (props) => {
           stem: stem?.image || '',
           seatpost: seatpost?.image || '',
           saddle: saddle?.image || '',
-        });
+        })
       } else {
         console.log('User data is null.');
       }
     } catch (error) {
-      console.error('Error fetching current_build data:', error);
-      throw error;
+      console.error('Error fetching current_build data:', error)
+      throw error
     }
-  };
+  }
 
   useEffect(() => {
     fetchCurrentBuild();
@@ -148,36 +170,110 @@ const Build = (props) => {
       } else {
         console.error('Failed to add component to current build.');
       }
+      await props.fetchUserData()
       await fetchCurrentBuild()
     } catch (error) {
       console.error('Error:', error);
     }
+  }
+
+  useEffect(() => {
+    calculateTotalCost()
+  }, [prices, currentBuild])
+
+  useEffect(() => {
+    if (currentBuild?._id && isTotalCostUpdated) {
+      updateTotalPrice(currentBuild._id, totalCost)
+    }
+  } , [isTotalCostUpdated, totalCost])
+
+  const calculateTotalCost = () => {
+    let totalPrice = 0
+  
+    Object.keys(prices).forEach((componentType) => {
+      const price = parseFloat(prices[componentType].replace(/\$/g, ''))
+      // console.log(`Parsed price for ${componentType}:`, price)
+  
+      if (!isNaN(price)) {
+        totalPrice += price
+      }
+    })
+    // console.log('Total price:', totalPrice);
+    setTotalCost(totalPrice.toFixed(0));
+
+    if (currentBuild?._id) {
+      setIsTotalCostUpdated(true)
+    }
   };
 
-//   const deleteOrder = async () => {
-//     const orderId = cartItems.cart.current_order._id
-//     const cartId = cartItems.cart._id
-//     console.log(cartId)
-//     await axios.delete(`${BASE_URL}orders/${orderId}`)
-    
-//     const newOrder = await axios.post(`${BASE_URL}orders/`, {
-//           "menu_item": [],
-//               "custom_pizza": [],
-//               "total_price": "$0",
-//               "__v": 0
-//       })
-//       const newOrderId = newOrder.data.order._id
-//       console.log('newOrder:', newOrder)
-//       console.log('newOrderId:', newOrderId)
-//       await axios.put(`${BASE_URL}carts/${cartId}`, {
-//         current_order: newOrderId,
-//       })
-//       await fetchCartItems()
-// }
+  const totalCostColor = () => {
+    if (totalCost < 2500) {
+      return 'low-cost'
+    } else if (totalCost > 2500 && totalCost < 5000) {
+      return 'medium-cost'
+    } else {
+      return 'high-cost'
+    }
+  }
+
+  const updateTotalPrice = async (buildId, newTotalPrice) => {
+    try {
+
+      const response = await axios.put(`${BASE_URL}builds/${buildId}`, {
+        total_price: newTotalPrice.toString()
+      })
+      if (response.status === 200) {
+        // console.log(`Total price updated for build ${buildId} to ${newTotalPrice}`)
+        await fetchCurrentBuild()
+      } else {
+        console.error(`Failed to update total price`)
+      }
+    } catch (error) {
+      console.error('Error updating total price:', error)
+    }
+  }
+
+
+const deleteBuildAndCreateNew = async () => {
+  try {
+
+    const userId = props.userData._id
+    const buildId = props.userData.current_build
+    await axios.delete(`${BASE_URL}builds/${buildId}`)
+
+    const newBuildResponse = await axios.post(`${BASE_URL}builds`, {
+      user: userId,
+      frame: null,
+      groupset: null,
+      wheelset: null,
+      tires: null,
+      saddle: null,
+      handlebar: null,
+      stem: null,
+      seatpost: null,
+      total_price: "0",
+      isCurrent: true,
+      name: "New Build",
+    })
+    const newBuildId = newBuildResponse.data.build._id
+    await axios.put(`${BASE_URL}users/${props.userData._id}`, {
+      current_build: newBuildId,
+    })
+    await props.fetchUserData()
+  } catch (error) {
+    console.error('Error deleting or creating a new build:', error)
+  }
+};
+
 
   
   return (
-    <>
+  <>
+    <div className='total-build-wrapper'>
+        <div className='total-li'><input style={inputStyle} type='text' className='build-name' placeholder='name your build!'></input><button type='button' className='build-btn' style={buttonStyle} >
+          {/* onClick='placeholderFunction()'> */}
+          Submit!</button></div>
+    </div>
     <div className='build-table'>
       <Table responsive='md'>
         <thead className='build-header' style={buildStyle}>
@@ -224,14 +320,13 @@ const Build = (props) => {
         </tbody>
       </Table>
     </div>
-    <div className='total-build'>
-      <ul className='total-build'>
-        <li>Name:</li>
-        <li>Total Cost:</li>
-        <li><button type='button' className='build-btn'>Delete Build</button></li>
-      </ul>
+    <div className='total-cost-container'>
+      <p className={`total-cost-box ${totalCostColor()}`}>Total Cost: ${totalCost}</p>
     </div>
-    <Example />
+    <div className='total-build'>
+    </div>
+        <div className='delete-container'><button type='button' className='delete-build-btn' style={buttonStyle} onClick={deleteBuildAndCreateNew}>Delete Build</button></div>
+    <BuildModal />
     </>
   );
 };

@@ -25,7 +25,7 @@ const buildSeed = async () => {
     const groupsetPrice = parseFloat(groupset?.price) || 2690
     const wheelsetPrice = parseFloat(wheelset?.price) || 2850
     const tiresPrice = parseFloat(tires?.price) || 75
-    const saddlePrice = parseFloat(saddle?.price) || 479.90
+    const saddlePrice = parseFloat(saddle?.price) || 480
     const handlebarPrice = parseFloat(handlebar?.price) || 400
     const stemPrice = parseFloat(stem?.price) || 300
     const seatpostPrice = parseFloat(seatpost?.price) || 300
