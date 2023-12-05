@@ -33,14 +33,17 @@ font-family: 'Poppins', sans-serif; */
 .table td.entry {
     background-color: #d0f0b1b7;
     width: 200px;
+    padding: 0px;
 }
 
 .table td.inter {
     background-color: #92b4a78d;
     width: 200px;
+    padding: 0px;
 }
 
 .table td.pro {
     background-color: #81667a8a;
     width: 200px;
+    padding: 0px;
 }

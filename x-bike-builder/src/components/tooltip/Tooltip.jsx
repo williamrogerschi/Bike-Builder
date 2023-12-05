@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react"
 import './tooltip.css';
-import Button from 'react-bootstrap/Button';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Tooltip from 'react-bootstrap/Tooltip';
+import Button from 'react-bootstrap/Button'
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import Tooltip from 'react-bootstrap/Tooltip'
 
 
 
@@ -16,21 +16,23 @@ const TooltipComponent = ({ data }) => {
     }
 
     const ttStyle = {
-        backgroundColor: 'white',
+        backgroundColor: 'rgb(233,229,221)',
+        border: '1px solid #b9babbbc',
         fontFamily: 'Manrope, sans-serif',
         fontWeight: '300',
         fontSize: '12px',
         padding: '10px',
+        borderRadius: '12px',
     }
 
     const renderComponents = (name, image, description, price) => (
       <div>
         <img height='100px' width='100px' src={image} alt={name} />
-        <p>{name}</p>
+        <p><strong>{name}</strong></p>
         <p>{description}</p>
-        <p>{price}</p>
+        <p><strong>{price}</strong></p>
       </div>
-    );
+    )
   
     return (
       <OverlayTrigger
@@ -38,7 +40,7 @@ const TooltipComponent = ({ data }) => {
         delay={{ show: 0, hide: 0 }}
         trigger={['hover', 'focus']}
         overlay={
-          <Tooltip className={`component-tooltip-${data.id}`} style={ttStyle}>
+          <Tooltip className={`component-tooltip-yellow`} style={ttStyle}>
             {renderComponents(data.name, data.image, data.description, data.price)}
           </Tooltip>
         }
@@ -49,7 +51,7 @@ const TooltipComponent = ({ data }) => {
           </Button>
         </div>
       </OverlayTrigger>
-    );
-  };
+    )
+  }
   
-  export default TooltipComponent;
+  export default TooltipComponent

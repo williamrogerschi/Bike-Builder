@@ -161,14 +161,14 @@ const Build = (props) => {
   const addToCurrentBuild = async (selectedComponent, type) => {
     try {
       if (!selectedComponent || !selectedComponent._id) {
-        console.error('Selected component or ID is invalid');
+        console.error('Selected component or ID is invalid')
         return;
       }
   
       const buildId = `${props.userData.current_build}`;
       const response = await axios.put(`${BASE_URL}builds/${buildId}`, {
         [type]: selectedComponent._id,
-      });
+      })
   
       if (response.status === 200) {
         console.log(`Successfully added ${selectedComponent._id} to current build.`);
@@ -210,7 +210,7 @@ const Build = (props) => {
     if (currentBuild?._id) {
       setIsTotalCostUpdated(true)
     }
-  };
+  }
 
   const totalCostColor = () => {
     if (totalCost < 2500) {
@@ -269,7 +269,7 @@ const deleteBuildAndCreateNew = async () => {
   } catch (error) {
     console.error('Error deleting or creating a new build:', error)
   }
-};
+}
 
 
   
@@ -337,7 +337,7 @@ const deleteBuildAndCreateNew = async () => {
     <BuildModal />
     <Submit />
     </>
-  );
-};
+  )
+}
 
 export default Build

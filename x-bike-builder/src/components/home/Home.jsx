@@ -43,7 +43,7 @@ const Home = () => {
         <tbody>
         {list.map((listItem, index) => (
           <tr key={index}>
-            <td className="entry"><img style={{height: '20px' , width: '20px'}} src='./flash.png' /></td>
+            <td className="entry"><img style={{height: '20px' , width: '20px', margin: '20px'}} src='./flash.png' /></td>
             <td className="entry"><TooltipComponent data={listItem.frame[4]} /></td>
             <td className="entry"><TooltipComponent data={listItem.groupset[4]} /></td>
             <td className="entry"><TooltipComponent data={listItem.wheelset[4]} /></td>
@@ -73,7 +73,7 @@ const Home = () => {
         <tbody className="inter">
         {list.map((listItem, index) => (
           <tr key={index}>
-            <td className="inter"><img style={{height: '20px' , width: '20px'}} src='./flash.png' /><img style={{height: '20px' , width: '20px'}} src='./flash.png' /></td>
+            <td className="inter"><img style={{height: '20px' , width: '20px', margin: '20px 0px 0px 0px'}} src='./flash.png' /><img style={{height: '20px' , width: '20px', margin: '20px 0px 0px 0px'}} src='./flash.png' /></td>
             <td className="inter"><TooltipComponent data={listItem.frame[3]} /></td>
             <td className="inter"><TooltipComponent data={listItem.groupset[3]} /></td>
             <td className="inter"><TooltipComponent data={listItem.wheelset[3]} /></td>
@@ -86,7 +86,7 @@ const Home = () => {
             ))}
           {list.map((listItem, index) => (
           <tr key={index}>
-            <td className="inter"><img style={{height: '20px' , width: '20px'}} src='./flash.png' /><img style={{height: '20px' , width: '20px'}} src='./flash.png' /></td>
+            <td className="inter"><img style={{height: '20px' , width: '20px', margin: '20px 0px 0px 0px'}} src='./flash.png' /><img style={{height: '20px' , width: '20px', margin: '20px 0px 0px 0px'}} src='./flash.png' /></td>
             <td className="inter"><TooltipComponent data={listItem.frame[2]} /></td>
             <td className="inter"><TooltipComponent data={listItem.groupset[2]} /></td>
             <td className="inter"><TooltipComponent data={listItem.wheelset[2]} /></td>
@@ -116,7 +116,7 @@ const Home = () => {
         <tbody>
         {list.map((listItem, index) => (
           <tr key={index}>
-            <td className="pro"><img style={{height: '20px' , width: '20px'}} src='./flash.png' /><img style={{height: '20px' , width: '20px'}} src='./flash.png' /><img style={{height: '20px' , width: '20px'}} src='./flash.png' /></td>
+            <td className="pro"><img style={{height: '20px' , width: '20px', margin: '20px 0px 0px 0px'}} src='./flash.png' /><img style={{height: '20px' , width: '20px', margin: '20px 0px 0px 0px'}} src='./flash.png' /><img style={{height: '20px' , width: '20px', margin: '20px 0px 0px 0px'}} src='./flash.png' /></td>
             <td className="pro"><TooltipComponent data={listItem.frame[1]} /></td>
             <td className="pro"><TooltipComponent data={listItem.groupset[1]}/></td>
             <td className="pro"><TooltipComponent data={listItem.wheelset[1]}/></td>
@@ -129,7 +129,7 @@ const Home = () => {
             ))}
           {list.map((listItem, index) => (
           <tr key={index}>
-            <td className="pro"><img style={{height: '20px' , width: '20px'}} src='./flash.png' /><img style={{height: '20px' , width: '20px'}} src='./flash.png' /><img style={{height: '20px' , width: '20px'}} src='./flash.png' /></td>
+            <td className="pro"><img style={{height: '20px' , width: '20px', margin: '20px 0px 0px 0px'}} src='./flash.png' /><img style={{height: '20px' , width: '20px', margin: '20px 0px 0px 0px'}} src='./flash.png' /><img style={{height: '20px' , width: '20px', margin: '20px 0px 0px 0px'}} src='./flash.png' /></td>
             <td className="pro"><TooltipComponent data={listItem.frame[0]} /></td>
             <td className="pro"><TooltipComponent data={listItem.groupset[0]}/></td>
             <td className="pro"><TooltipComponent data={listItem.wheelset[0]}/></td>
