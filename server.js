@@ -50,6 +50,7 @@ app.get('/builds', async (req, res) => {
     }
 })
 
+
 //list routes
 app.get('/lists', listController.getAllLists)
 app.get('/lists/:id', listController.getOneList)

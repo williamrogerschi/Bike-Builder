@@ -5,6 +5,7 @@ import './build.css';
 import axios from 'axios';
 import { BASE_URL } from '../../global';
 import BuildModal from '../currentBuild/CurrentBuild'
+import Submit from '../Submit/Submit'
 
 
 const Build = (props) => {
@@ -24,6 +25,7 @@ const Build = (props) => {
     fontFamily: 'Manrope, sans-serif',
     fontWeight: '300',
   }
+
 
 
 
@@ -277,7 +279,8 @@ const deleteBuildAndCreateNew = async () => {
     <div className='build-table'>
       <Table responsive='md'>
         <thead className='build-header' style={buildStyle}>
-          <tr>
+
+          <tr className='row-height'>
             <th style={buildStyle}>Component</th>
             <th style={buildStyle}>Selection</th>
             <th style={buildStyle}>Name</th>
@@ -285,10 +288,11 @@ const deleteBuildAndCreateNew = async () => {
             <th style={buildStyle}>Description</th>
             <th style={buildStyle}>Price</th>
           </tr>
+
         </thead>
-        <tbody>
+        <tbody className='build-content'>
           {Object.keys(components).map((componentType) => (
-            <tr key={componentType}>
+            <tr className='row-height' key={componentType}>
               <td style={buildStyle}>{componentType}</td>
               <td style={buildStyle}>
               <Form.Select
@@ -327,6 +331,7 @@ const deleteBuildAndCreateNew = async () => {
     </div>
         <div className='delete-container'><button type='button' className='delete-build-btn' style={buttonStyle} onClick={deleteBuildAndCreateNew}>Delete Build</button></div>
     <BuildModal />
+    <Submit />
     </>
   );
 };

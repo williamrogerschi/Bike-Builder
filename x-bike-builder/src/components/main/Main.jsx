@@ -40,7 +40,7 @@ const Main = () => {
           <Header userData={userData} setUserData={setUserData}/>
         </div>
         <Routes>
-            <Route path='/' element={<Home userData={userData} setUserData={setUserData}/>}/>
+            <Route path='/' element={<Home userData={userData} setUserData={setUserData} setUpdateUser={setUpdateUser} fetchUserData={fetchUserData} />}/>
             <Route path='/Build' element={<Build userData={userData} setUserData={setUserData} setUpdateUser={setUpdateUser} fetchUserData={fetchUserData}/>}/>
           </Routes>
       </div>

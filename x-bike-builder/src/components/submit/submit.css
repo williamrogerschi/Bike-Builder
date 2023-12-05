@@ -1,0 +1,5 @@
+.submit-build {
+    display: flex;
+    justify-content: baseline;
+    padding-left: 33px;
+}

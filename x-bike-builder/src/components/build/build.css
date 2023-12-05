@@ -131,4 +131,8 @@ input.build-name {
   color: #81667a;
 }
 
-
+.row-height {
+  height: 3rem !important;
+  max-height: 5rem !important;
+  overflow-y: scroll;
+}
