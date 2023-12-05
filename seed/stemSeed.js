@@ -26,7 +26,7 @@ const stemSeed = async () => {
         {
             name: 'SL Sprint',
             brand: 'ZIPP',
-            description: `The SL Sprint Stem is an ideal balance of stiffness and lightweight. The stem weighs in at just 1.8g per newton meter of stiffness using SRAM's Exogram technology. Designed with feedback from top pros to meet the unrelenting demands of Grand Tour sprinters. Zipp also tapped into expertise gained from its pioneering carbon stems and exhaustively researched the marketplace to create the SL Sprint Stem. The SL Sprint comes with its own stem cap that's designed to be aerodynamically efficient by blending into the stem body. Available in six sizes ranging from 90 to 140mm to meet any rider's fit needs.`,
+            description: `Stiff, lightweight stem with aerodynamic design, multiple sizes available for optimal fit.`,
             material: [carbon._id],
             image: 'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/stems/stems/st-sl-sprint-a3/productassets_st-sl-spnt-a3_fg/stslsprint31812110118mtbka3csides.png?w=1600&quality=80&format=webp',
             level: [pro._id],
@@ -44,7 +44,7 @@ const stemSeed = async () => {
         {
             name: 'Service Course SL',
             brand: 'ZIPP',
-            description: `Zipp's Service Course SL Stem, crafted from 7075 aluminum, features a shape that's strong and lightweight, resulting in a best-in-class 1.85 grams per newton meter of stiffness. That results in no-flex sprints and accelerations. To meet every rider's fit needs, the stem is available in ±6° and ±17° angles and seven lengths from 70 to 130mm as well as a 140 & 150mm lengths for the ±6° stem only. This stem is a favorite of Zipp ambassadors and pro athletes.`,
+            description: `Strong, lightweight aluminum stem with various angles and lengths for customized fit.`,
             material: [carbon._id],
             image: 'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/stems/stems/st-service-course-sl-b2/productassets_st-sc-sl-b2_fg/stscsl31861001125bdbkb2c3qs.png?w=1000',
             level: [intermediate._id],

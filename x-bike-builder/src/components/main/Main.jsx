@@ -35,7 +35,7 @@ const Main = () => {
 
   return (
     <>
-      <div className='main'>
+      <div className='main-content'>
         <div className='header-container'>
           <Header userData={userData} setUserData={setUserData}/>
         </div>
@@ -43,8 +43,9 @@ const Main = () => {
             <Route path='/' element={<Home userData={userData} setUserData={setUserData} setUpdateUser={setUpdateUser} fetchUserData={fetchUserData} />}/>
             <Route path='/Build' element={<Build userData={userData} setUserData={setUserData} setUpdateUser={setUpdateUser} fetchUserData={fetchUserData}/>}/>
           </Routes>
+          <Footer />
       </div>
-      <Footer />
+
     </>
   )
 }

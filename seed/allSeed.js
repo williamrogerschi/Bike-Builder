@@ -1,5 +1,5 @@
 const db = require('../db/index')
-const { Levels, Material, Wheels, User, Build, Frame, Group, Handlebar, Saddle, Seatpost, Stem, Tires } = require('../models/Index.js')
+const { Levels, Material, Wheels, User, Build, Frame, Group, Handlebar, Saddle, Seatpost, Stem, Tires, List } = require('../models/Index.js')
 
 const { levelSeed } = require('./levelSeed')
 const { materialSeed } = require('./materialSeed')

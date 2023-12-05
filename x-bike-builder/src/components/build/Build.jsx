@@ -11,7 +11,6 @@ import Submit from '../Submit/Submit'
 const Build = (props) => {
 
   const buildStyle = {
-    // backgroundColor: 'rgb(233,229,221)',
     // borderBottom: '1px solid grey',
     // borderRadius: '4px',
     // border: '1px solid lightgrey',
@@ -24,6 +23,11 @@ const Build = (props) => {
   const buttonStyle ={
     fontFamily: 'Manrope, sans-serif',
     fontWeight: '300',
+  }
+  const fontStyle = {
+    fontFamily: 'Manrope, sans-serif',
+    fontWeight: '400',
+    fontSize: '14px',
   }
 
 
@@ -280,7 +284,7 @@ const deleteBuildAndCreateNew = async () => {
       <Table responsive='md'>
         <thead className='build-header' style={buildStyle}>
 
-          <tr className='row-height'>
+          <tr className='hidden'>
             <th style={buildStyle}>Component</th>
             <th style={buildStyle}>Selection</th>
             <th style={buildStyle}>Name</th>
@@ -292,9 +296,9 @@ const deleteBuildAndCreateNew = async () => {
         </thead>
         <tbody className='build-content'>
           {Object.keys(components).map((componentType) => (
-            <tr className='row-height' key={componentType}>
-              <td style={buildStyle}>{componentType}</td>
-              <td style={buildStyle}>
+            <tr className='build-rows' key={componentType}>
+              <td className='build-rows'  style={fontStyle}>{componentType}</td>
+              <td className='build-rows' style={buildStyle}>
               <Form.Select
   className='build-dd'
   onChange={(e) => {
@@ -311,14 +315,14 @@ const deleteBuildAndCreateNew = async () => {
   ))}
 </Form.Select>
               </td>
-              <td style={buildStyle}>{names[componentType]}</td>
-              <td style={buildStyle}>
+              <td className='build-rows' style={buildStyle}>{names[componentType]}</td>
+              <td className='build-rows' >
               {images[componentType] && (
                   <img src={images[componentType]} alt="Component" style={{ maxWidth: '150px', maxHeight: '150px' }} />
                 )}
               </td>
-              <td style={buildStyle}>{descriptions[componentType]}</td>
-              <td style={buildStyle}> {prices[componentType]}</td>
+              <td className='build-rows' >{descriptions[componentType]}</td>
+              <td className='build-rows'  style={buildStyle}> {prices[componentType]}</td>
             </tr>
           ))}
         </tbody>

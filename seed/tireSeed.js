@@ -22,7 +22,7 @@ const tireSeed = async () => {
       {
         name: 'Corsa PRO',
         brand: 'Vittoria',
-        description: `Ultimate cornering grip in wet or dry conditions. Reinforced puncture resistance. A supple construction that reduces rolling resistance and makes chattery chip seal feel like freshly laid tarmac. The Corsa PRO combines the convenience of a tubeless-ready clincher platform with the pedigree of the world’s most successful racing tire, proven in the rarefied air of France’s highest passes and the punchy finales of the classics alike.`,
+        description: `Tubeless-ready clincher offering grip, puncture resistance, low rolling resistance, ideal for diverse road conditions.`,
         image: 'https://vittoria.com/cdn/shop/files/corsa-pro-road-pro-competition-tubeless-ready-1.webp?v=1697534448&width=1600',
         color: 'Tan',
         level: [pro._id],
@@ -40,7 +40,7 @@ const tireSeed = async () => {
       {
         name: 'Panaracer Protite',
         brand: 'Panaracer',
-        description: `The Pasela ProTire is available in a wide range of sizes. It incorporates ProTite technology for puncture protection and has two excellent all around tread patterns. Available in a folding or steel bead configuration. A series renewal offering the same basic performance with enhanced puncture resistances.`,
+        description: `Available in multiple sizes with enhanced puncture resistance, all-around tread patterns in folding or steel bead.`,
         image: 'https://www.panaracerusa.com/cdn/shop/products/PASELAPRO-A_3ec43c9f-2c58-4e02-8177-9569aa5605d2_1800x1800.jpg?v=1591906857',
         color: 'Tan',
         level: [entry._id],

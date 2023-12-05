@@ -6,10 +6,9 @@ font-family: 'Poppins', sans-serif; */
 
 
 #root {
-  /* max-width: 1280px; */
-  /* height: 100vh; */
   margin: 0 auto;
   text-align: center;
   background-color: rgb(233,229,221);
 }
+
 

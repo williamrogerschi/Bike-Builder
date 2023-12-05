@@ -131,8 +131,82 @@ input.build-name {
   color: #81667a;
 }
 
-.row-height {
-  height: 3rem !important;
-  max-height: 5rem !important;
-  overflow-y: scroll;
+/* @media screen and (max-width: 800px) {
+  main {
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow-wrap:inherit;
+  height: auto;
+  max-width: max-content;
+  width: auto;
+  margin-bottom: 10px;
+  }
+} */
+
+/* @media screen and (max-width: 800px) {
+  tbody {
+  display:flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow-wrap:inherit;
+  height: auto;
+  max-width: max-content;
+  width: auto;
+  margin-bottom: 10px;
+  }
+} */
+
+@media screen and (max-width: 800px) {
+  tr.hidden {
+display: none !important
+  }
 }
+
+@media screen and (max-width: 800px) {
+  tr.build-rows {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 10px;
+    background-color: white;
+    max-width: 400px;
+    width: 100%;
+    border-bottom: 1px solid white;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  td.build-rows {
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow: hidden;
+  height: auto;
+  max-width: max-content;
+  width: auto;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .build-table {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow: hidden;
+  height: auto;
+  max-width: max-content;
+  width: auto;
+  padding: 12px;
+  margin: 0px;
+  }
+}
+

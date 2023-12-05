@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Table from 'react-bootstrap/Table';
-import "./home.css";
+import './home.css';
 import axios from 'axios'
 import { BASE_URL } from '../../global'
+import TooltipComponent from "../tooltip/Tooltip";
 
 const Home = () => {
   const [list, setList] = useState([])
@@ -43,14 +44,14 @@ const Home = () => {
         {list.map((listItem, index) => (
           <tr key={index}>
             <td className="entry"><img style={{height: '20px' , width: '20px'}} src='./flash.png' /></td>
-            <td className="entry">{listItem.frame[4]?.name || 'N/A'}</td>
-            <td className="entry">{listItem.groupset[4]?.name || 'N/A'}</td>
-            <td className="entry">{listItem.wheelset[4]?.name || 'N/A'}</td>
-            <td className="entry">{listItem.tires[3]?.name || 'N/A'}</td>
-            <td className="entry">{listItem.handlebar[4]?.name || 'N/A'}</td>
-            <td className="entry">{listItem.stem[4]?.name || 'N/A'}</td>
-            <td className="entry">{listItem.seatpost[4]?.name || 'N/A'}</td>
-            <td className="entry">{listItem.saddle[3]?.name || 'N/A'}</td>
+            <td className="entry"><TooltipComponent data={listItem.frame[4]} /></td>
+            <td className="entry"><TooltipComponent data={listItem.groupset[4]} /></td>
+            <td className="entry"><TooltipComponent data={listItem.wheelset[4]} /></td>
+            <td className="entry"><TooltipComponent data={listItem.tires[3]} /></td>
+            <td className="entry"><TooltipComponent data={listItem.handlebar[4]} /></td>
+            <td className="entry"><TooltipComponent data={listItem.stem[4]} /></td>
+            <td className="entry"><TooltipComponent data={listItem.seatpost[4]} /></td>
+            <td className="entry"><TooltipComponent data={listItem.saddle[3]} /></td>
           </tr>
             ))}
         </tbody>
@@ -73,27 +74,27 @@ const Home = () => {
         {list.map((listItem, index) => (
           <tr key={index}>
             <td className="inter"><img style={{height: '20px' , width: '20px'}} src='./flash.png' /><img style={{height: '20px' , width: '20px'}} src='./flash.png' /></td>
-            <td className="inter">{listItem.frame[3]?.name || 'N/A'}</td>
-            <td className="inter">{listItem.groupset[3]?.name || 'N/A'}</td>
-            <td className="inter">{listItem.wheelset[3]?.name || 'N/A'}</td>
-            <td className="inter">{listItem.tires[3]?.name || 'N/A'}</td>
-            <td className="inter">{listItem.handlebar[3]?.name || 'N/A'}</td>
-            <td className="inter">{listItem.stem[3]?.name || 'N/A'}</td>
-            <td className="inter">{listItem.seatpost[3]?.name || 'N/A'}</td>
-            <td className="inter">{listItem.saddle[2]?.name || 'N/A'}</td>
+            <td className="inter"><TooltipComponent data={listItem.frame[3]} /></td>
+            <td className="inter"><TooltipComponent data={listItem.groupset[3]} /></td>
+            <td className="inter"><TooltipComponent data={listItem.wheelset[3]} /></td>
+            <td className="inter"><TooltipComponent data={listItem.tires[2]} /></td>
+            <td className="inter"><TooltipComponent data={listItem.handlebar[3]} /></td>
+            <td className="inter"><TooltipComponent data={listItem.stem[3]} /></td>
+            <td className="inter"><TooltipComponent data={listItem.seatpost[3]} /></td>
+            <td className="inter"><TooltipComponent data={listItem.saddle[3]} /></td>
           </tr>
             ))}
           {list.map((listItem, index) => (
           <tr key={index}>
             <td className="inter"><img style={{height: '20px' , width: '20px'}} src='./flash.png' /><img style={{height: '20px' , width: '20px'}} src='./flash.png' /></td>
-            <td className="inter">{listItem.frame[2]?.name || 'N/A'}</td>
-            <td className="inter">{listItem.groupset[2]?.name || 'N/A'}</td>
-            <td className="inter">{listItem.wheelset[2]?.name || 'N/A'}</td>
-            <td className="inter">{listItem.tires[2]?.name || 'N/A'}</td>
-            <td className="inter">{listItem.handlebar[2]?.name || 'N/A'}</td>
-            <td className="inter">{listItem.stem[2]?.name || 'N/A'}</td>
-            <td className="inter">{listItem.seatpost[2]?.name || 'N/A'}</td>
-            <td className="inter">{listItem.saddle[2]?.name || 'N/A'}</td>
+            <td className="inter"><TooltipComponent data={listItem.frame[2]} /></td>
+            <td className="inter"><TooltipComponent data={listItem.groupset[2]} /></td>
+            <td className="inter"><TooltipComponent data={listItem.wheelset[2]} /></td>
+            <td className="inter"><TooltipComponent data={listItem.tires[2]} /></td>
+            <td className="inter"><TooltipComponent data={listItem.handlebar[2]} /></td>
+            <td className="inter"><TooltipComponent data={listItem.stem[2]} /></td>
+            <td className="inter"><TooltipComponent data={listItem.seatpost[2]} /></td>
+            <td className="inter"><TooltipComponent data={listItem.saddle[2]} /></td>
           </tr>
             ))}
         </tbody>
@@ -116,27 +117,27 @@ const Home = () => {
         {list.map((listItem, index) => (
           <tr key={index}>
             <td className="pro"><img style={{height: '20px' , width: '20px'}} src='./flash.png' /><img style={{height: '20px' , width: '20px'}} src='./flash.png' /><img style={{height: '20px' , width: '20px'}} src='./flash.png' /></td>
-            <td className="pro">{listItem.frame[1]?.name || 'N/A'}</td>
-            <td className="pro">{listItem.groupset[1]?.name || 'N/A'}</td>
-            <td className="pro">{listItem.wheelset[1]?.name || 'N/A'}</td>
-            <td className="pro">{listItem.tires[1]?.name || 'N/A'}</td>
-            <td className="pro">{listItem.handlebar[1]?.name || 'N/A'}</td>
-            <td className="pro">{listItem.stem[1]?.name || 'N/A'}</td>
-            <td className="pro">{listItem.seatpost[1]?.name || 'N/A'}</td>
-            <td className="pro">{listItem.saddle[1]?.name || 'N/A'}</td>
+            <td className="pro"><TooltipComponent data={listItem.frame[1]} /></td>
+            <td className="pro"><TooltipComponent data={listItem.groupset[1]}/></td>
+            <td className="pro"><TooltipComponent data={listItem.wheelset[1]}/></td>
+            <td className="pro"><TooltipComponent data={listItem.tires[1]}/></td>
+            <td className="pro"><TooltipComponent data={listItem.handlebar[1]}/></td>
+            <td className="pro"><TooltipComponent data={listItem.stem[1]}/></td>
+            <td className="pro"><TooltipComponent data={listItem.seatpost[1]}/></td>
+            <td className="pro"><TooltipComponent data={listItem.saddle[1]}/></td>
           </tr>
             ))}
           {list.map((listItem, index) => (
           <tr key={index}>
             <td className="pro"><img style={{height: '20px' , width: '20px'}} src='./flash.png' /><img style={{height: '20px' , width: '20px'}} src='./flash.png' /><img style={{height: '20px' , width: '20px'}} src='./flash.png' /></td>
-            <td className="pro">{listItem.frame[0]?.name || 'N/A'}</td>
-            <td className="pro">{listItem.groupset[0]?.name || 'N/A'}</td>
-            <td className="pro">{listItem.wheelset[0]?.name || 'N/A'}</td>
-            <td className="pro">{listItem.tires[0]?.name || 'N/A'}</td>
-            <td className="pro">{listItem.handlebar[0]?.name || 'N/A'}</td>
-            <td className="pro">{listItem.stem[0]?.name || 'N/A'}</td>
-            <td className="pro">{listItem.seatpost[0]?.name || 'N/A'}</td>
-            <td className="pro">{listItem.saddle[0]?.name || 'N/A'}</td>
+            <td className="pro"><TooltipComponent data={listItem.frame[0]} /></td>
+            <td className="pro"><TooltipComponent data={listItem.groupset[0]}/></td>
+            <td className="pro"><TooltipComponent data={listItem.wheelset[0]}/></td>
+            <td className="pro"><TooltipComponent data={listItem.tires[0]}/></td>
+            <td className="pro"><TooltipComponent data={listItem.handlebar[0]}/></td>
+            <td className="pro"><TooltipComponent data={listItem.stem[0]}/></td>
+            <td className="pro"><TooltipComponent data={listItem.seatpost[0]}/></td>
+            <td className="pro"><TooltipComponent data={listItem.saddle[0]}/></td>
           </tr>
             ))}
         </tbody>
