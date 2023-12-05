@@ -1,16 +1,17 @@
 .centered-container {
+    display: flex;
     position: fixed;
-    top: 40%;
-    left: 60%;
+    top: 30%;
+    left: 55%;
     transform: translate(30%, -99%);
     border: 1px solid rgb(198, 189, 189);
     border-radius: 4px;
     background-color: #a6b5bc;
-    padding: 20px;
+    padding: 10px;
     box-shadow: 0 0 10px rgba(136, 131, 131, 0.2);
     text-align: center;
-    width: 300px;
-    height: auto;
+    width: 230px;
+    height: 230px;
   }
 
   .centered-container:hover{

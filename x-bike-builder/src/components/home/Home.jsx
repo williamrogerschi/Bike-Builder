@@ -4,6 +4,9 @@ import './home.css';
 import axios from 'axios'
 import { BASE_URL } from '../../global'
 import TooltipComponent from "../tooltip/Tooltip";
+import EntryDiv from "../accordion/Accordion";
+import InterDiv from "../accordion/AccordionInter";
+import ProDiv from "../accordion/AccordionPro";
 
 const Home = () => {
   const [list, setList] = useState([])
@@ -56,6 +59,7 @@ const Home = () => {
             ))}
         </tbody>
       </Table>
+      <EntryDiv />
       <Table responsive="sm">
         <thead className="thead">
           <tr>
@@ -99,6 +103,7 @@ const Home = () => {
             ))}
         </tbody>
       </Table>
+      <InterDiv />
       <Table responsive="sm">
         <thead className="thead">
           <tr>
@@ -142,6 +147,7 @@ const Home = () => {
             ))}
         </tbody>
       </Table>
+      <ProDiv />
       </div>
     </div>
   </>

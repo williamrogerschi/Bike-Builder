@@ -1,0 +1,34 @@
+button.accordion-button.collapsed {
+    background-color: rgb(233,229,221);
+    width: 100%;
+    padding: 0px;
+    margin: 0;
+}
+button.accordion-button {
+    width: 100%;
+    padding: 0px;
+    margin: 0;
+}
+.accordion {
+    padding: 0px 20px;
+}
+div.pro-acc.accordion-body {
+    background-color: #81667a8a;
+    height: auto;
+    padding: 20px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    overflow: hidden;
+}
+
+.pro-acc .accordion-button {
+    background-color: #81667a8a;
+  }
+
+  .pro-acc .accordion-button.collapsed {
+    background-color: #81667a8a;
+  }
+
+.accordion-collapse.collapse.show {
+    background-color: yellow;
+}
