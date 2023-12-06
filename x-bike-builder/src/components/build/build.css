@@ -4,12 +4,18 @@ font-family: 'Gruppo', sans-serif;
 font-family: 'Manrope', sans-serif;
 font-family: 'Poppins', sans-serif; */
 
+/* box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px; --shopify */
+/* box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px; -- airbnb */
+/* box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px; -- aibnb */
+/* box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px; -- trello */
+
+
 .build-table {
-  margin: 0px 20px 0px 20px;
-  padding: 10px 20px 20px 20px;
+  margin: 20px 40px 20px 40px;
   font-family: 'Manrope', sans-serif;
   font-weight: 100;
   font-size: 12px;
+  border-radius: 8px;
 }
 
 thead.build-header {
@@ -23,45 +29,50 @@ td {
 
 button.build-btn {
   border: 1px solid #f8f9fa;
-  background-color: #f8f9fa;
+  background-color: rgb(233,229,221);
   padding: 6px 12px;
   border-radius: 0.375rem;
   font-weight: 300;
+  color: #2e2f30bc;
 }
 
 button.build-btn:hover {
   border: 1px solid #b9babbbc;
   background-color: #d8dadcbc;
+  color: #161617;
 }
 
 button.btn.btn-light {
   font-weight: 300;
   border: 1px solid #f8f9fa;
   background-color: #f8f9fa;
+  color: #2e2f30bc;
 }
 
 button.btn.btn-light:hover {
   border: 1px solid #b9babbbc;
   background-color: #d8dadcbc;
+  color: #161617;
 }
 
 button.delete-build-btn {
   border: 1px solid #f8f9fa;
-  background-color: #f8f9fa;
+  background-color: rgb(233,229,221);
   padding: 6px 12px;
   border-radius: 0.375rem;
   font-weight: 300;
+  color: #2e2f30bc;
 }
 
 button.delete-build-btn:hover {
   border: 1px solid #b9babbbc;
   background-color: #d8dadcbc;
+  color: #161617;
 }
 
 select.build-dd.form-select {
   background-color: rgb(233,229,221);
   border: 1px solid  rgb(135,133,127);
-  max-width: auto;
   font-family: 'Manrope', sans-serif;
   font-weight: 100;
   font-size: 12px;
@@ -80,6 +91,7 @@ select.build-dd.form-select:hover {
   flex-wrap: nowrap;
   font-weight: 300;
 }
+
 
 .delete-container {
   display: flex;
@@ -115,7 +127,7 @@ input.build-name {
 }
 
 .total-cost-box {
-  border: 1px solid #b9babbbc;
+  /* border: 1px solid #b9babbbc; */
   border-radius: 4px;
   background-color: #f8f9fa;
   padding: 10px;
@@ -131,35 +143,6 @@ input.build-name {
   color: #81667a;
 }
 
-/* @media screen and (max-width: 800px) {
-  main {
-  display:flex;
-  justify-content: center;
-  flex-direction: column;
-  flex-wrap: wrap;
-  overflow-wrap:inherit;
-  height: auto;
-  max-width: max-content;
-  width: auto;
-  margin-bottom: 10px;
-  }
-} */
-
-/* @media screen and (max-width: 800px) {
-  tbody {
-  display:flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
-  flex-wrap: wrap;
-  overflow-wrap:inherit;
-  height: auto;
-  max-width: max-content;
-  width: auto;
-  margin-bottom: 10px;
-  }
-} */
-
 @media screen and (max-width: 800px) {
   tr.hidden {
 display: none !important
@@ -174,9 +157,9 @@ display: none !important
     text-align: center;
     margin-bottom: 10px;
     background-color: white;
-    max-width: 400px;
-    width: 100%;
     border-bottom: 1px solid white;
+    border-radius: 6px;
+    width: 100%;
   }
 }
 
@@ -184,12 +167,14 @@ display: none !important
   td.build-rows {
   display:flex;
   justify-content: center;
+  align-items: center;
+  text-align: center;
   flex-direction: column;
   flex-wrap: wrap;
   overflow: hidden;
   height: auto;
-  max-width: max-content;
-  width: auto;
+  width: 100%;
+  max-width: calc(100vw - 26px);
   }
 }
 
@@ -203,14 +188,7 @@ display: none !important
   flex-wrap: wrap;
   overflow: hidden;
   height: auto;
-  max-width: max-content;
-  width: auto;
-  padding: 12px;
-  margin: 0px;
+  margin: 12px;
   }
 }
 
-.total-wrapper {
-  display: flex;
-  justify-content: space-between;
-}

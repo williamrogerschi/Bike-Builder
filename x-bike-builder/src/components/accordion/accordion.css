@@ -19,7 +19,7 @@ div.entry-acc.accordion-item {
     padding-top: 10px;
 }
 
-.use-content {
+.use-content-entry {
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -27,11 +27,30 @@ div.entry-acc.accordion-item {
     padding: 40px 10px 20px 10px;
 }
 
+.usecase-entry {
+    display: flex;
+    align-items: top;
+    justify-content: center;
+  }
+
 .p-1 {
     max-width: 30%;
     margin-right: 20px;
     margin-left: 20px;
+    width: 50%;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    background-color: rgb(185,202,191);
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    min-height: 120px;
+    padding: 20px;
 }
+
+.audience-entry {
+    display: flex;
+    justify-content: center;
+    padding: 40px 100px 12px 100px;
+  }
 
 .entry-acc .accordion-button {
     background-color: #d0f0b1b7;

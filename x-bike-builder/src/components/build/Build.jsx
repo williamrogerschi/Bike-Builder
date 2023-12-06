@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form'
 import './build.css'
 import axios from 'axios'
 import { BASE_URL } from '../../global'
-import BuildBar from '../buildNav/BuildBar'
+import BuildBar from '../buildBar/BuildBar'
 
 
 const Build = (props) => {
@@ -212,7 +212,6 @@ const Build = (props) => {
 				totalPrice += price
 			}
 		})
-		// console.log('Total price:', totalPrice);
 		setTotalCost(totalPrice.toFixed(0))
 
 		if (currentBuild?._id) {
@@ -236,7 +235,6 @@ const Build = (props) => {
 				total_price: newTotalPrice.toString(),
 			})
 			if (response.status === 200) {
-				// console.log(`Total price updated for build ${buildId} to ${newTotalPrice}`)
 				await fetchCurrentBuild()
 			} else {
 				console.error(`Failed to update total price`)
@@ -251,8 +249,8 @@ const Build = (props) => {
 			const userId = props.userData._id
 			const buildId = props.userData.current_build
 			await axios.delete(`${BASE_URL}builds/${buildId}`)
-      await props.fetchUserData()
-      console.log('userdata in deletbuild:', props.userData)
+			await props.fetchUserData()
+			console.log('userdata in deletbuild:', props.userData)
       
 			const newBuildResponse = await axios.post(`${BASE_URL}builds`, {
 				user: userId,
@@ -269,19 +267,19 @@ const Build = (props) => {
 				name: 'New Build',
 			})
 			const newBuildId = newBuildResponse.data.build._id
-      const savedBuilds = props.userData.saved_builds.filter(id => id !== buildId)
-      console.log('saved-builds:', savedBuilds)
+			const savedBuilds = props.userData.saved_builds.filter(id => id !== buildId)
+			console.log('saved-builds:', savedBuilds)
 
-      const newSavedBuilds = [...savedBuilds, newBuildId]
-      console.log('newSavedBuilds:', newSavedBuilds)
+			const newSavedBuilds = [...savedBuilds, newBuildId]
+			console.log('newSavedBuilds:', newSavedBuilds)
 
 			await axios.put(`${BASE_URL}users/${props.userData._id}`, {
 				current_build: newBuildId,
-        saved_builds: newSavedBuilds
+				saved_builds: newSavedBuilds
 			})
 			await props.fetchUserData()
-		} catch (error) {
-			console.error('Error deleting or creating a new build:', error)
+			} catch (error) {
+				console.error('Error deleting or creating a new build:', error)
 		}
 	}
 
@@ -289,7 +287,7 @@ const Build = (props) => {
 
 	return (
 		<>
-			<BuildBar deleteBuildAndCreateNew={deleteBuildAndCreateNew}/>
+			<BuildBar userData={props.userData} fetchUserData={props.fetchUserData} deleteBuildAndCreateNew={deleteBuildAndCreateNew}/>
 			<div className="build-table">
 				<Table responsive="md">
 					<thead className="build-header" style={buildStyle}>
@@ -356,12 +354,10 @@ const Build = (props) => {
 					</tbody>
 				</Table>
 			</div>
-			<div className='total-wrapper'>
-				<div className="total-cost-container">
+			<div className="total-cost-container">
 				<p className={`total-cost-box ${totalCostColor()}`}>
 					Total Cost: ${totalCost}
 				</p>
-			</div>
 			</div>
 		</>
 	)

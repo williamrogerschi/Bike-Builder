@@ -1,9 +1,9 @@
-import "./currentBuild.css";
 import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import axios from 'axios'
 import { BASE_URL } from '../../global'
+import "./buildmodal.css";
 
 
 function BuildModal(props) {
@@ -15,6 +15,7 @@ function BuildModal(props) {
   const buttonStyle = {
     fontFamily: 'Manrope, sans-serif',
     fontWeight: '300',
+    backgroundColor: 'rgb(233,229,221)',
   }
 
   const createNewBuild = async () => {
@@ -55,7 +56,7 @@ function BuildModal(props) {
   return (
     <>
     <div className="user-builds">
-      <Button variant="light" style={buttonStyle} onClick={handleShow}>
+      <Button className='build-btn' variant="light" style={buttonStyle} onClick={handleShow}>
         Builds
       </Button>
 

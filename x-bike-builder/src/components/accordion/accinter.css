@@ -13,7 +13,7 @@ button.accordion-button {
     padding: 0px 20px;
 }
 div.inter-acc.accordion-body {
-    background-color: #92b4a78d;
+    background-color: rgb(185,202,191);
     height: auto;
     padding: 20px;
     border-bottom-left-radius: 6px;
@@ -22,9 +22,41 @@ div.inter-acc.accordion-body {
 }
 
 .inter-acc .accordion-button {
-    background-color: #92b4a78d;
+    background-color: rgb(185,202,191);
   }
 
   .inter-acc .accordion-button.collapsed {
-    background-color: #92b4a78d;
+    background-color: rgb(185,202,191);
+  }
+
+  .use-content-inter {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-top: 20px;
+  }
+
+  .usecase-inter {
+    display: flex;
+    align-items: top;
+    justify-content: center;
+  }
+
+  .p-1{
+    max-width: 30%;
+    margin-right: 20px;
+    margin-left: 20px;
+    width: 50%;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    background-color: rgb(185,202,191);
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    min-height: 120px;
+    padding: 20px;
+  }
+
+  .audience-inter {
+    display: flex;
+    justify-content: center;
+    padding: 40px 100px 12px 100px;
   }

@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import Navbar from 'react-bootstrap/Navbar';
-import BuildModal from '../currentBuild/CurrentBuild';
-import './buildnav.css'
+import BuildModal from '../buildModal/BuildModal';
+import './buildbar.css'
 
 function BuildBar(props) {
 
+//   const inputStyle = {
+// 		fontFamily: 'Manrope, sans-serif',
+// 		fontWeight: '300',
+// 	}
 
-  const inputStyle = {
-		fontFamily: 'Manrope, sans-serif',
-		fontWeight: '300',
-	}
   const buttonStyle = {
     fontFamily: 'Manrope, sans-serif',
     fontWeight: '300',
+	backgroundColor: 'rgb(233,229,221)',
   }
 
   return (
@@ -20,8 +21,8 @@ function BuildBar(props) {
       <Navbar className='build-nav' bg="light" data-bs-theme="light">
 	  <BuildModal
 			userData={props.userData}
-			setUserData={props.setUserData}
-			setUpdateUser={props.setUpdateUser}
+			// setUserData={props.setUserData}
+			// setUpdateUser={props.setUpdateUser}
 			fetchUserData={props.fetchUserData}
 			createNewBuild={props.createNewBuild}
 			/>

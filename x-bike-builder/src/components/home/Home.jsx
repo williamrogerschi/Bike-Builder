@@ -28,12 +28,11 @@ const Home = () => {
   return (
   <>
     <div className="logical-table">
-      <div>
       <Table responsive="sm">
         <thead className="thead" >
-          <tr>
+          <tr className="entry">
             <th className="logic-head" style={{backgroundColor: '#d0f0b1b7', minWidth: '100px'}}>Entry</th>
-            <th className="logic-head" style={{backgroundColor: '#d0f0b1b7'}}>Frame</th>
+            <th className="logic-head" style={{backgroundColor: '#d0f0b1b7' }}>Frame</th>
             <th className="logic-head" style={{backgroundColor: '#d0f0b1b7'}}>Group</th>
             <th className="logic-head" style={{backgroundColor: '#d0f0b1b7'}}>Wheelset</th>
             <th className="logic-head" style={{backgroundColor: '#d0f0b1b7'}}>Tires</th>
@@ -63,7 +62,7 @@ const Home = () => {
       <Table responsive="sm">
         <thead className="thead">
           <tr>
-            <th className="logic-head" style={{backgroundColor: '#92b4a78d' , minWidth: '100px'}}>Intermediate</th>
+            <th className="logic-head" style={{backgroundColor: '#92b4a78d'}}>Intermediate</th>
             <th className="logic-head" style={{backgroundColor: '#92b4a78d'}}>Frame</th>
             <th className="logic-head" style={{backgroundColor: '#92b4a78d'}}>Group</th>
             <th className="logic-head" style={{backgroundColor: '#92b4a78d'}}>Wheelset</th>
@@ -149,7 +148,6 @@ const Home = () => {
       </Table>
       <ProDiv />
       </div>
-    </div>
   </>
   )
 }

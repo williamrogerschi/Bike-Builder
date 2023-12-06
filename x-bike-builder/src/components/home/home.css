@@ -61,17 +61,3 @@ table.table {
     overflow: hidden;
   }
   
-  /* Add border-radius property to table cells (td/th) */
-  .table td,
-  .table th {
-    padding: 8px;
-    text-align: left;
-    vertical-align: top;
-  }
-  
-  /* Adjust padding and styles for table headers */
-  .table th {
-    padding: 8px;
-    text-align: left;
-    vertical-align: top;
-  }
