@@ -4,8 +4,7 @@ import Form from 'react-bootstrap/Form'
 import './build.css'
 import axios from 'axios'
 import { BASE_URL } from '../../global'
-import BuildModal from '../currentBuild/CurrentBuild'
-import BuildBar from '../buildNav/BuildNav'
+import BuildBar from '../buildNav/BuildBar'
 
 
 const Build = (props) => {
@@ -290,7 +289,7 @@ const Build = (props) => {
 
 	return (
 		<>
-			<BuildBar />
+			<BuildBar deleteBuildAndCreateNew={deleteBuildAndCreateNew} />
 			<div className="build-table">
 				<Table responsive="md">
 					<thead className="build-header" style={buildStyle}>
@@ -364,6 +363,7 @@ const Build = (props) => {
 				</p>
 			</div>
 			</div>
+			{/* <BuildModal userData={props.userData} setUserData={props.setUserData} setUpdateUser={props.setUpdateUser} fetchUserData={props.fetchUserData}/> */}
 		</>
 	)
 }
