@@ -287,7 +287,7 @@ const Build = (props) => {
 
 	return (
 		<>
-			<BuildBar userData={props.userData} fetchUserData={props.fetchUserData} deleteBuildAndCreateNew={deleteBuildAndCreateNew} fetchCurrentBuild={props.fetchCurrentBuild}/>
+			<BuildBar userData={props.userData} fetchUserData={props.fetchUserData} deleteBuildAndCreateNew={deleteBuildAndCreateNew} fetchCurrentBuild={fetchCurrentBuild}/>
 			<div className="build-table">
 				<Table responsive="md">
 					<thead className="build-header" style={buildStyle}>

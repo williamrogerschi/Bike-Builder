@@ -39,7 +39,7 @@ function NameModal(props) {
         await props.fetchCurrentBuild()
         handleClose()
     } catch (error) {
-        console.warn('Error: please sign in!', error)
+        console.error('Error:', error)
     }
 }
 
