@@ -1,13 +1,13 @@
-.build-nav {
+/* .build-nav {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-around;
     margin: 0px 40px 0px 40px;
     border-radius: 8px;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
-}
+} */
 
 
-@media screen and (max-width: 800px) {
+/* @media screen and (max-width: 800px) {
     .build-nav {
     display:flex;
     justify-content: center;
@@ -17,9 +17,58 @@
     height: 40px;
     background-color: transparent;
     }
+  } */
+
+  .build-nav-main-container {
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    margin: 0px 40px 0px 40px;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
   }
 
-/* box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px; --shopify */
-/* box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px; -- airbnb */
-/* box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px; -- aibnb */
-/* box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px; -- trello */
+  @media screen and (max-width: 800px) {
+    .build-nav-main-container {
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      border-radius: 8px;
+      margin: 20px 10px 20px 10px;
+      box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+      width: 100%;
+      max-width: calc(100vw - 20px);
+    }
+  }
+
+  .build-name-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  @media screen and (max-width: 800px) {
+    .build-name-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 0px 40px 0px 40px;
+    }
+  }
+
+.buildbar-btn-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media screen and (max-width: 800px) {
+  .buildbar-btn-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+}
+

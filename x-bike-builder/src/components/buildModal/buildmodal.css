@@ -1,9 +1,12 @@
 .user-builds {
     display: flex;
     justify-content: baseline;
-    /* padding-left: 33px; */
 }
 
-.list-btn {
-    background-color: yellow;
+.build-list {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    margin: 0px;
 }

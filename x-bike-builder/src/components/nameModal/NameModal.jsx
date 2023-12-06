@@ -37,7 +37,8 @@ function NameModal(props) {
         }
         await props.fetchUserData()
         await props.fetchCurrentBuild()
-        handleClose()
+        await props.fetchCurrentBuildName()
+        handleClose(setShow(true))
     } catch (error) {
         console.error('Error:', error)
     }

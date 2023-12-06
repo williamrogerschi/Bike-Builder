@@ -1,76 +1,130 @@
+// import React, { useEffect, useState } from 'react';
+// import Button from 'react-bootstrap/Button';
+// import Offcanvas from 'react-bootstrap/Offcanvas';
+// import axios from 'axios'
+// import { BASE_URL } from '../../global'
+// import "./buildmodal.css";
+
+
+// function BuildModal(props) {
+
+//   const [show, setShow] = useState(false);
+//   const handleClose = () => setShow(false);
+//   const handleShow = () => setShow(true);
+
+//   const buttonStyle = {
+//     fontFamily: 'Manrope, sans-serif',
+//     fontWeight: '300',
+//     backgroundColor: 'rgb(233,229,221)',
+//     backgroundColor: 'white',
+//   }
+
+
+//   return (
+//     <>
+//     <div className="user-builds">
+//       <Button className='build-btn' variant="light" style={buttonStyle} onClick={handleShow}>
+//         Builds
+//       </Button>
+
+//       <Offcanvas show={show} onHide={handleClose}>
+//         <Offcanvas.Header closeButton>
+//           <Offcanvas.Title style={buttonStyle}>Builds List</Offcanvas.Title>
+//         </Offcanvas.Header>
+//         <Offcanvas.Body>
+          
+//         </Offcanvas.Body>
+//       </Offcanvas>
+//       </div>
+//     </>
+//   )
+// }
+
+// export default BuildModal
+
 import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import axios from 'axios'
-import { BASE_URL } from '../../global'
-import "./buildmodal.css";
-
+import axios from 'axios';
+import { BASE_URL } from '../../global';
+import './buildmodal.css';
 
 function BuildModal(props) {
-
   const [show, setShow] = useState(false);
+  const [buildNames, setBuildNames] = useState([]);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const buttonStyle = {
     fontFamily: 'Manrope, sans-serif',
     fontWeight: '300',
-    backgroundColor: 'rgb(233,229,221)',
+    backgroundColor: 'rgb(233, 229, 221)',
+  };
+
+  const fetchBuildNames = async () => {
+
+    const savedBuilds = props.userData.saved_builds
+    if (savedBuilds && savedBuilds.length > 0) {
+      const builds = [];
+
+      for (const buildId of savedBuilds) {
+        try {
+          const response = await axios.get(`${BASE_URL}builds/${buildId}`);
+          if (response.status === 200) {
+            builds.push({ id: buildId, name: response.data.name} );
+          }
+        } catch (error) {
+          console.error('Error fetching build name:', error);
+        }
+      }
+      setBuildNames(builds)
+    }
   }
 
-  const createNewBuild = async () => {
-		try {
-			const userId = props.userData._id
-			// const buildId = props.userData.current_build
-      await props.fetchUserData()
-      
-			const newBuildResponse = await axios.post(`${BASE_URL}builds`, {
-				user: userId,
-				frame: null,
-				groupset: null,
-				wheelset: null,
-				tires: null,
-				saddle: null,
-				handlebar: null,
-				stem: null,
-				seatpost: null,
-				total_price: '0',
-				isCurrent: true,
-				name: 'New Build',
-			})
-			const newBuildId = newBuildResponse.data.build._id
-      const savedBuilds = props.userData.saved_builds
-      const newSavedBuilds = [...savedBuilds, newBuildId]
+  const handleBuildClick = async (buildId) => {
+    try {
+      const userId = props.userData._id
+      console.log('buildId:', buildId)
+      console.log('userdata in buildmodal:', props.userData)
+      await axios.put(`${BASE_URL}users/${userId}`, {
+        current_build: buildId,
+      })
+      await props.fetchUserData();
+    } catch (error) {
+      console.error('Error setting current build:', error);
+    }
+    handleClose();
+  }
 
-			await axios.put(`${BASE_URL}users/${props.userData._id}`, {
-				current_build: newBuildId,
-        saved_builds: newSavedBuilds
-			})
-			await props.fetchUserData()
-		} catch (error) {
-			console.error('Error deleting or creating a new build:', error)
-		}
-	}
-
+  useEffect(() => {
+    if (show) {
+      fetchBuildNames();
+    }
+  }, [show]);
 
   return (
     <>
-    <div className="user-builds">
-      <Button className='build-btn' variant="light" style={buttonStyle} onClick={handleShow}>
-        Builds
-      </Button>
+      <div className="user-builds">
+        <button className="build-btn" style={buttonStyle} onClick={handleShow}>
+          Builds
+        </button>
 
-      <Offcanvas show={show} onHide={handleClose}>
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title style={buttonStyle}>Builds List</Offcanvas.Title>
-        </Offcanvas.Header>
-        <Offcanvas.Body>
-          <Button variant="light" style={buttonStyle} onClick={createNewBuild}>Create Build</Button>
-        </Offcanvas.Body>
-      </Offcanvas>
+        <Offcanvas show={show} onHide={handleClose}>
+          <Offcanvas.Header closeButton>
+            <Offcanvas.Title style={{backgroundColor: 'white', fontWeight: '300' , borderBottom: '1px solid grey'}}>Saved Builds</Offcanvas.Title>
+          </Offcanvas.Header>
+          <Offcanvas.Body>
+            <ul className='build-list'>
+              {buildNames.map((build, index) => (
+                <button className='build-btn' key={index}
+                onClick={() => handleBuildClick(build.id)}>{build.name}</button>
+              ))}
+            </ul>
+          </Offcanvas.Body>
+        </Offcanvas>
       </div>
     </>
-  )
+  );
 }
 
-export default BuildModal
+export default BuildModal;
