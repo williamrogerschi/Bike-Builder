@@ -187,7 +187,7 @@ const Build = (props) => {
 			await props.fetchUserData()
 			await fetchCurrentBuild()
 		} catch (error) {
-			console.error('Error:', error)
+			console.error('Error: please sign in!', error)
 		}
 	}
 
@@ -287,7 +287,7 @@ const Build = (props) => {
 
 	return (
 		<>
-			<BuildBar userData={props.userData} fetchUserData={props.fetchUserData} deleteBuildAndCreateNew={deleteBuildAndCreateNew}/>
+			<BuildBar userData={props.userData} fetchUserData={props.fetchUserData} deleteBuildAndCreateNew={deleteBuildAndCreateNew} fetchCurrentBuild={props.fetchCurrentBuild}/>
 			<div className="build-table">
 				<Table responsive="md">
 					<thead className="build-header" style={buildStyle}>

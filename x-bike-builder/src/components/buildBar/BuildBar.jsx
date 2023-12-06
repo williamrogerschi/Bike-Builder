@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import Navbar from 'react-bootstrap/Navbar';
 import BuildModal from '../buildModal/BuildModal';
+import NameModal from '../nameModal/NameModal';
 import './buildbar.css'
 
 function BuildBar(props) {
-
-//   const inputStyle = {
-// 		fontFamily: 'Manrope, sans-serif',
-// 		fontWeight: '300',
-// 	}
 
   const buttonStyle = {
     fontFamily: 'Manrope, sans-serif',
@@ -19,18 +15,19 @@ function BuildBar(props) {
   return (
     <>
       <Navbar className='build-nav' bg="light" data-bs-theme="light">
+		<div className='build-name-container'>
+			<p>PH</p>
+		</div>
 	  <BuildModal
 			userData={props.userData}
-			// setUserData={props.setUserData}
-			// setUpdateUser={props.setUpdateUser}
 			fetchUserData={props.fetchUserData}
 			createNewBuild={props.createNewBuild}
 			/>
 			  <div className='total-wrapper'>
-					<button type="button" className="build-btn" style={buttonStyle}>
-						{/* onClick='placeholderFunction()'> */}
-						Name Build
-					</button>
+		<NameModal
+				userData={props.userData}
+				fetchUserData={props.fetchUserData}
+				fetchCurrentBuild={props.fetchCurrentBuild} />
 					<button
 						type="button"
 						className="delete-build-btn"

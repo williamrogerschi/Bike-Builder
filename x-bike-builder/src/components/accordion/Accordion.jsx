@@ -9,7 +9,7 @@ function EntryDiv() {
 				<Accordion.Header className="entry-acc"></Accordion.Header>
 				<Accordion.Body className="entry-acc">
 					<div className="title-content">
-					<img className='pro-img' width='400px' height='300px' src='./lotdf22.jpg' />
+					<img className='pro-img' width='400px' height='300px' src='./entry.jpeg' />
 						<h6 style={{maxWidth: '50%'}}>
 							For entry-level or casual cyclists who are beginning their cycling
 							journey or ride occasionally for leisure and fitness purposes,
