@@ -20,7 +20,7 @@ function BuildModal(props) {
   const createNewBuild = async () => {
 		try {
 			const userId = props.userData._id
-			const buildId = props.userData.current_build
+			// const buildId = props.userData.current_build
       await props.fetchUserData()
       
 			const newBuildResponse = await axios.post(`${BASE_URL}builds`, {

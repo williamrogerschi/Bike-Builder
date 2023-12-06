@@ -289,7 +289,7 @@ const Build = (props) => {
 
 	return (
 		<>
-			<BuildBar deleteBuildAndCreateNew={deleteBuildAndCreateNew} />
+			<BuildBar deleteBuildAndCreateNew={deleteBuildAndCreateNew}/>
 			<div className="build-table">
 				<Table responsive="md">
 					<thead className="build-header" style={buildStyle}>
@@ -363,7 +363,6 @@ const Build = (props) => {
 				</p>
 			</div>
 			</div>
-			{/* <BuildModal userData={props.userData} setUserData={props.setUserData} setUpdateUser={props.setUpdateUser} fetchUserData={props.fetchUserData}/> */}
 		</>
 	)
 }

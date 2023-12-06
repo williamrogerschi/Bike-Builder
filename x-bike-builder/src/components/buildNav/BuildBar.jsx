@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Navbar from 'react-bootstrap/Navbar';
 import BuildModal from '../currentBuild/CurrentBuild';
-import axios from 'axios';
-import { BASE_URL } from '../../global'
 import './buildnav.css'
 
 function BuildBar(props) {
@@ -20,11 +18,17 @@ function BuildBar(props) {
   return (
     <>
       <Navbar className='build-nav' bg="light" data-bs-theme="light">
-        <BuildModal userData={props.userData} setUserData={props.setUserData} setUpdateUser={props.setUpdateUser} fetchUserData={props.fetchUserData}/>
+	  <BuildModal
+			userData={props.userData}
+			setUserData={props.setUserData}
+			setUpdateUser={props.setUpdateUser}
+			fetchUserData={props.fetchUserData}
+			createNewBuild={props.createNewBuild}
+			/>
 			  <div className='total-wrapper'>
 					<button type="button" className="build-btn" style={buttonStyle}>
 						{/* onClick='placeholderFunction()'> */}
-						Name ya build ya fuck!
+						Name Build
 					</button>
 					<button
 						type="button"
