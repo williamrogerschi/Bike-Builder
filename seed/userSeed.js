@@ -50,6 +50,7 @@ const userSeed = async () => {
 
       if (emptyBuildId) {
         user.current_build = emptyBuildId;
+        user.saved_builds = [emptyBuildId];
         await user.save();
         console.log(`Empty build created and associated with user: ${user.user_name}`);
       } else {

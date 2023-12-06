@@ -125,12 +125,13 @@ const getUserBuild = async (req, res) => {
             seatpost: null,
             total_price: "0",
             isCurrent: true,
-            name: "New Build", // Default name for a new build
+            name: "New Build",
             createdAt: new Date(),
             updatedAt: new Date(),
             __v: 0
         });
         await User.findByIdAndUpdate(userId, { current_build: newBuild._id });
+        await User.findByIdAndUpdate(userId, {saved_builds: [newBuild._id]})
         return res.status(200).json({ newBuildId: newBuild._id });
     } catch (error) {
         return res.status(500).json({ error: error.message });

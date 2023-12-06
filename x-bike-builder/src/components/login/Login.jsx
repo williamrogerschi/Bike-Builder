@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import axios from "axios"
 import './login.css'
 import { BASE_URL } from '../../global'
+// import Blog from "../blogin/BLogin"
 
 
 const Login = (props) => {
@@ -80,6 +81,7 @@ const Login = (props) => {
 
 
   return (
+    <>
     <div className="centered-container">
       <div className="content">
         {}
@@ -109,6 +111,7 @@ const Login = (props) => {
         <button className="login-btn" onClick={() => createUser()}>Sign Up</button>
       </div>
     </div>
+    </>
   )
 }
 

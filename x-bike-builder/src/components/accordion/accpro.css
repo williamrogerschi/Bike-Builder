@@ -28,7 +28,3 @@ div.pro-acc.accordion-body {
   .pro-acc .accordion-button.collapsed {
     background-color: #81667a8a;
   }
-
-.accordion-collapse.collapse.show {
-    background-color: yellow;
-}
