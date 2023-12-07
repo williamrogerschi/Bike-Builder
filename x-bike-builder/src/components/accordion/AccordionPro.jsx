@@ -23,7 +23,7 @@ function ProDiv() {
 						España, and other major cycling events. These bikes are engineered
 						to meet the demanding needs of professional riders seeking optimal
 						speed, agility, comfort, and aerodynamics. Key features and aspects
-						of these bikes include:
+						of these bikes include
 					</h6>
           </div>
           <div className='use-content-pro'>

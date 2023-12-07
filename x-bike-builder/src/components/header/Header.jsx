@@ -10,7 +10,6 @@ const Header = (props) => {
 	const [expanded, setExpanded] = useState(false)
 
 	useEffect(() => {
-		// Retrieve user data from local storage
 		const storedUserData = localStorage.getItem('userData')
 		if (storedUserData) {
 			const parsedUserData = JSON.parse(storedUserData)
@@ -65,7 +64,7 @@ const Header = (props) => {
 									className="nav-a"
 									onClick={() => {
 										props.userData ? handleLogout() : openContainer()
-										closeNavbar() // Close navbar when Login/Logout clicked
+										closeNavbar()
 									}}
 								>
 									{props.userData

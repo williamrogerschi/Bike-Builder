@@ -13,7 +13,7 @@ function EntryDiv() {
 						<h6 style={{maxWidth: '50%'}}>
 							For entry-level or casual cyclists who are beginning their cycling
 							journey or ride occasionally for leisure and fitness purposes,
-							here's an overview of an appropriate bike:
+							here's an overview of an appropriate bike
 						</h6>
 					</div>
 					<div className="use-content-entry">

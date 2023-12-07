@@ -256,7 +256,6 @@ const Build = (props) => {
 		  console.log('saved build list after deleting', props.userData.saved_builds.length)
 	  
 		  if (props.userData.saved_builds.length <= 1) {
-			// Create a new build if there are no saved builds
 			const newBuildResponse = await axios.post(`${BASE_URL}builds`, {
 			  user: userId,
 			  frame: null,

@@ -15,7 +15,7 @@ function InterDiv() {
         <div className='title-content'>
         <img className='pro-img' width='400px' height='300px' src='./giant.jpeg' />
 					<h6 style={{maxWidth: '50%'}}>
-          For amateur cyclists who actively race and invest significantly in cycling gear, the ideal bike would offer a balance between performance, durability, and value. Here's an overview of what such a racing bike might entail:
+          For amateur cyclists who actively race and invest significantly in cycling gear, the ideal bike would offer a balance between performance, durability, and value. Here's an overview of what such a racing bike might entail
 					</h6>
           </div>
           <div className='use-content-inter'>

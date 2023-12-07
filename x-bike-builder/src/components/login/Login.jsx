@@ -71,11 +71,8 @@ const Login = (props) => {
 			className="sign-in__wrapper"
 			style={{ backgroundImage: `url(${BackgroundImage})` }}
 		>
-			{/* Overlay */}
 			<div className="sign-in__backdrop"></div>
-			{/* Form */}
 			<Form className="shadow p-4 bg-white rounded" onSubmit={handleSubmit}>
-				{/* Header */}
 				<img
 					className="img-thumbnail mx-auto d-block mb-2"
 					src={Logo}
