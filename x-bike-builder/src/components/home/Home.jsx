@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import Table from 'react-bootstrap/Table';
-import './home.css';
+import React, { useState, useEffect } from "react"
+import Table from 'react-bootstrap/Table'
+import './home.css'
 import axios from 'axios'
 import { BASE_URL } from '../../global'
-import TooltipComponent from "../tooltip/Tooltip";
-import EntryDiv from "../accordion/Accordion";
-import InterDiv from "../accordion/AccordionInter";
-import ProDiv from "../accordion/AccordionPro";
+import TooltipComponent from "../tooltip/Tooltip"
+import EntryDiv from "../accordion/Accordion"
+import InterDiv from "../accordion/AccordionInter"
+import ProDiv from "../accordion/AccordionPro"
 
 const Home = () => {
   const [list, setList] = useState([])

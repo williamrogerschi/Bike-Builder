@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import './tooltip.css';
+import './tooltip.css'
 import Button from 'react-bootstrap/Button'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Tooltip from 'react-bootstrap/Tooltip'

@@ -1,4 +1,4 @@
-import Accordion from 'react-bootstrap/Accordion';
+import Accordion from 'react-bootstrap/Accordion'
 import React, { useState, useEffect } from "react"
 import './accpro.css'
 

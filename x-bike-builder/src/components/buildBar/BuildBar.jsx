@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import Navbar from 'react-bootstrap/Navbar';
-import BuildModal from '../buildModal/BuildModal';
-import NameModal from '../nameModal/NameModal';
+import BuildModal from '../buildModal/BuildModal'
+import NameModal from '../nameModal/NameModal'
 import axios from 'axios'
 import { BASE_URL } from '../../global'
 import './buildbar.css'
@@ -26,19 +25,19 @@ function BuildBar(props) {
 		try {
 		  if (!props.isDeleting) {
 			if (props.userData && props.userData.current_build) {
-			  const buildId = props.userData.current_build;
-			  const response = await axios.get(`${BASE_URL}builds/${buildId}`);
+			  const buildId = props.userData.current_build
+			  const response = await axios.get(`${BASE_URL}builds/${buildId}`)
 			  if (response.status === 200) {
-				setCurrentBuildName(response.data.name);
+				setCurrentBuildName(response.data.name)
 			  }
 			} else {
-			  setCurrentBuildName('');
+			  setCurrentBuildName('')
 			}
 		  }
 		} catch (error) {
-		  console.error('Error fetching current build name:', error);
+		  console.error('Error fetching current build name:', error)
 		}
-	  };
+	  }
 
   useEffect(() => {
 	fetchCurrentBuildName()
@@ -82,7 +81,7 @@ function BuildBar(props) {
   return (
     <>
 
-      {/* <Navbar className='build-nav' bg="light" data-bs-theme="light"> */}
+
 	  <div className='build-nav-main-container'>
 		<div className='build-name-container' style={nameStyle}>
 			{currentBuildName}
@@ -114,10 +113,9 @@ function BuildBar(props) {
 						onClick={props.deleteBuildAndCreateNew}>Delete Build</button></div>
 			 </div>
 			 </div>
-      {/* </Navbar> */}
 
     </>
-  );
+  )
 }
 
-export default BuildBar;
+export default BuildBar

@@ -1,4 +1,4 @@
-import Accordion from 'react-bootstrap/Accordion';
+import Accordion from 'react-bootstrap/Accordion'
 import React, { useState, useEffect } from "react"
 import './accinter.css'
 
@@ -46,4 +46,4 @@ function InterDiv() {
   )
 }
 
-export default InterDiv;
+export default InterDiv

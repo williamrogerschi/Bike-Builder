@@ -9,10 +9,6 @@ import BuildBar from '../buildBar/BuildBar'
 
 const Build = (props) => {
 	const buildStyle = {
-		// backgroundColor: 'rgb(233,229,221)',
-		// borderBottom: '1px solid grey',
-		// borderRadius: '4px',
-		// border: '1px solid lightgrey',
 		width: '100vh',
 	}
 	const inputStyle = {
@@ -211,8 +207,6 @@ const Build = (props) => {
 
 		Object.keys(prices).forEach((componentType) => {
 			const price = parseFloat(prices[componentType].replace(/\$/g, ''))
-			// console.log(`Parsed price for ${componentType}:`, price)
-
 			if (!isNaN(price)) {
 				totalPrice += price
 			}
@@ -251,13 +245,13 @@ const Build = (props) => {
 
 	const deleteBuildAndCreateNew = async () => {
 		try {
-		  setIsDeleting(true);
-		  const userId = props.userData._id;
-		  const buildId = props.userData.current_build;
+		  setIsDeleting(true)
+		  const userId = props.userData._id
+		  const buildId = props.userData.current_build
 	  
-		  await axios.delete(`${BASE_URL}builds/${buildId}`);
+		  await axios.delete(`${BASE_URL}builds/${buildId}`)
 		  console.log('deleted build id',buildId)
-		  await props.fetchUserData();
+		  await props.fetchUserData()
 
 		  console.log('saved build list after deleting', props.userData.saved_builds.length)
 	  
@@ -276,19 +270,19 @@ const Build = (props) => {
 			  total_price: '0',
 			  isCurrent: true,
 			  name: 'New Build',
-			});
+			})
 	  
-			const newBuildId = newBuildResponse.data.build._id;
+			const newBuildId = newBuildResponse.data.build._id
 	  
 			await axios.put(`${BASE_URL}users/${userId}`, {
 			  current_build: newBuildId,
 			  saved_builds: [newBuildId],
-			});
+			})
 	  
-			await props.fetchUserData();
+			await props.fetchUserData()
 		  } else {
-			// Set the first saved build as the current build
-			const firstSavedBuildId = props.userData.saved_builds[0];
+
+			const firstSavedBuildId = props.userData.saved_builds[0]
 			console.log('first saved build', firstSavedBuildId)
 
 			const newSavedBuilds = props.userData.saved_builds.filter(id => id !== buildId)
@@ -297,15 +291,15 @@ const Build = (props) => {
 			await axios.put(`${BASE_URL}users/${userId}`, {
 			  current_build: firstSavedBuildId,
 			  saved_builds: newSavedBuilds
-			});
+			})
 	  
-			await props.fetchUserData();
+			await props.fetchUserData()
 		  }
-		  setIsDeleting(false);
+		  setIsDeleting(false)
 		} catch (error) {
-		  console.error('Error deleting or creating a new build:', error);
+		  console.error('Error deleting or creating a new build:', error)
 		}
-	  };
+	  }
 	  
 
 

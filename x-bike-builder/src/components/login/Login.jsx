@@ -52,38 +52,6 @@ const Login = (props) => {
 		setUserName(event.target.value)
 	}
 
-	//   const addUser = async ()  => {
-	//     let existingUser = null
-	//     for (let i = 0; i < userData.length; i++) {
-	//       if (username == userData[i].user_name) {
-	//           console.log('user logged in: ', userData[i])
-	//           existingUser = userData[i]
-	//           break;
-	//       }
-	//     }
-	//     if (existingUser == null) {
-	//       const body = {
-	//         user_name: username,
-	//         current_build: currentBuild || null,
-	//         saved_builds: savedBuilds || null,
-	//       }
-	//       const response = await axios.post(`${BASE_URL}users/`, body)
-	//       console.log('new user: ',response.data.user)
-
-	//       props.setUserData(response.data.user)
-	//       props.onClose()
-	//       return response.data
-	//   }
-	// }
-
-	//   const createUser =  async () => {
-	//     console.log('Create Started..')
-
-	//         const response = await addUser().then(() => {
-	//           console.log('posted', response)
-	//         })
-	//     }
-
 	const handleSubmit = async (event) => {
 		event.preventDefault()
 		setLoading(true)

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+import React, { useState, useEffect } from 'react'
+import Button from 'react-bootstrap/Button'
+import Modal from 'react-bootstrap/Modal'
 import axios from 'axios'
 import { BASE_URL } from '../../global'
 import './namemodal.css'
@@ -16,9 +16,9 @@ function NameModal(props) {
 	backgroundColor: 'rgb(233,229,221)',
   }
 
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
 
   const setNameBuild = async () => {
     try {
@@ -41,7 +41,7 @@ function NameModal(props) {
         await props.fetchCurrentBuildName()
         handleClose(setShow(true))
       } else {
-        console.log('Cannot set name, no current build.');
+        console.log('Cannot set name, no current build.')
       }
     } catch (error) {
         console.error('Error:', error)
@@ -77,7 +77,7 @@ function NameModal(props) {
         </Modal.Footer>
       </Modal>
     </>
-  );
+  )
 }
 
-export default NameModal;
+export default NameModal
