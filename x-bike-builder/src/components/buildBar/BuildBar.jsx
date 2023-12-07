@@ -24,24 +24,25 @@ function BuildBar(props) {
 
 	const fetchCurrentBuildName = async () => {
 		try {
+		  if (!props.isDeleting) {
 			if (props.userData && props.userData.current_build) {
-			const buildId = props.userData.current_build
-			const response = await axios.get(`${BASE_URL}builds/${buildId}`)
-
-			if (response.status === 200) {
-				setCurrentBuildName(response.data.name)
+			  const buildId = props.userData.current_build;
+			  const response = await axios.get(`${BASE_URL}builds/${buildId}`);
+			  if (response.status === 200) {
+				setCurrentBuildName(response.data.name);
+			  }
+			} else {
+			  setCurrentBuildName('');
 			}
-		} else {
-			setCurrentBuildName('')
-		}
+		  }
 		} catch (error) {
-			console.error('Error fetching current build name:', error)
+		  console.error('Error fetching current build name:', error);
 		}
-	}
+	  };
 
   useEffect(() => {
 	fetchCurrentBuildName()
-  }, [props.userData])
+  }, [props.userData, props.isDeleting])
 
   const createNewBuild = async () => {
 	try {

@@ -36,6 +36,7 @@ const Build = (props) => {
 	const [currentBuild, setCurrentBuild] = useState([])
 	const [totalCost, setTotalCost] = useState('0')
 	const [isTotalCostUpdated, setIsTotalCostUpdated] = useState(false)
+	const [isDeleting, setIsDeleting] = useState(false)
 
 
 	const [components, setComponents] = useState({
@@ -248,55 +249,19 @@ const Build = (props) => {
 		}
 	}
 
-	// const deleteBuildAndCreateNew = async () => {
-	// 	try {
-	// 		const userId = props.userData._id
-	// 		const buildId = props.userData.current_build
-	// 		await axios.delete(`${BASE_URL}builds/${buildId}`)
-	// 		await props.fetchUserData()
-	// 		console.log('userdata in deletbuild:', props.userData)
-      
-	// 		const newBuildResponse = await axios.post(`${BASE_URL}builds`, {
-	// 			user: userId,
-	// 			frame: null,
-	// 			groupset: null,
-	// 			wheelset: null,
-	// 			tires: null,
-	// 			saddle: null,
-	// 			handlebar: null,
-	// 			stem: null,
-	// 			seatpost: null,
-	// 			total_price: '0',
-	// 			isCurrent: true,
-	// 			name: 'New Build',
-	// 		})
-	// 		const newBuildId = newBuildResponse.data.build._id
-	// 		const savedBuilds = props.userData.saved_builds.filter(id => id !== buildId)
-	// 		console.log('saved-builds:', savedBuilds)
-
-	// 		const newSavedBuilds = [...savedBuilds, newBuildId]
-	// 		console.log('newSavedBuilds:', newSavedBuilds)
-
-	// 		await axios.put(`${BASE_URL}users/${props.userData._id}`, {
-	// 			current_build: newBuildId,
-	// 			saved_builds: newSavedBuilds
-	// 		})
-	// 		await props.fetchUserData()
-	// 		} catch (error) {
-	// 			console.error('Error deleting or creating a new build:', error)
-	// 	}
-	// }
-
 	const deleteBuildAndCreateNew = async () => {
 		try {
+		  setIsDeleting(true);
 		  const userId = props.userData._id;
 		  const buildId = props.userData.current_build;
 	  
 		  await axios.delete(`${BASE_URL}builds/${buildId}`);
 		  console.log('deleted build id',buildId)
 		  await props.fetchUserData();
+
+		  console.log('saved build list after deleting', props.userData.saved_builds.length)
 	  
-		  if (props.userData.saved_builds.length === 0) {
+		  if (props.userData.saved_builds.length <= 1) {
 			// Create a new build if there are no saved builds
 			const newBuildResponse = await axios.post(`${BASE_URL}builds`, {
 			  user: userId,
@@ -336,6 +301,7 @@ const Build = (props) => {
 	  
 			await props.fetchUserData();
 		  }
+		  setIsDeleting(false);
 		} catch (error) {
 		  console.error('Error deleting or creating a new build:', error);
 		}
@@ -346,7 +312,7 @@ const Build = (props) => {
 
 	return (
 		<>
-			<BuildBar userData={props.userData} fetchUserData={props.fetchUserData} deleteBuildAndCreateNew={deleteBuildAndCreateNew} fetchCurrentBuild={fetchCurrentBuild}/>
+			<BuildBar userData={props.userData} fetchUserData={props.fetchUserData} deleteBuildAndCreateNew={deleteBuildAndCreateNew} fetchCurrentBuild={fetchCurrentBuild} isDeleting={isDeleting} />
 			<div className="build-table">
 				<Table responsive="md">
 					<thead className="build-header" style={buildStyle}>
