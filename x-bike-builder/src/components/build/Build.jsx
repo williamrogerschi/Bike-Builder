@@ -79,6 +79,7 @@ const Build = (props) => {
 		fetchData()
 	}, [])
 
+	
 	const fetchCurrentBuild = async () => {
 		try {
 			if (props.userData && props.userData.current_build) {
@@ -162,8 +163,11 @@ const Build = (props) => {
 	}
 
 	useEffect(() => {
-		fetchCurrentBuild()
-	}, [props.userData])
+		if (props.userData && props.userData.current_build) {
+		  fetchCurrentBuild()
+		}
+	  }, [props.userData])
+
 
 	const addToCurrentBuild = async (selectedComponent, type) => {
 		try {
@@ -244,44 +248,95 @@ const Build = (props) => {
 		}
 	}
 
+	// const deleteBuildAndCreateNew = async () => {
+	// 	try {
+	// 		const userId = props.userData._id
+	// 		const buildId = props.userData.current_build
+	// 		await axios.delete(`${BASE_URL}builds/${buildId}`)
+	// 		await props.fetchUserData()
+	// 		console.log('userdata in deletbuild:', props.userData)
+      
+	// 		const newBuildResponse = await axios.post(`${BASE_URL}builds`, {
+	// 			user: userId,
+	// 			frame: null,
+	// 			groupset: null,
+	// 			wheelset: null,
+	// 			tires: null,
+	// 			saddle: null,
+	// 			handlebar: null,
+	// 			stem: null,
+	// 			seatpost: null,
+	// 			total_price: '0',
+	// 			isCurrent: true,
+	// 			name: 'New Build',
+	// 		})
+	// 		const newBuildId = newBuildResponse.data.build._id
+	// 		const savedBuilds = props.userData.saved_builds.filter(id => id !== buildId)
+	// 		console.log('saved-builds:', savedBuilds)
+
+	// 		const newSavedBuilds = [...savedBuilds, newBuildId]
+	// 		console.log('newSavedBuilds:', newSavedBuilds)
+
+	// 		await axios.put(`${BASE_URL}users/${props.userData._id}`, {
+	// 			current_build: newBuildId,
+	// 			saved_builds: newSavedBuilds
+	// 		})
+	// 		await props.fetchUserData()
+	// 		} catch (error) {
+	// 			console.error('Error deleting or creating a new build:', error)
+	// 	}
+	// }
+
 	const deleteBuildAndCreateNew = async () => {
 		try {
-			const userId = props.userData._id
-			const buildId = props.userData.current_build
-			await axios.delete(`${BASE_URL}builds/${buildId}`)
-			await props.fetchUserData()
-			console.log('userdata in deletbuild:', props.userData)
-      
+		  const userId = props.userData._id;
+		  const buildId = props.userData.current_build;
+	  
+		  await axios.delete(`${BASE_URL}builds/${buildId}`);
+		  console.log('deleted build id',buildId)
+		  await props.fetchUserData();
+	  
+		  if (props.userData.saved_builds.length === 0) {
+			// Create a new build if there are no saved builds
 			const newBuildResponse = await axios.post(`${BASE_URL}builds`, {
-				user: userId,
-				frame: null,
-				groupset: null,
-				wheelset: null,
-				tires: null,
-				saddle: null,
-				handlebar: null,
-				stem: null,
-				seatpost: null,
-				total_price: '0',
-				isCurrent: true,
-				name: 'New Build',
-			})
-			const newBuildId = newBuildResponse.data.build._id
-			const savedBuilds = props.userData.saved_builds.filter(id => id !== buildId)
-			console.log('saved-builds:', savedBuilds)
-
-			const newSavedBuilds = [...savedBuilds, newBuildId]
-			console.log('newSavedBuilds:', newSavedBuilds)
-
-			await axios.put(`${BASE_URL}users/${props.userData._id}`, {
-				current_build: newBuildId,
-				saved_builds: newSavedBuilds
-			})
-			await props.fetchUserData()
-			} catch (error) {
-				console.error('Error deleting or creating a new build:', error)
+			  user: userId,
+			  frame: null,
+			  groupset: null,
+			  wheelset: null,
+			  tires: null,
+			  saddle: null,
+			  handlebar: null,
+			  stem: null,
+			  seatpost: null,
+			  total_price: '0',
+			  isCurrent: true,
+			  name: 'New Build',
+			});
+	  
+			const newBuildId = newBuildResponse.data.build._id;
+	  
+			await axios.put(`${BASE_URL}users/${userId}`, {
+			  current_build: newBuildId,
+			  saved_builds: [newBuildId],
+			});
+	  
+			await props.fetchUserData();
+		  } else {
+			// Set the first saved build as the current build
+			const firstSavedBuildId = props.userData.saved_builds[0];
+			console.log('first saved build', firstSavedBuildId)
+	  
+			await axios.put(`${BASE_URL}users/${userId}`, {
+			  current_build: firstSavedBuildId,
+			});
+	  
+			await props.fetchUserData();
+		  }
+		} catch (error) {
+		  console.error('Error deleting or creating a new build:', error);
 		}
-	}
+	  };
+	  
 
 
 

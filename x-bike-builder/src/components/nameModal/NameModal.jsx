@@ -22,6 +22,7 @@ function NameModal(props) {
 
   const setNameBuild = async () => {
     try {
+      if (props.userData && props.userData.current_build) {
         console.log('userData on NameModal:', props.userData)
         const buildId = props.userData.current_build
         const response = await axios.put(`${BASE_URL}builds/${buildId}`, {
@@ -39,6 +40,9 @@ function NameModal(props) {
         await props.fetchCurrentBuild()
         await props.fetchCurrentBuildName()
         handleClose(setShow(true))
+      } else {
+        console.log('Cannot set name, no current build.');
+      }
     } catch (error) {
         console.error('Error:', error)
     }
