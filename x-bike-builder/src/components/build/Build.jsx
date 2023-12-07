@@ -325,9 +325,13 @@ const Build = (props) => {
 			// Set the first saved build as the current build
 			const firstSavedBuildId = props.userData.saved_builds[0];
 			console.log('first saved build', firstSavedBuildId)
-	  
+
+			const newSavedBuilds = props.userData.saved_builds.filter(id => id !== buildId)
+			console.log('saved-builds:', newSavedBuilds)
+
 			await axios.put(`${BASE_URL}users/${userId}`, {
 			  current_build: firstSavedBuildId,
+			  saved_builds: newSavedBuilds
 			});
 	  
 			await props.fetchUserData();
