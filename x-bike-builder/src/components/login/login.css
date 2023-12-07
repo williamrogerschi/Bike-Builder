@@ -1,72 +1,51 @@
-.centered-container {
-    display: flex;
-    position: fixed;
-    top: 30%;
-    left: 55%;
-    transform: translate(30%, -99%);
-    border: 1px solid rgb(198, 189, 189);
-    border-radius: 4px;
-    background-color: #a6b5bc;
-    padding: 10px;
-    box-shadow: 0 0 10px rgba(136, 131, 131, 0.2);
-    text-align: center;
-    width: 230px;
-    height: 230px;
-  }
+.sign-in__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 600px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
 
-  .centered-container:hover{
-    box-shadow: 1px 1px 4px grey;
-  }
-  
-  .content {
-    text-align: center;
-  }
-  
-  .input-container {
-    padding: 5px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    flex-direction: row;
-    color: rgb(81,80,76);
-  }
+.sign-in__backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
 
-  .username-header {
-    color: rgb(81,80,76);
-  }
-  
-  label {
-    display: block;
-  }
-  
-  button {
-    margin: 6px;
-  }
+.sign-in__wrapper form {
+  width: 24rem;
+  max-width: 90%;
+  z-index: 1;
+  animation: showSignInForm 1s;
+}
 
-  input#username {
-    background-color: #bfc4c7;
-    border: 1px solid rgb(198, 189, 189);
-    border-radius: 2px;
-  }
+.sign-in__wrapper form img {
+  width: 4rem;
+}
 
-  input#password {
-    background-color: #bfc4c7;
-    border: 1px solid rgb(198, 189, 189);
-    border-radius: 2px;
+@keyframes showSignInForm {
+  0%,
+  30% {
+    transform: translate(0, -150%);
   }
+  70%,
+  90% {
+    transform: translate(0, 1rem);
+  }
+  80%,
+  100% {
+    transform: translate(0, 0);
+  }
+}
 
-  .login-btn {
-    background-color: #a6b5bc;
-    border: none;
-    color: rgb(81,80,76);
-  }
-
-  .login-btn:hover{
-    /* text-decoration: overline;
-    text-decoration-color: rgb(74, 71, 71);
-    text-decoration-thickness: 0.5px; */
-    color: black;
-  }
-  
+.w-100 {
+  padding: 5px 0 5px 0;
+  margin: 10px 0 10px 0;
+  display: flex;
+  justify-content: center;
+}

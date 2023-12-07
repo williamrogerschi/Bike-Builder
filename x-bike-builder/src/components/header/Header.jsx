@@ -18,7 +18,6 @@ const Header = (props) => {
   }, []);
 
   const handleLogout = () => {
-    // Clear user data from local storage and state
     localStorage.removeItem('userData');
     props.setUserData(null);
   };
@@ -55,11 +54,12 @@ const Header = (props) => {
             <Nav.Link className="nav-a" onClick={props.userData ? handleLogout : openContainer}>
               {props.userData ? `Welcome ${props.userData.user_name}!` : "Login"}
             </Nav.Link>
-            {showContainer && <Login onClose={closeContainer} userData={props.userData} setUserData={props.setUserData} />}
+           
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      {showContainer && <Login onClose={closeContainer} userData={props.userData} setUserData={props.setUserData} />}
     </div>
     </>
   )
