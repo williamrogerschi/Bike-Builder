@@ -106,7 +106,7 @@ function BuildModal(props) {
     <>
       <div className="user-builds">
         <button className="build-btn" style={buttonStyle} onClick={handleShow}>
-          Builds
+          View Builds
         </button>
 
         <Offcanvas show={show} onHide={handleClose}>

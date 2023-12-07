@@ -14,7 +14,6 @@ const listSchema = new Schema(
 	{ timestamps: true }
 )
 
-// Populate referenced fields when querying builds
 listSchema.pre(/^find/, function (next) {
 	this.populate('frame')
 		.populate('groupset')

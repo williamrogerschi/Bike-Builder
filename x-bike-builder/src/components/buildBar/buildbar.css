@@ -1,31 +1,9 @@
-/* .build-nav {
+.build-nav-main-container {
     display: flex;
-    justify-content: space-around;
-    margin: 0px 40px 0px 40px;
-    border-radius: 8px;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
-} */
-
-
-/* @media screen and (max-width: 800px) {
-    .build-nav {
-    display:flex;
-    justify-content: center;
-    flex-direction: column;
-    flex-wrap: wrap;
-    margin: 12px;
-    height: 40px;
-    background-color: transparent;
-    }
-  } */
-
-  .build-nav-main-container {
-    display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     background-color: white;
-    display: flex;
-    justify-content: space-around;
     margin: 0px 40px 0px 40px;
+    padding: 0 10px 0 10px;
     border-radius: 8px;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
   }
@@ -48,6 +26,11 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    padding-left: 40px;
+  }
+
+  .buildbar-container {
+    padding: 5px 10px 5px 10px;
   }
 
   @media screen and (max-width: 800px) {

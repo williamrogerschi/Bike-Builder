@@ -1,5 +1,16 @@
 const db = require('../db/index')
-const { List, Frame, Group, Handlebar, Saddle, Seatpost, Stem, Tires, Wheels, Levels } = require('../models/Index.js')
+const {
+	List,
+	Frame,
+	Group,
+	Handlebar,
+	Saddle,
+	Seatpost,
+	Stem,
+	Tires,
+	Wheels,
+	Levels,
+} = require('../models/Index.js')
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 

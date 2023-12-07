@@ -87,24 +87,30 @@ function BuildBar(props) {
 			{currentBuildName}
 		</div>
 		<div className='buildbar-btn-wrapper'>
+			<div className='buildbar-container'>
 	  <BuildModal
 			userData={props.userData}
 			fetchUserData={props.fetchUserData}
 			createNewBuild={props.createNewBuild}
 			/>
+			</div>
+			<div className='buildbar-container'>
 			<button className='build-btn' variant="light" style={buttonStyle} onClick={createNewBuild}>Add Build</button>
-
+			</div>
+			<div className='buildbar-container'>
 		<NameModal
 				userData={props.userData}
 				fetchUserData={props.fetchUserData}
 				fetchCurrentBuild={props.fetchCurrentBuild}
 				fetchCurrentBuildName={fetchCurrentBuildName}
 				 />
+				 </div>
+				 <div className='buildbar-container'>
 					<button
 						type="button"
 						className="delete-build-btn"
 						style={buttonStyle}
-						onClick={props.deleteBuildAndCreateNew}>Delete Build</button>
+						onClick={props.deleteBuildAndCreateNew}>Delete Build</button></div>
 			 </div>
 			 </div>
       {/* </Navbar> */}

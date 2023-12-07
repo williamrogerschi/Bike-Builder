@@ -18,7 +18,6 @@ const buildSchema = new Schema(
 	{ timestamps: true }
 )
 
-// Populate referenced fields when querying builds
 buildSchema.pre(/^find/, function (next) {
 	this.populate('frame')
 		.populate('groupset')
