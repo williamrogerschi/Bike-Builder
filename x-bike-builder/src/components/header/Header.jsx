@@ -52,7 +52,7 @@ const Header = (props) => {
 					onToggle={handleNavbarToggle}
 				>
 					<Container>
-						<Navbar.Brand href="/">Wumpy's Bike Builder</Navbar.Brand>
+						<Navbar.Brand href="/">Bike Labs</Navbar.Brand>
 						<Navbar.Toggle aria-controls="basic-navbar-nav" />
 						<Navbar.Collapse id="basic-navbar-nav">
 							<Nav className="me-auto">
