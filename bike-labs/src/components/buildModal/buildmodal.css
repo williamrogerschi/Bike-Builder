@@ -1,0 +1,12 @@
+.user-builds {
+    display: flex;
+    justify-content: baseline;
+}
+
+.build-list {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    margin: 0px;
+}

@@ -1,0 +1,114 @@
+div.entry-acc.accordion-body {
+    background-color: #d0f0b1b7;
+    height: auto;
+    padding: 20px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    overflow: hidden;
+}
+
+div.entry-acc.accordion-item {
+    background-color: transparent;
+}
+
+.title-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+.use-content-entry {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: row;
+    padding: 20px 10px 20px 10px;
+}
+
+.usecase-entry {
+    display: flex;
+    align-items: top;
+    justify-content: center;
+    padding: 20px 10px 20px 10px;
+  }
+
+.p-1 {
+    max-width: 30%;
+    margin-right: 20px;
+    margin-left: 20px;
+    width: 50%;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    background-color: rgb(185,202,191);
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    min-height: 120px;
+    padding: 20px;
+}
+
+.audience-entry {
+    display: flex;
+    justify-content: center;
+    padding: 40px 100px 12px 100px;
+  }
+
+.entry-acc .accordion-button {
+    background-color: #d0f0b1b7;
+  }
+
+  .entry-acc .accordion-button.collapsed {
+    background-color: #d0f0b1b7;
+  }
+
+
+
+@media screen and (max-width: 800px) {
+  .use-content-entry {
+    display: flex;
+    align-items: top;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100vh;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .usecase-entry {
+    display: flex;
+    align-items: top;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100vh;
+  }
+}
+@media screen and (max-width: 800px) {
+  .audience-entry {
+    display: flex;
+    justify-content: center;
+    padding: 0px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .pro-entry {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .title-content {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+  }
+}
+
+
