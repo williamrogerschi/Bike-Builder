@@ -1,4 +1,4 @@
-const { Build } = require('../backend/models/Index')
+const { Build } = require('../models/Index')
 
 const getAllBuilds = async (req, res) => {
 	try {
