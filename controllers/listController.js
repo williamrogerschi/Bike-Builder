@@ -1,4 +1,4 @@
-const { List } = require('../models/Index')
+const { List } = require('../backend/models/Index')
 
 const getAllLists = async (req, res) => {
 	try {
