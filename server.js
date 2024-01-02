@@ -1,5 +1,5 @@
 const express = require('express')
-const db = require('./db/index.js')
+const connectDB = require('./db/index.js')
 const logger = require('morgan')
 const bodyParser = require('body-parser')
 const cors = require('cors')
@@ -30,6 +30,12 @@ const app = express()
 app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(cors())
+
+connectDB()
+    .then((db) => {
+        app.listen(PORT, () => console.log(`Listening on port: ${PORT}`))
+    })
+    .catch((error) => console.error(error))
 
 
 //show routes
@@ -146,4 +152,4 @@ app.get('/users/:userId/builds/:buildId', userController.getUserBuild)
 app.post('/users/:userId/builds', userController.createNewUserBuild)
 
 
-app.listen(PORT, () => console.log(`Listening on port: ${PORT}`) )
+// app.listen(PORT, () => console.log(`Listening on port: ${PORT}`) )
