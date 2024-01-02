@@ -18,13 +18,13 @@ function EntryDiv() {
 					</div>
 					<div className="use-content-entry">
 						<p className="p-1">
-						<p><strong>Frame Material</strong></p> Entry-level bikes often feature frames made of
+						<strong>Frame Material</strong> Entry-level bikes often feature frames made of
 							sturdy materials like steel or entry-level aluminum. These
 							materials offer durability at an affordable cost but might be
 							slightly heavier compared to high-end materials like carbon fiber.
 						</p>
 						<p className="p-1">
-						<p><strong>Components</strong></p> Equipped with basic components from reputable brands
+						<strong>Components</strong>Equipped with basic components from reputable brands
 							that prioritize reliability and ease of use. These may include
 							entry-level groupsets offering adequate functionality for casual
 							riding, though they might not offer the same precision and
@@ -40,19 +40,19 @@ function EntryDiv() {
 					</div>
 					<div className="usecase-entry">
 					<p className="p-1">
-					<p><strong>Use Cases</strong></p> Designed for recreational riding, commuting, fitness,
+					<strong>Use Cases</strong>Designed for recreational riding, commuting, fitness,
 							and light exercise. Suitable for casual rides around the
 							neighborhood, park pathways, or commuting short distances. They're
 							not specifically optimized for racing or high-performance riding.
 						</p>
 						<p className="p-1">
-						<p><strong>Affordability</strong></p> These bikes are budget-friendly, typically ranging
+						<strong>Affordability</strong> These bikes are budget-friendly, typically ranging
 							from a few hundred dollars to around $1,000. They provide a
 							cost-effective entry point into cycling without compromising too
 							much on quality or safety.
 						</p>
 						<p className="p-1">
-						<p><strong>Target Audience</strong></p> Geared towards beginners, occasional riders,
+						<strong>Target Audience</strong> Geared towards beginners, occasional riders,
 							commuters, and fitness enthusiasts who prioritize affordability,
 							simplicity, and comfort over high-performance features. These
 							bikes offer a gateway into cycling without the need for advanced
