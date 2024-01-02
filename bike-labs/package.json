@@ -22,8 +22,7 @@
     "react-dom": "^18.2.0",
     "react-fontawesome": "^1.7.1",
     "react-router-dom": "^6.20.0",
-    "reactstrap": "^9.2.1",
-    "surge": "^0.23.1"
+    "reactstrap": "^9.2.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.37",
