@@ -14,24 +14,24 @@
 // heroku buildpacks:set heroku/nodejs
 
 
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
 const connectDB = async () => {
   try {
-    const dbName = 'bikeDatabase';
-    const uri = `mongodb+srv://williamrogerschi:Jukath00n1990!@bike-labs.vjfh7uc.mongodb.net/${dbName}?retryWrites=true&w=majority`;
+    const dbName = 'bikeDatabase'
+    const uri = `mongodb+srv://williamrogerschi:Jukath00n1990!@bike-labs.vjfh7uc.mongodb.net/${dbName}?retryWrites=true&w=majority`
 
     await mongoose.connect(uri, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-    });
-    console.log('Successfully connected to MongoDB.');
+    })
+    console.log('Successfully connected to MongoDB.')
 
-    return mongoose.connection;
+    return mongoose.connection
   } catch (error) {
-    console.error('Connection error', error.message);
-    throw error;
+    console.error('Connection error', error.message)
+    throw error
   }
-};
+}
 
-module.exports = connectDB;
+module.exports = connectDB

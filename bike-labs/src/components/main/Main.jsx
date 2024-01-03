@@ -66,7 +66,7 @@ const Main = () => {
 						/>
 					</Routes>
 				</div>
-				<Footer />
+				{/* <Footer /> */}
 			</div>
 		</>
 	)

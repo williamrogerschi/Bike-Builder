@@ -1,5 +1,4 @@
 import React from 'react'
-import { CardFooter } from "reactstrap"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons"
 import './footer.css'
@@ -10,7 +9,6 @@ const Footer = () => {
     
   return (
     <div className="footer" style={footerStyle}>
-      <CardFooter className="footer-card">
         <div className="inner-footer">
         <div className="billy" style={{padding: '20px', margin: '20px'}}>
           <a href="https://www.linkedin.com/in/billy-rogers-chi/" target="_blank"className="linkedin-link">
@@ -30,11 +28,6 @@ const Footer = () => {
           <a className="footer-list" href="#">Contact</a>
         </div>
         </div>
-        <div className="inner-footer2">
-          <div className="footer-section">
-          </div>
-          </div>
-      </CardFooter>
     </div>
 
   )
