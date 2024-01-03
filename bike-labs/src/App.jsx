@@ -6,10 +6,10 @@ import Footer from './components/footer/Footer'
 function App() {
 
   return (
-    <>
+    <div id='app-wrapper'>
       <Main />
       <Footer />
-    </>
+    </div>
   )
 }
 

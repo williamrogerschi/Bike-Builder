@@ -36,7 +36,6 @@ const Main = () => {
 
 	return (
 		<>
-			<div className="wrapper">
 				<div className="main-content">
 					<div className="header-container">
 						<Header userData={userData} setUserData={setUserData} />
@@ -66,8 +65,6 @@ const Main = () => {
 						/>
 					</Routes>
 				</div>
-				{/* <Footer /> */}
-			</div>
 		</>
 	)
 }

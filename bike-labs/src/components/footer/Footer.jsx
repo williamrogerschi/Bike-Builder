@@ -2,12 +2,18 @@ import React from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons"
 import './footer.css'
+import mountainImage from '../../../public/mtn.jpeg'
+
 
 const Footer = () => {
   const footerStyle = {
-  }
+    backgroundImage: `url(${mountainImage})`,
+    backgroundSize: 'cover',
+    backgroundPosition: '50% 50%'
+  };
     
   return (
+
     <div className="footer" style={footerStyle}>
         <div className="inner-footer">
         <div className="billy" style={{padding: '20px', margin: '20px'}}>
@@ -28,8 +34,7 @@ const Footer = () => {
           <a className="footer-list" href="#">Contact</a>
         </div>
         </div>
-    </div>
-
+        </div>
   )
 }
 
