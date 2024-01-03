@@ -15,9 +15,6 @@ li {
     display:flex;
     flex-direction: column;
     width: 100%;
-    background-image: url(./mtn.jpeg);
-    background-size: cover;
-    background-position: 50% 50%;
     border-top: 1px solid rgb(62, 59, 59);
     margin-top: 155px;
   }
@@ -32,6 +29,9 @@ li {
   }
 
   .inner-footer {
+    background-image: url(./mtn.jpeg);
+    background-size: cover;
+    background-position: 50% 50%;
     display: flex;
     flex-direction: row;
     width: 100%;
