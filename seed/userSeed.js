@@ -2,7 +2,7 @@ const db = require('../db/index')
 const { User } = require('../models/Index.js')
 const { Build } = require('../models/Index.js') // Import the Build model
 
-db.on('error', console.error.bind(console, 'MongoDB connection error:'))
+// db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 const createEmptyBuild = async () => {
 	try {

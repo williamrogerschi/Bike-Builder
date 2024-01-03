@@ -1,7 +1,7 @@
 const db = require('../db/index')
 const { Saddle, Levels } = require('../models/Index.js')
 
-db.on('error', console.error.bind(console, 'MongoDB connection error:'))
+// db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 const saddleSeed = async () => {
 	try {
