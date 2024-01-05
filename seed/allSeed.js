@@ -67,7 +67,7 @@
 //   allSeed()
 
 
-const connectDB = require('../db/index'); // Import the connectDB function
+const connectDB = require('../db/index');
 const { Levels, Material, Wheels, User, Build, Frame, Group, Handlebar, Saddle, Seatpost, Stem, Tires, List } = require('../models/Index.js');
 
 const { levelSeed } = require('./levelSeed');
@@ -86,7 +86,7 @@ const { listSeed } = require('./listSeed');
 
 const seedData = async () => {
   try {
-    const db = await connectDB(); // Establish the database connection
+    const db = await connectDB();
 
     const dropCollections = async () => {
       try {
@@ -131,11 +131,11 @@ const seedData = async () => {
       } catch (error) {
         console.error('Error in seeding process:', error);
       } finally {
-        db.close(); // Close the database connection when done
+        db.close();
       }
     };
 
-    await allSeed(); // Run the seeding process
+    await allSeed();
 
   } catch (error) {
     console.error('MongoDB connection error:', error);
